@@ -1,0 +1,57 @@
+[
+    {
+        "item": ["Iced Vanilla Protein Latte"],
+        "customisation": [
+            {
+                "name": "size",
+                "type": "option",
+                "options": [
+                    { "label": "35ml", "extraPrice": 0 },
+                    { "label": "50ml", "extraPrice": 1500 },
+                    { "label": "80ml", "extraPrice": 2500 }
+                ]
+            },
+            {
+                "name": "milk",
+                "type": "option",
+                "options": [
+                    { "label": "2% milk", "extraPrice": 0 },
+                    { "label": "almond", "extraPrice": 0 },
+                    { "label": "coconut", "extraPrice": 0 },
+                    { "label": "breve", "extraPrice": 0 },
+                    { "label": "heavy cream", "extraPrice": 0 },
+                    { "label": "non-fat milk", "extraPrice": 0 },
+                    { "label": "oat milk", "extraPrice": 0 },
+                    { "label": "protein boosted milk", "extraPrice": 0 },
+                    { "label": "soy", "extraPrice": 0 },
+                    { "label": "whole milk", "extraPrice": 0 },
+                    { "label": "non-dairy", "extraPrice": 0 },
+                    { "label": "vanilla sweet", "extraPrice": 0 }
+                ]
+            },
+            {
+                "name": "sugar scoops",
+                "type": "quantity",
+                "options": [
+                    { "label": "scoops", "extraPrice": 150 }
+                ]
+            },
+            {
+                "name": "espresso shots",
+                "type": "quantity",
+                "options": [
+                    { "label": "shots", "extraPrice": 500 }
+                ]
+            },
+            {
+                "name": "ice cubes",
+                "type": "quantity",
+                "options": [
+                    { "label": "cubes", "extraPrice": 200 }
+                ]
+            }
+        ]
+    }
+
+
+]
