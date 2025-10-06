@@ -1,57 +1,448 @@
 [
-    {
-        "item": ["Iced Vanilla Protein Latte"],
-        "customisation": [
-            {
-                "name": "size",
-                "type": "option",
+        {
+            "name": "size",
+            "type": "option",
+            "options": [
+                { "label": "35ml", "extraPrice": 0 },
+                { "label": "50ml", "extraPrice": 1500 },
+                { "label": "80ml", "extraPrice": 2500 }
+            ]
+        },
+        {
+            "name": "milk",
+            "type": "option",
+            "options": [
+                { "label": "2% milk", "extraPrice": 0 },
+                { "label": "almond", "extraPrice": 0 },
+                { "label": "coconut", "extraPrice": 750 },
+                { "label": "breve", "extraPrice": 0 },
+                { "label": "heavy cream", "extraPrice": 900 },
+                { "label": "non-fat milk", "extraPrice": 0 },
+                { "label": "oat milk", "extraPrice": 0 },
+                { "label": "protein boosted milk", "extraPrice": 500 },
+                { "label": "soy", "extraPrice": 500 },
+                { "label": "whole milk", "extraPrice": 700 },
+                { "label": "non-dairy", "extraPrice": 500 },
+                { "label": "vanilla sweet", "extraPrice": 800 }
+            ]
+        },
+        {
+            "name": "sugar scoops",
+            "type": "quantity",
+            "options": [
+                { "label": "scoops", "extraPrice": 150 }
+            ]
+        },
+        {
+            "name": "espresso shots",
+            "type": "quantity",
+            "options": [
+                { "label": "shots", "extraPrice": 500 }
+            ]
+        },
+        {
+            "name": "ice cubes",
+            "type": "quantity",
+            "options": [
+                { "label": "cubes", "extraPrice": 200 }
+            ]
+        },
+        {
+            "name": "matcha powder scoops",
+            "type": "quantity",
+            "options": [
+                { "label": "scoops", "extraPrice": 720 }
+            ]
+        },
+        {
+            "name": "vanilla syrup pumps",
+            "type": "quantity",
+            "options": [
+                { "label": "pumps", "extraPrice": 400 }
+            ]
+        },
+        {
+                "name": "add drizzle",
+                "type": "check",
                 "options": [
-                    { "label": "35ml", "extraPrice": 0 },
-                    { "label": "50ml", "extraPrice": 1500 },
-                    { "label": "80ml", "extraPrice": 2500 }
+                    { "label": "drizzle", "extraPrice": 200 }
                 ]
-            },
-            {
-                "name": "milk",
-                "type": "option",
-                "options": [
-                    { "label": "2% milk", "extraPrice": 0 },
-                    { "label": "almond", "extraPrice": 0 },
-                    { "label": "coconut", "extraPrice": 0 },
-                    { "label": "breve", "extraPrice": 0 },
-                    { "label": "heavy cream", "extraPrice": 0 },
-                    { "label": "non-fat milk", "extraPrice": 0 },
-                    { "label": "oat milk", "extraPrice": 0 },
-                    { "label": "protein boosted milk", "extraPrice": 0 },
-                    { "label": "soy", "extraPrice": 0 },
-                    { "label": "whole milk", "extraPrice": 0 },
-                    { "label": "non-dairy", "extraPrice": 0 },
-                    { "label": "vanilla sweet", "extraPrice": 0 }
-                ]
-            },
-            {
-                "name": "sugar scoops",
-                "type": "quantity",
-                "options": [
-                    { "label": "scoops", "extraPrice": 150 }
-                ]
-            },
-            {
-                "name": "espresso shots",
-                "type": "quantity",
-                "options": [
-                    { "label": "shots", "extraPrice": 500 }
-                ]
-            },
-            {
-                "name": "ice cubes",
-                "type": "quantity",
-                "options": [
-                    { "label": "cubes", "extraPrice": 200 }
-                ]
+        },
+        {
+            "name": "add whipped cream",
+            "type": "check",
+            "options": [
+                { "label": "drizzle", "extraPrice": 200 }
+            ]
+        },
+        {
+            "name": "add cinnamon powder",
+            "type": "check",
+            "options": [
+                { "label": "powder", "extraPrice": 200 }
+            ]
+        },
+        {
+            "name": "add cold foam",
+            "type": "check",
+            "options": [
+                { "label": "none", "extraPrice": 0 },
+                { "label": "brown sugar", "extraPrice": 300 },
+                { "label": "matcha", "extraPrice": 300 },
+                { "label": "caramel", "extraPrice": 300 },
+                { "label": "cinnamon dolce", "extraPrice": 300 },
+                { "label": "hazelnut", "extraPrice": 300 },
+                { "label": "pecan", "extraPrice": 300 },
+                { "label": "peppermint", "extraPrice": 300 },
+                { "label": "raspberry", "extraPrice": 300 },
+                { "label": "vanilla", "extraPrice": 300 },
+                { "label": "sugar-free vanilla", "extraPrice": 300 }
+            ]
+        },
+        {
+            "name": "add creamer",
+            "type": "check",
+            "options": [
+                { "label": "creamer", "extraPrice": 200 }
+            ]
+        },
+        {
+            "name": "topping option",
+            "type": "option",
+            "options": [
+                { "label": "brown sugar", "extraPrice": 0 },
+                { "label": "caramel crunch topping", "extraPrice": 500 },
+                { "label": "cinnamon dolce sprinkle", "extraPrice": 750 },
+                { "label": "cookie crumble topping", "extraPrice": 650 },
+                { "label": "pecan crunch topping", "extraPrice": 900 },
+                { "label": "pumpkin spice topping", "extraPrice": 800 }
+            ]
+        },
+        {
+            "name": "syrup",
+            "type": "option",
+            "options": [
+                { "label": "none", "extraPrice": 0 },
+                { "label": "brown sugar syrup", "extraPrice": 300 },
+                { "label": "caramel syrup", "extraPrice": 300 },
+                { "label": "cinnamon dolce syrup", "extraPrice": 300 },
+                { "label": "hazelnut syrup", "extraPrice": 300 },
+                { "label": "pecan syrup", "extraPrice": 300 },
+                { "label": "peppermint syrup", "extraPrice": 300 },
+                { "label": "raspberry syrup", "extraPrice": 300 },
+                { "label": "vanilla syrup", "extraPrice": 300 },
+                { "label": "sugar-free vanilla syrup", "extraPrice": 300 }
+            ]
+        },
+        {
+            "name": "sauce",
+            "type": "option",
+            "options": [
+                { "label": "none", "extraPrice": 0 },
+                { "label": "dark caramel sauce", "extraPrice": 300 },
+                { "label": "mocha sauce", "extraPrice": 300 },
+                { "label": "pumpkin sauce", "extraPrice": 300 },
+                { "label": "white chocolate mocha sauce", "extraPrice": 300 },
+                { "label": "suya pepper mix", "extraPrice": 200 },
+                { "label": "barbecue sauce", "extraPrice": 300 },
+                { "label": "garlic mayo", "extraPrice": 250 },
+                { "label": "tomato dip", "extraPrice": 150 },
+                { "label": "pepper sauce", "extraPrice": 200 },
+                { "label": "ketchup", "extraPrice": 100 }
+            ]
+        },
+        {
+            "name": "liquid sweeteners",
+            "type": "option",
+            "options": [
+                { "label": "none", "extraPrice": 0 },
+                { "label": "classic syrup", "extraPrice": 300 },
+                { "label": "honey blend syrup", "extraPrice": 300 }
+            ]
+        },
+        {
+            "name": "sweetener packet",
+            "type": "option",
+            "options": [
+                { "label": "none", "extraPrice": 0 },
+                { "label": "honey", "extraPrice": 300 },
+                { "label": "sugar in raw", "extraPrice": 300 },
+                { "label": "splenda", "extraPrice": 300 },
+                { "label": "stevia in raw", "extraPrice": 300 },
+                { "label": "sugar", "extraPrice": 300 }
+            ]
+        },
+        {
+            "name": "espresso roast options",
+            "type": "option",
+            "options": [
+                { "label": "none", "extraPrice": 0 },
+                { "label": "blonde espresso", "extraPrice": 300 },
+                { "label": "signature espresso", "extraPrice": 300 },
+                { "label": "1/2 decaf", "extraPrice": 300 },
+                { "label": "decaf espresso roast", "extraPrice": 300 },
+                { "label": "1/3 decaf", "extraPrice": 150 },
+                { "label": "2/3 decaf", "extraPrice": 400 }
+            ]
+        },
+        {
+            "name": "heat",
+            "type": "option",
+            "options": [
+                { "label": "warm", "extraPrice": 0 },
+                { "label": "steamed hot", "extraPrice": 300 },
+                { "label": "extra hot", "extraPrice": 200 }
+            ]
+        },
+        {
+            "name": "add iced tea",
+            "type": "option",
+            "options": [
+                { "label": "black tea", "extraPrice": 0 },
+                { "label": "green tea", "extraPrice": 300 },
+                { "label": "passion tango tea", "extraPrice": 200 }
+            ]
+        },
+        {
+            "name": "add preparation method",
+            "type": "option",
+            "options": [
+                { "label": "none", "extraPrice": 300 },
+                { "label": "blended", "extraPrice": 300 }
+            ]
+        },
+        {
+            "name": "fruit add-ins",
+            "type": "option",
+            "options": [
+                { "label": "dragonfruit fruit", "extraPrice": 300 },
+                { "label": "strawberry puree", "extraPrice": 300 }
+            ]
+        },
+        {
+            "name": "ristretto shots",
+            "type": "quantity",
+            "options": [
+                { "label": "shots", "extraPrice": 500 }
+            ]
+        },
+        {
+            "name": "lemonade shots",
+            "type": "quantity",
+            "options": [
+                { "label": "shots", "extraPrice": 500 }
+            ],
+            "quantity":{
+                "min":0,
+                "max":3
             }
-        ]
-    }
+        },
+        {
+            "name": "add juice blend",
+            "type": "quantity",
+            "options": [
+                { "label": "shots", "extraPrice": 500 }
+            ],
+            "quantity":{
+                "min":0,
+                "max":3
+            }
+        },
+        {
+            "name": "Strawberry Fruit scoop",
+            "type": "quantity",
+            "options": [
+                { "label": "shots", "extraPrice": 500 }
+            ],
+            "quantity":{
+                "min":0,
+                "max":8
+            }
+        },
+        {
+            "name": "cold",
+            "type": "option",
+            "options": [
+                { "label": "cold", "extraPrice": 0 },
+                { "label": "frozen", "extraPrice": 300 },
+                { "label": "warm", "extraPrice": 200 }
+            ]
+        },
+        {
+            "name": "add non-dairy cold foam",
+            "type": "option",
+            "options": [
+                { "label": "none", "extraPrice": 0 },
+                { "label": "brown sugar cream", "extraPrice": 300 },
+                { "label": "chocolate cream", "extraPrice": 300 },
+                { "label": "matcha cream", "extraPrice": 300 },
+                { "label": "salted caramel cream", "extraPrice": 300 },
+                { "label": "strawberry cream", "extraPrice": 300 },
+                { "label": "vanilla cream", "extraPrice": 300 }
+            ]
+        },
+        {
+            "name": "add pumpkin cream cold foam",
+            "type": "option",
+            "options": [
+                { "label": "none", "extraPrice": 0 },
+                { "label": "regular", "extraPrice": 300 },
+                { "label": "light", "extraPrice": 300 },
+                { "label": "heavy", "extraPrice": 300 }
+            ]
+        },
+        {
+            "name": "portion size",
+            "type": "option",
+            "options": [
+                { "label": "small", "extraPrice": 0 },
+                { "label": "medium", "extraPrice": 500 },
+                { "label": "large", "extraPrice": 1000 }
+            ]
+        },
+        {
+            "name": "sweetness level",
+            "type": "option",
+            "options": [
+                { "label": "plain", "extraPrice": 0 },
+                { "label": "lightly sweetened", "extraPrice": 100 },
+                { "label": "extra sweet", "extraPrice": 150 }
+            ]
+        },
+        {
+            "name": "spice level",
+            "type": "option",
+            "options": [
+                { "label": "mild", "extraPrice": 0 },
+                { "label": "medium", "extraPrice": 0 },
+                { "label": "hot", "extraPrice": 100 },
+                { "label": "extra hot", "extraPrice": 200 }
+            ]
+        },
+        {
+            "name": "salt level",
+            "type": "option",
+            "options": [
+                { "label": "unsalted", "extraPrice": 0 },
+                { "label": "lightly salted", "extraPrice": 50 },
+                { "label": "extra salted", "extraPrice": 100 }
+            ]
+        },
+        {
+            "name": "add coating",
+            "type": "option",
+            "options": [
+                { "label": "honey glaze", "extraPrice": 150 },
+                { "label": "chili coating", "extraPrice": 200 }
+            ]
+        },
+        {
+            "name": "add sides",
+            "type": "option",
+            "options": [
+                { "label": "plantain", "extraPrice": 500 },
+                { "label": "chips", "extraPrice": 700 },
+                { "label": "fried yam", "extraPrice": 600 }
+            ]
+        },
+        {
+            "name": "extra onions",
+            "type": "check",
+            "options": [
+                { "label": "onions", "extraPrice": 0 }
+            ]
+        },
+        {
+            "name": "add tomatoes",
+            "type": "check",
+            "options": [
+                { "label": "onions", "extraPrice": 100 }
+            ]            
+        },
+        {
+            "name": "add cabbage",
+            "type": "check",
+            "options": [
+                { "label": "onions", "extraPrice": 100 }
+            ]            
+        },
+        {
+            "name": "add nuts",
+            "type": "check",
+            "options": [
+                { "label": "groundnuts", "extraPrice": 250 },
+                { "label": "cashew nuts", "extraPrice": 400 }
+            ]
+        },
+        {
+            "name": "add fish",
+            "type": "check",
+            "options": [
+                { "label": "fish", "extraPrice": 200 }
+            ]
+        },
+        {
+            "name": "add beef",
+            "type": "check",
+            "options": [
+                { "label": "beef", "extraPrice": 200 }
+            ]
+        },
+        {
+            "name": "extra cheese",
+            "type": "check",
+            "options": [
+                { "label": "cheese", "extraPrice": 200 }
+            ]
+        },
+        {
+            "name": "add boiled egg",
+            "type": "check",
+            "options": [
+                { "label": "boiled egg", "extraPrice": 200 }
+            ]
+        },
+        {
+            "name": "add ponmo",
+            "type": "check",
+            "options": [
+                { "label": "ponmo", "extraPrice": 200 }
+            ]
+        },
+        {
+            "name": "Extra minced beef",
+            "type": "check",
+            "options": [
+                { "label": "beef", "extraPrice": 200 }
+            ]
+        },
+        {
+            "name": "Add egg bits",
+            "type": "check",
+            "options": [
+                { "label": "egg", "extraPrice": 200 }
+            ]
+        },
+        {
+            "name": "Add onions",
+            "type": "check",
+            "options": [
+                { "label": "onions", "extraPrice": 200 }
+            ]
+        },
+        {
+            "name": "Add green pepper",
+            "type": "check",
+            "options": [
+                { "label": "pepper", "extraPrice": 200 }
+            ]
+        }
 
+
+
+
+
+
+        
 
 ]

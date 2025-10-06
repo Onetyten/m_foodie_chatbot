@@ -1,13 +1,1179 @@
 [
     {
-        "name":"Iced Vanilla Protein Latte",
+        "name":"iced vanilla protein latte",
         "price":4500,
         "calories":340,
-        "imageUrl": "",
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759528024/IcedCaffeLattewProtein_jphcny.png",
+        "category":"coffee",
+        "subCategory":"protein beverages",
+        "customisations": ["size","milk","sugar scoops","espresso shots","ice cubes"]
+    },
+    {
+        "name":"iced protein matcha",
+        "price":5000,
+        "calories":300,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759528863/IcedMatchaTeaLattewProtein_1_wv0gjj.png",
+        "category":"coffee",
+        "subCategory":"protein beverages",
+        "customisations": ["size","milk","sugar scoops","espresso shots","ice cubes","matcha powder scoops"]
+    },
+    {
+        "name":"vanilla protein latte",
+        "price":4000,
+        "calories":310,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759529732/CaffeLattewProtein_iksbox.png",
+        "category":"coffee",
+        "subCategory":"protein beverages",
+        "customisations": ["size","milk","sugar scoops","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps"]
+    },
+    {
+        "name":"protein matcha",
+        "price":4300,
+        "calories":310,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759530336/SBX20250821_ProteinMatchaTeaLatte_kml544.png",
+        "category":"coffee",
+        "subCategory":"protein beverages",
+        "customisations": ["size","milk","sugar scoops","ice cubes","matcha powder scoops","foam","vanilla syrup pumps"]
+    },
+    {
+        "name":"blonde roast",
+        "price":2500,
+        "calories":5,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759530789/Veranda_Blend_Hot_vzas2y.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"medium roast",
+        "price":2500,
+        "calories":5,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759532446/BrewedCoffee_adwhkx.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"dark roast",
+        "price":2500,
+        "calories":5,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759532446/BrewedCoffee_adwhkx.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"decaf roast",
+        "price":2500,
+        "calories":5,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759532446/BrewedCoffee_adwhkx.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"caffè misto",
+        "price":2500,
+        "calories":5,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759532899/CaffeMisto_zldyrd.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"caffè americano",
+        "price":3000,
+        "calories":15,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759533199/CaffeAmericano_jn2c2d.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"caffè latte",
+        "price":3500,
+        "calories":190,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759533519/CaffeLatte_yvvhol.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"pumpkin spice latte",
+        "price":3500,
+        "calories":390,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759533814/PumpkinSpiceLatte-2_iqyq2e.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"pecan crunch oatmilk latte",
+        "price":3500,
+        "calories":270,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759534042/PecanCrunchOatmilkLatte_dgas6l.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"sugar-free vanilla protein latte",
+        "price":3500,
+        "calories":230,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759533519/CaffeLatte_yvvhol.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"cinnamon dolce latte",
+        "price":3500,
+        "calories":260,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759533814/PumpkinSpiceLatte-2_iqyq2e.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"Blonde Vanilla Latte",
+        "price":3500,
+        "calories":250,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759532899/CaffeMisto_zldyrd.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"Cappuccino",
+        "price":3500,
+        "calories":140,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759534713/Cappuccino_miomoo.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"Caffè Mocha",
+        "price":3500,
+        "calories":370,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759535065/SBX20220607_CaffeMocha_qslups.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"White Chocolate Mocha",
+        "price":3500,
+        "calories":390,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759535550/WhiteChocolateMocha_baumzv.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"Caramel Macchiato",
+        "price":3500,
+        "calories":250,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759535755/SBX20211029_CaramelMacchiato_jt1ihy.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"Flat White",
+        "price":3500,
+        "calories":170,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759535951/SBX20230406_FlatWhite_nba1st.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"Cortado",
+        "price":2500,
+        "calories":90,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759536223/Cortado_tuwzkk.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","heat","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Pecan Oatmilk Cortado",
+        "price":3000,
+        "calories":120,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759536223/Cortado_tuwzkk.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","heat","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Brown Sugar Oatmilk Cortado",
+        "price":3000,
+        "calories":130,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759536920/BrownSugarOatmilkCortado_cknbsn.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","heat","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Espresso",
+        "price":2500,
+        "calories":10,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759537121/SBX20190617_Espresso_Single_e6jzrp.png",
+        "category":"coffee",
+        "subCategory":"hot coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","heat","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Cold Brew",
+        "price":3500,
+        "calories":5,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759537643/ColdBrew_cinqj1.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Pumpkin Cream Cold Brew",
+        "price":3500,
+        "calories":250,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759537818/PumpkinCreamColdBrew_hqietm.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Raspberry Cream Cold Brew",
+        "price":4000,
+        "calories":160,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759538008/RaspberryCreamColdBrew_tru3no.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Chocolate Cream Protein Cold Brew",
+        "price":4500,
+        "calories":330,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759538196/ChocolateProteinColdBrew_sx3wwn.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Vanilla Sweet Cream Cold Brew",
+        "price":3000,
+        "calories":110,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759538384/VanillaSweetCreamColdBrew_jbxftn.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Salted Caramel Cream Cold Brew",
+        "price":3000,
+        "calories":240,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759538532/SBX20211029_SaltedCaramelCreamColdBrew_xwgogw.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Chocolate Cream Cold Brew",
+        "price":3000,
+        "calories":240,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759538532/SBX20211029_SaltedCaramelCreamColdBrew_xwgogw.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Nondairy Vanilla Sweet Cream Cold Brew",
+        "price":3000,
+        "calories":100,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759538384/VanillaSweetCreamColdBrew_jbxftn.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Nitro Cold Brew",
+        "price":3000,
+        "calories":5,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759538812/NitroColdBrew_uv5s1e.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Coffee",
+        "price":3000,
+        "calories":5,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759537643/ColdBrew_cinqj1.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Espresso",
+        "price":3000,
+        "calories":10,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759537643/ColdBrew_cinqj1.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Caffè Americano",
+        "price":3000,
+        "calories":15,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759537643/ColdBrew_cinqj1.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Caffè Latte",
+        "price":3000,
+        "calories":130,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759539083/IcedPumpkinSpicedLatte_fmd4aq.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Pumpkin Spice Latte",
+        "price":3000,
+        "calories":370,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759539083/IcedPumpkinSpicedLatte_fmd4aq.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Pecan Crunch Oatmilk Latte",
+        "price":3000,
+        "calories":410,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759539083/IcedPumpkinSpicedLatte_fmd4aq.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Vanilla Protein Latte",
+        "price":3000,
+        "calories":410,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759528024/IcedCaffeLattewProtein_jphcny.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Sugar-Free Vanilla Protein Latte",
+        "price":3000,
+        "calories":200,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759528024/IcedCaffeLattewProtein_jphcny.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Vanilla Cream Protein Latte",
+        "price":3000,
+        "calories":390,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759539531/IcedVanillaCreamProteinLatte_hesjri.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Cinnamon Dolce Latte",
+        "price":3000,
+        "calories":300,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759539083/IcedPumpkinSpicedLatte_fmd4aq.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Caffè Mocha",
+        "price":3000,
+        "calories":390,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759539757/IcedCaffeMocha_chmds2.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced White Chocolate Mocha",
+        "price":3000,
+        "calories":390,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759540024/IcedWhiteChocolateMocha_jy89vo.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Caramel Macchiato",
+        "price":3000,
+        "calories":250,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759538384/VanillaSweetCreamColdBrew_jbxftn.png",
+        "category":"coffee",
+        "subCategory":"cold coffee",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Chai Latte",
+        "price":2000,
+        "calories":240,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759540800/SBX20220411_ChaiLatte_nhuqkq.png",
         "category":"drink",
-        "subCategory":"protein beverages"
+        "subCategory":"hot tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","heat","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"Protein Matcha",
+        "price":2000,
+        "calories":300,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759530336/SBX20250821_ProteinMatchaTeaLatte_kml544.png",
+        "category":"drink",
+        "subCategory":"hot tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","heat","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"Sugar-Free Vanilla Protein Matcha",
+        "price":2000,
+        "calories":240,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759530336/SBX20250821_ProteinMatchaTeaLatte_kml544.png",
+        "category":"drink",
+           "subCategory":"hot tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","heat","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"Matcha Latte",
+        "price":2000,
+        "calories":220,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759530336/SBX20250821_ProteinMatchaTeaLatte_kml544.png",
+        "category":"drink",
+           "subCategory":"hot tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","heat","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"London Fog Latte",
+        "price":2000,
+        "calories":180,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759540800/SBX20220411_ChaiLatte_nhuqkq.png",
+        "category":"drink",
+           "subCategory":"hot tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","heat","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"Honey Citrus Mint Tea",
+        "price":2000,
+        "calories":130,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759541163/HoneyCitrusMintTea_f2dgef.png",
+        "category":"drink",
+           "subCategory":"hot tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","heat","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"Royal English Breakfast Tea",
+        "price":2000,
+        "calories":0,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759564560/RoyalEnglishBreakfastTea_wwdnls.png",
+        "category":"drink",
+           "subCategory":"hot tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","heat","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"Emperor's Clouds & Mist Tea",
+        "price":2000,
+        "calories":0,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759541163/HoneyCitrusMintTea_f2dgef.png",
+        "category":"drink",
+           "subCategory":"hot tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","heat","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"Mint Majesty Tea",
+        "price":2000,
+        "calories":0,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759564775/MintMajestyTea_wocb95.png",
+        "category":"drink",
+           "subCategory":"hot tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","heat","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"Earl Grey Tea",
+        "price":2000,
+        "calories":0,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759564560/RoyalEnglishBreakfastTea_wwdnls.png",
+        "category":"drink",
+           "subCategory":"hot tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","heat","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"Chamomile Mint Blossom Tea",
+        "price":2000,
+        "calories":0,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759541163/HoneyCitrusMintTea_f2dgef.png",
+        "category":"drink",
+           "subCategory":"hot tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","heat","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options"]
+    },
+    {
+        "name":"Iced Chai Latte",
+        "price":2500,
+        "calories":240,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759566588/IcedChaiTeaLatte_rxxmff.png",
+        "category":"drink",
+        "subCategory":"cold tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Pumpkin Cream Chai",
+        "price":2500,
+        "calories":460,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759567032/IcedPumpkinCreamChaiTeaLatte_hkygfk.png",
+        "category":"drink",
+        "subCategory":"cold tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Protein Matcha",
+        "price":2500,
+        "calories":300,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759528863/IcedMatchaTeaLattewProtein_1_wv0gjj.png",
+        "category":"drink",
+        "subCategory":"cold tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Sugar-Free Vanilla Protein Matcha",
+        "price":2500,
+        "calories":250,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759528863/IcedMatchaTeaLattewProtein_1_wv0gjj.png",
+        "category":"drink",
+        "subCategory":"cold tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Banana Cream Protein Matcha",
+        "price":2500,
+        "calories":430,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759528863/IcedMatchaTeaLattewProtein_1_wv0gjj.png",
+        "category":"drink",
+        "subCategory":"cold tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Matcha Latte",
+        "price":2500,
+        "calories":190,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759528863/IcedMatchaTeaLattewProtein_1_wv0gjj.png",
+        "category":"drink",
+        "subCategory":"cold tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced London Fog Latte",
+        "price":2500,
+        "calories":140,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759567867/IcedLondonFogTeaLatte_cgkx2i.png",
+        "category":"drink",
+        "subCategory":"cold tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Black Tea",
+        "price":2500,
+        "calories":0,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759568008/IcedBlackTea_khe4ff.png",
+        "category":"drink",
+        "subCategory":"cold tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Black Tea Lemonade",
+        "price":2500,
+        "calories":50,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759568352/IcedBlackTeaLemonade_bgtmu3.png",
+        "category":"drink",
+        "subCategory":"cold tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Green Tea",
+        "price":2500,
+        "calories":0,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759569111/IcedGreenTea_w8v2js.png",
+        "category":"drink",
+        "subCategory":"cold tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Peach Green Tea",
+        "price":2500,
+        "calories":60,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759568352/IcedBlackTeaLemonade_bgtmu3.png",
+        "category":"drink",
+        "subCategory":"cold tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Iced Passion Tango Tea",
+        "price":2500,
+        "calories":5,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759569273/IcedPassionTangoTea_evgvut.png",
+        "category":"drink",
+        "subCategory":"cold tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Matcha Crème Frappuccino",
+        "price":3500,
+        "calories":320,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759569525/MatchaCremeFrappuccino_zfekjp.png",
+        "category":"drink",
+        "subCategory":"cold tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Matcha Crème Frappuccino",
+        "price":3500,
+        "calories":320,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759569525/MatchaCremeFrappuccino_zfekjp.png",
+        "category":"drink",
+        "subCategory":"cold tea",
+        "customisations": ["size","add drizzle","add whipped cream","add cinnamon powder","add cold foam","add creamer","milk","sugar scoops","cold","topping option","syrup","sauce","liquid sweeteners","sweetener packet","espresso shots","ice cubes","matcha powder scoops","foam","vanilla syrup pumps","espresso roast options","ristretto shots"]
+    },
+    {
+        "name":"Strawberry Açaí Lemonade",
+        "price":3500,
+        "calories":140,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759569682/SBX20211210_StrawberryAcaiLemonadeRefreshers_hidbue.png",
+        "category":"drink",
+        "subCategory":"refreshers",
+        "customisations": ["size","cold","add cold foam","add non-dairy cold foam","add pumpkin cream cold foam","syrup","lemonade shots","Strawberry Fruit scoop","add juice blend","fruit add-ins","add preparation method","add iced tea","liquid sweeteners"]
+    },
+    {
+        "name":"Summer-Berry Lemonade",
+        "price":3500,
+        "calories":150,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759570174/SummerBerryRefreshersLemonade_qxvvix.png",
+        "category":"drink",
+        "subCategory":"refreshers",
+        "customisations": ["size","cold","add cold foam","add non-dairy cold foam","add pumpkin cream cold foam","syrup","lemonade shots","Strawberry Fruit scoop","add juice blend","fruit add-ins","add preparation method","add iced tea","liquid sweeteners"]
+    },
+    {
+        "name":"Mango Dragonfruit Lemonade",
+        "price":2500,
+        "calories":140,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759569682/SBX20211210_StrawberryAcaiLemonadeRefreshers_hidbue.png",
+        "category":"drink",
+        "subCategory":"refreshers",
+        "customisations": ["size","cold","add cold foam","add non-dairy cold foam","add pumpkin cream cold foam","syrup","lemonade shots","Strawberry Fruit scoop","add juice blend","fruit add-ins","add preparation method","add iced tea","liquid sweeteners"]
+    },
+    {
+        "name":"Pink Drink",
+        "price":2500,
+        "calories":140,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759570375/PinkDrink_kmlmz1.png",
+        "category":"drink",
+        "subCategory":"refreshers",
+        "customisations": ["size","cold","add cold foam","add non-dairy cold foam","add pumpkin cream cold foam","syrup","lemonade shots","Strawberry Fruit scoop","add juice blend","fruit add-ins","add preparation method","add iced tea","liquid sweeteners"]
+    },
+    {
+        "name":"Summer Skies Drink",
+        "price":2500,
+        "calories":140,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759570505/SummerSkiesDrink_xdcffg.png",
+        "category":"drink",
+        "subCategory":"refreshers",
+        "customisations": ["size","cold","add cold foam","add non-dairy cold foam","add pumpkin cream cold foam","syrup","lemonade shots","Strawberry Fruit scoop","add juice blend","fruit add-ins","add preparation method","add iced tea","liquid sweeteners"]
+    },
+    {
+        "name":"Dragon Drink",
+        "price":2500,
+        "calories":130,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759570505/SummerSkiesDrink_xdcffg.png",
+        "category":"drink",
+        "subCategory":"refreshers",
+        "customisations": ["size","cold","add cold foam","add non-dairy cold foam","add pumpkin cream cold foam","syrup","lemonade shots","Strawberry Fruit scoop","add juice blend","fruit add-ins","add preparation method","add iced tea","liquid sweeteners"]
+    },
+    {
+        "name":"Strawberry Açaí",
+        "price":2500,
+        "calories":140,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759570375/PinkDrink_kmlmz1.png",
+        "category":"drink",
+        "subCategory":"refreshers",
+        "customisations": ["size","cold","add cold foam","add non-dairy cold foam","add pumpkin cream cold foam","syrup","lemonade shots","Strawberry Fruit scoop","add juice blend","fruit add-ins","add preparation method","add iced tea","liquid sweeteners"]
+    },
+    {
+        "name":"Mango Dragonfruit",
+        "price":2500,
+        "calories":140,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759570505/SummerSkiesDrink_xdcffg.png",
+        "category":"drink",
+        "subCategory":"refreshers",
+        "customisations": ["size","cold","add cold foam","add non-dairy cold foam","add pumpkin cream cold foam","syrup","lemonade shots","Strawberry Fruit scoop","add juice blend","fruit add-ins","add preparation method","add iced tea","liquid sweeteners"]
+    },
+    {
+        "name":"Cold Milk",
+        "price":1700,
+        "calories":260,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759571485/SBX20190607_Milk_u6hzut.png",
+        "category":"drink",
+        "subCategory":"milk",
+        "customisations": ["size","milk","ice cubes","vanilla syrup pumps","sugar scoops","add creamer","cold","syrup","lemonade shots","add juice blend","fruit add-ins"]
+    },
+    {
+        "name":"Kunu",
+        "price":1700,
+        "calories":260,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759571485/SBX20190607_Milk_u6hzut.png",
+        "category":"drink",
+        "subCategory":"milk",
+        "customisations": ["size","milk","ice cubes","vanilla syrup pumps","sugar scoops","add creamer","cold","syrup","lemonade shots","add juice blend","fruit add-ins"]
+    },
+    {
+        "name":"Fura de Nunu",
+        "price":1700,
+        "calories":260,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759571485/SBX20190607_Milk_u6hzut.png",
+        "category":"drink",
+        "subCategory":"milk",
+        "customisations": ["size","milk","ice cubes","vanilla syrup pumps","sugar scoops","add creamer","cold","syrup","lemonade shots","add juice blend","fruit add-ins"]
+    },
+    {
+        "name":"Steamed Milk",
+        "price":1700,
+        "calories":260,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759571885/SBX20190617_SteamedMilk_cdrgy0.png",
+        "category":"drink",
+        "subCategory":"milk",
+        "customisations": ["size","milk","ice cubes","vanilla syrup pumps","sugar scoops","add creamer","cold","syrup","lemonade shots","add juice blend","fruit add-ins"]
+    },
+    {
+        "name":"Vanilla Crème",
+        "price":1700,
+        "calories":260,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759572001/VanillaCreme_Steamer_mnkovr.png",
+        "category":"drink",
+        "subCategory":"milk",
+        "customisations": ["size","milk","ice cubes","vanilla syrup pumps","sugar scoops","add creamer","cold","syrup","lemonade shots","add juice blend","fruit add-ins"]
+    },
+    {
+        "name":"Pumpkin Spice Crème",
+        "price":2000,
+        "calories":400,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759572118/PumpkinSpiceCreme_sx0xyw.png",
+        "category":"drink",
+        "subCategory":"milk",
+        "customisations": ["size","milk","ice cubes","vanilla syrup pumps","sugar scoops","add creamer","cold","syrup","lemonade shots","add juice blend","fruit add-ins"]
+    },
+    {
+        "name":"Hot Chocolate",
+        "price":2000,
+        "calories":370,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759575883/HotChocolate_chgej8.png",
+        "category":"drink",
+        "subCategory":"milk",
+        "customisations": ["size","milk","ice cubes","vanilla syrup pumps","sugar scoops","add creamer","cold","syrup","lemonade shots","add juice blend","fruit add-ins"]
+    },
+    {
+        "name":"Lemonade",
+        "price":2500,
+        "calories":120,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759570813/SBX20190624_Lemonade_iuo36p.png",
+        "category":"drink",
+        "subCategory":"milk",
+        "customisations": ["size","milk","ice cubes","vanilla syrup pumps","sugar scoops","add creamer","cold","syrup","lemonade shots","add juice blend","fruit add-ins"]
+    },
+    {
+        "name":"Blended Strawberry Lemonade",
+        "price":2500,
+        "calories":190,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759571116/SBX20190607_BlendedStrawberryLemonade_hkig5h.png",
+        "category":"drink",
+        "subCategory":"milk",
+        "customisations": ["size","milk","ice cubes","vanilla syrup pumps","sugar scoops","add creamer","cold","syrup","lemonade shots","add juice blend","fruit add-ins"]
+    },
+    {
+        "name":"Classic Zobo",
+        "price":2500,
+        "calories":400,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759579221/classic_zobo_p8stem.png",
+        "category":"drink",
+        "subCategory":"zobo",
+        "customisations": ["ice cubes"]
+    },
+    {
+        "name":"Ginger zobo",
+        "price":2500,
+        "calories":400,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759577164/zobo_s5tvwy.png",
+        "category":"drink",
+        "subCategory":"zobo",
+        "customisations": ["ice cubes"]
+    },
+    {
+        "name":"Pineapple zobo",
+        "price":2500,
+        "calories":400,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759577164/zobo_s5tvwy.png",
+        "category":"drink",
+        "subCategory":"zobo",
+        "customisations": ["ice cubes"]
+    },
+    {
+        "name":"lemonade zobo",
+        "price":2500,
+        "calories":400,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759579177/lemonzobo_iife8o.png",
+        "category":"drink",
+        "subCategory":"zobo",
+        "customisations": ["ice cubes"]
+    },
+    {
+        "name":"Zobo with Dabino",
+        "price":2500,
+        "calories":400,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759577164/zobo_s5tvwy.png",
+        "category":"drink",
+        "subCategory":"zobo",
+        "customisations": ["ice cubes"]
+    },
+    {
+        
+        "name":"Chivita",
+        "price":2500,
+        "calories":400,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759575385/chivita_v8jz7c.png",
+        "category":"drink",
+        "subCategory":"bottled beverage",
+        "customisations": ["ice cubes"]
+    },
+    {
+        "name":"Viju Milk",
+        "price":2500,
+        "calories":400,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759575796/viju_milk_ubdyhz.png",
+        "category":"drink",
+        "subCategory":"bottled beverage",
+        "customisations": ["ice cubes"]
+    },
+    {
+        "name":"Maaza",
+        "price":2500,
+        "calories":400,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759579426/Maaza_qzmh9w.png",
+        "category":"drink",
+        "subCategory":"bottled beverage",
+        "customisations": ["ice cubes"]
+    },
+    {
+        "name":"Suya Bites",
+        "price":2000,
+        "calories":800,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759586671/suya_nyp8lh.png",
+        "category":"snack",
+        "subCategory":"traditional",
+        "customisations": ["portion size","spice level","sauce","add sides","extra onions","add tomatoes","add cabbage"]
+    },
+    {
+        "name":"Spicy Plantain chips",
+        "price":500,
+        "calories":800,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759586986/plantain_chips_l150sm.png",
+        "category":"snack",
+        "subCategory":"traditional",
+        "customisations": ["portion size","spice level","sauce","add nuts"]
+    },
+    {
+        "name":"Sweeet Plantain chips",
+        "price":500,
+        "calories":500,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759586986/plantain_chips_l150sm.png",
+        "category":"snack",
+        "subCategory":"traditional",
+        "customisations": ["portion size","spice level","sauce","add nuts"]
+    },
+    {
+        "name":"Kilishi",
+        "price":2000,
+        "calories":800,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759587722/kilishi_febu0d.png",
+        "category":"snack",
+        "subCategory":"traditional",
+        "customisations": ["portion size","spice level","sauce","add nuts"]
+    },
+    {
+        "name":"Kokoro",
+        "price":400,
+        "calories":800,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759588308/kokoro_sekp2q.png",
+        "category":"snack",
+        "subCategory":"traditional",
+        "customisations": ["portion size", "sweetness level"]
+
+    },
+    {
+        "name":"Groundnut Snack Pack",
+        "price":600,
+        "calories":800,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759588483/groundnut_g6m8kp.png",
+        "category":"snack",
+        "subCategory":"traditional",
+        "customisations": ["portion size", "salt level","sweetness level","add coating","sauce"]
+
+    },
+    {
+        "name":"Kuli Kuli",
+        "price":400,
+        "calories":450,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759589289/kulikuli_us9fgt.png",
+        "category":"snack",
+        "subCategory":"traditional",
+        "customisations": ["portion size", "spice level","add coating","sauce"]
+    },
+    {
+        "name":"Moimoi",
+        "price":500,
+        "calories":450,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759589563/moimoi_mwmzcq.png",
+        "category":"snack",
+        "subCategory":"traditional",
+        "customisations": ["portion size", "add protein", "spice level","add fish","add beef","add boiled egg","add ponmo"]
+    },
+    {
+        "name":"Sweet Potato Chips",
+        "price":500,
+        "calories":450,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759589813/potatochips_o1rcmc.png",
+        "category":"snack",
+        "subCategory":"traditional",
+        "customisations": ["portion size", "spice level", "add sauce"]
+    },
+    {
+        "name":"Meat Pie",
+        "price":1000,
+        "calories":450,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759591960/meatpie_dfc1e1.png",
+        "category":"snack",
+        "subCategory":"pastry",
+        "customisations": ["portion size", "spice level", "add sauce","Extra minced beef","Add egg bits","Add onions","Add green pepper"]
+    },
+    {
+        "name":"Fish Roll",
+        "price":1000,
+        "calories":450,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759592139/fishroll_xblhe8.png",
+        "category":"snack",
+        "subCategory":"pastry",
+        "customisations": ["portion size", "spice level", "add sauce","Extra minced beef","Add egg bits","Add onions","Add green pepper"]
+    },
+    {
+        "name":"Egg Roll",
+        "price":1000,
+        "calories":450,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759592488/eggroll_ug1ete.png",
+        "category":"snack",
+        "subCategory":"pastry",
+        "customisations": ["portion size", "spice level", "add sauce","Extra minced beef","Add egg bits","Add onions","Add green pepper"]
+    },
+    {
+        "name":"Puff-Puff",
+        "price":600,
+        "calories":450,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759593009/Puff-Puff_fmn4ho.png",
+        "category":"snack",
+        "subCategory":"fried",
+        "customisations": ["portion size", "spice level", "add sauce","add cabbage","extra onions"]
+    },
+    {
+        "name":"Sugar Puff-Puff",
+        "price":600,
+        "calories":450,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759593009/Puff-Puff_fmn4ho.png",
+        "category":"snack",
+        "subCategory":"fried",
+        "customisations": ["portion size", "spice level", "add sauce","add cabbage","extra onions","sweetness level"]
+    },
+    {
+        "name":"Donut",
+        "price":600,
+        "calories":450,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759593137/Donot_oixijj.png",
+        "category":"snack",
+        "subCategory":"fried",
+        "customisations": ["portion size", "spice level", "add sauce","add cabbage","extra onions","sweetness level","topping option"]
+    },
+    {
+        "name":"Sugar Donut",
+        "price":600,
+        "calories":450,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759593137/Donot_oixijj.png",
+        "category":"snack",
+        "subCategory":"fried",
+        "customisations": ["portion size", "spice level", "add sauce","add cabbage","extra onions","sweetness level","topping option","sweetener packet"]
+    },
+    {
+        "name":"Buns",
+        "price":600,
+        "calories":450,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759593311/buns_viv6ad.png",
+        "category":"snack",
+        "subCategory":"fried",
+        "customisations": ["portion size", "spice level", "add sauce","add cabbage","extra onions","sweetness level","topping option","sweetener packet"]
+    },
+    {
+        "name":"Chin Chin",
+        "price":600,
+        "calories":450,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759593447/chinchin_nu760p.png",
+        "category":"snack",
+        "subCategory":"fried",
+        "customisations": ["portion size", "spice level", "add sauce"]
+    },
+    {
+        "name":"Akara Balls",
+        "price":600,
+        "calories":450,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759593722/akara_mqbezi.png",
+        "category":"snack",
+        "subCategory":"fried",
+        "customisations": ["portion size", "spice level", "add sauce","add fish","add cabbage","syrup","add coating"]
+    },
+    {
+        "name":"Yam Balls",
+        "price":700,
+        "calories":450,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759593903/yamballs_j3n34y.png",
+        "category":"snack",
+        "subCategory":"fried",
+        "customisations": ["portion size", "spice level", "add sauce","add fish","add cabbage","syrup","add coating"]
+    },
+    {
+        "name":"Baked Apple Croissant",
+        "price":1700,
+        "calories":450,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759616153/AppleCroissant_haeppr.png",
+        "category":"snack",
+        "subCategory":"baked",
+        "customisations": ["heat","syrup","add coating"]
+    },
+    {
+        "name":"Ham & Swiss Croissant",
+        "price":1500,
+        "calories":320,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759616198/HamAndSwissCroissant_qudz18.png",
+        "category":"snack",
+        "subCategory":"baked",
+        "customisations": ["heat","syrup","add coating"]
+    },
+    {
+        "name":"Chocolate Croissant",
+        "price":1500,
+        "calories":300,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759616419/SBX20220607_ChocolateCroissant-onGreen_fhlr13.png",
+        "category":"snack",
+        "subCategory":"baked",
+        "customisations": ["heat","syrup","add coating","sweetener packet","sweetness level","liquid sweeteners","add drizzle"]
+    },
+    {
+        "name":"Cheese Danish",
+        "price":1500,
+        "calories":290,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759616657/SBX20220125_CheeseDanish-onGreen_v7yvd9.png",
+        "category":"snack",
+        "subCategory":"baked",
+        "customisations": ["heat","syrup","add coating","sweetener packet","sweetness level","liquid sweeteners","add drizzle"]
+    },
+    {
+        "name":"Crispy Grilled Cheese",
+        "price":2500,
+        "calories":520,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759616854/SBX20220207_GrilledCheeseOnSourdough_US_dzrxdg.png",
+        "category":"snack",
+        "subCategory":"sandwich wrap",
+        "customisations": ["heat","syrup","add coating","extra cheese","sweetness level","liquid sweeteners","add drizzle"]
+    },
+    {
+        "name":"Ham & Swiss on Baguette",
+        "price":2500,
+        "calories":520,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759617028/SBX20221006_HamSwissOnBaguette_mgxo6q.png",
+        "category":"snack",
+        "subCategory":"sandwich wrap",
+        "customisations": ["heat","syrup","add coating","sweetness level","liquid sweeteners","add drizzle"]
+    },
+    {
+        "name":"Tomato & Mozzarella on Focaccia",
+        "price":2500,
+        "calories":360,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759616854/SBX20220207_GrilledCheeseOnSourdough_US_dzrxdg.png",
+        "category":"snack",
+        "subCategory":"sandwich wrap",
+        "customisations": ["heat","syrup","add coating","sweetness level","liquid sweeteners","add drizzle"]
+    },
+    {
+        "name":"Spicy Falafel Pocket",
+        "price":2500,
+        "calories":230,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759617517/SpicyFalafelPocket_uqhewa.png",
+        "category":"snack",
+        "subCategory":"sandwich wrap",
+        "customisations": ["heat","syrup","add coating","sweetness level","liquid sweeteners","add drizzle"]
+    },
+    {
+        "name":"Jalapeño Chicken Pocket",
+        "price":2500,
+        "calories":200,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759617718/JalapenoChickenPocket_qdcyb8.png",
+        "category":"snack",
+        "subCategory":"sandwich wrap",
+        "customisations": ["heat","syrup","add coating","sweetness level","liquid sweeteners","add drizzle"]
+    },
+    {
+        "name":"Strawberries & Cream Cake Pop",
+        "price":200,
+        "calories":150,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759617959/StrawberriesAndCreamCakePop_dyeyrt.png",
+        "category":"snack",
+        "subCategory":"treats"
+    },
+    {
+        "name":"Raccoon Cake Pop",
+        "price":200,
+        "calories":150,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759618189/RaccoonCakePop_ehflvg.png",
+        "category":"snack",
+        "subCategory":"treats"
+    },
+    {
+        "name":"Chocolate Cake Pop",
+        "price":200,
+        "calories":150,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759618429/SBX20181129_ChocolateCakePop_lxolbf.png",
+        "category":"snack",
+        "subCategory":"treats"
+    },
+    {
+        "name":"Chocolate Chip Cookie",
+        "price":350,
+        "calories":370,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759618619/SBX20190129_ChocolateChipCookie_vndioq.png",
+        "category":"snack",
+        "subCategory":"treats"
+    },
+    {
+        "name":"Double Chocolate Brownie",
+        "price":350,
+        "calories":480,
+        "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759618861/SBX20190715_DoubleChocolateChunkBrownie_pbox0j.png",
+        "category":"snack",
+        "subCategory":"treats"
     }
-
-
-
 ]    

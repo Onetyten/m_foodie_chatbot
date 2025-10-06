@@ -3,6 +3,7 @@ dotenv.config()
 import express from 'express'
 import path from "path"
 import mongoConnect from './config/mongoConnect'
+import seedDateRoute from './router/seed/seed.route'
 
 const app = express()
 const rootDir = __dirname.includes("dist")?path.join(__dirname,".."):__dirname
@@ -15,9 +16,17 @@ app.get('/hello',(req,res)=>{
     res.json({message:"hello"})
 })
 
+app.use('/data',seedDateRoute)
+
+
+
+
+
 app.get(/.*/,(req,res)=>{
     res.sendFile(path.join(rootDir,"client","dist","index.html"))
 })
+
+
 
 async function startServer(){
     try {

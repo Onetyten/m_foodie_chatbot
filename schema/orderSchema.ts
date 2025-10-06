@@ -18,3 +18,5 @@ const orderSchema = new mongoose.Schema({
     paidAt:{type:Date},
     total:{type:Number, required:true}
 })
+const Order = mongoose.model("Order",orderSchema)
+export default Order

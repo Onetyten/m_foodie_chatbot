@@ -1,0 +1,17 @@
+[
+  {
+    "name": "coffee",
+    "description": "Freshly brewed hot and iced coffee options crafted from premium beans — ranging from rich espressos to smooth lattes and flavored blends.",
+    "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759535755/SBX20211029_CaramelMacchiato_jt1ihy.png"
+  },
+  {
+    "name": "drink",
+    "description": "Refreshing non-coffee beverages including teas, lemonades, fruit blends, and bottled drinks to keep you hydrated and energized.",
+    "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759569682/SBX20211210_StrawberryAcaiLemonadeRefreshers_hidbue.png"
+  },
+  {
+    "name": "snack",
+    "description": "Delicious pastries, light bites, and traditional treats perfect for pairing with your drink or enjoying on the go.",
+    "imageUrl":"https://res.cloudinary.com/dl3gyvswk/image/upload/v1759586671/suya_nyp8lh.png"
+  }
+]

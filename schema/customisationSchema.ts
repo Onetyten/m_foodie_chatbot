@@ -1,9 +1,20 @@
-import mongoose from "mongoose";
+import mongoose, { Document } from "mongoose";
+
+export interface customisationType extends Document{
+    name:string,
+    type:string,
+    options: [{ label: string, extraPrice: number }],
+    quantity:{
+        min:number,
+        max:number,
+        size:number
+    }
+}
 
 const customisationSchema = new mongoose.Schema({
     name:{type:String},
     type:{type:String,enum:["option","check","quantity"]},
-    options: [{ label: String, extraPrice: Number }],
+    options: [{ label:{type:String}, extraPrice:{type:Number}}],
     quantity:{
         min:{type:Number,default:0},
         max:{type:Number,default:5},
@@ -11,5 +22,5 @@ const customisationSchema = new mongoose.Schema({
     }
 })
 
-const Customisation = mongoose.model("Customisation",customisationSchema)
+const Customisation = mongoose.model<customisationType>("Customisation",customisationSchema)
 export default Customisation

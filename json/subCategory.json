@@ -1,0 +1,77 @@
+[
+  {
+    "name": "protein beverages",
+    "category":"coffee",
+    "imageUrl": "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759529732/CaffeLattewProtein_iksbox.png"
+  },
+  {
+    "name": "hot coffee",
+    "category":"coffee",
+    "imageUrl":"https://res.cloudinary.com/dl3gyvswk/image/upload/v1759529732/CaffeLattewProtein_iksbox.png"
+  },
+  {
+    "name": "cold coffee",
+    "category":"coffee",
+    "imageUrl":"https://res.cloudinary.com/dl3gyvswk/image/upload/v1759539083/IcedPumpkinSpicedLatte_fmd4aq.png"
+  },
+  {
+    "name": "hot tea",
+    "category":"drink",
+    "imageUrl":"https://res.cloudinary.com/dl3gyvswk/image/upload/v1759533199/CaffeAmericano_jn2c2d.png"
+  },
+  {
+    "name": "cold tea",
+    "category":"drink",
+    "imageUrl":"https://res.cloudinary.com/dl3gyvswk/image/upload/v1759538008/RaspberryCreamColdBrew_tru3no.png"
+  },
+  {
+    "name": "refreshers",
+    "category":"drink",
+    "imageUrl":"https://res.cloudinary.com/dl3gyvswk/image/upload/v1759569682/SBX20211210_StrawberryAcaiLemonadeRefreshers_hidbue.png"
+  },
+  {
+    "name": "milk",
+    "category":"drink",
+    "imageUrl":"https://res.cloudinary.com/dl3gyvswk/image/upload/v1759571885/SBX20190617_SteamedMilk_cdrgy0.png"
+  },
+  {
+    "name": "zobo",
+    "category":"drink",
+    "imageUrl":"https://res.cloudinary.com/dl3gyvswk/image/upload/v1759579221/classic_zobo_p8stem.png"
+  },
+  {
+    "name": "bottled beverage",
+    "category":"drink",
+    "imageUrl":"https://res.cloudinary.com/dl3gyvswk/image/upload/v1759579426/Maaza_qzmh9w.png"
+  },
+  {
+    "name": "traditional",
+    "category":"snack",
+    "imageUrl":"https://res.cloudinary.com/dl3gyvswk/image/upload/v1759586671/suya_nyp8lh.png"
+  },
+  {
+    "name": "pastry",
+    "category":"snack",
+    "imageUrl":"https://res.cloudinary.com/dl3gyvswk/image/upload/v1759589563/moimoi_mwmzcq.png"
+  },
+  {
+    "name": "fried",
+    "category":"snack",
+    "imageUrl":"https://res.cloudinary.com/dl3gyvswk/image/upload/v1759593009/Puff-Puff_fmn4ho.png"
+  },
+  {
+    "name": "baked",
+    "category":"snack",
+    "imageUrl":"https://res.cloudinary.com/dl3gyvswk/image/upload/v1759616657/SBX20220125_CheeseDanish-onGreen_v7yvd9.png"
+  },
+  {
+    "name": "sandwich wrap",
+    "category":"snack",
+    "imageUrl":"https://res.cloudinary.com/dl3gyvswk/image/upload/v1759617028/SBX20221006_HamSwissOnBaguette_mgxo6q.png"
+  },
+  {
+    "name": "treats",
+    "category":"snack",
+    "imageUrl":"https://res.cloudinary.com/dl3gyvswk/image/upload/v1759618619/SBX20190129_ChocolateChipCookie_vndioq.png"
+  }
+]
