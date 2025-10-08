@@ -1,11 +1,16 @@
 import dotenv from 'dotenv'
 dotenv.config()
 import express from 'express'
+import cors from 'cors'
 import path from "path"
 import mongoConnect from './config/mongoConnect'
 import seedDateRoute from './router/seed/seed.route'
+import createUserRoute from './router/createUser.route'
 
 const app = express()
+app.use(cors({origin:"*"}))
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 const rootDir = __dirname.includes("dist")?path.join(__dirname,".."):__dirname
 
 const port  = process.env.PORT
@@ -17,9 +22,7 @@ app.get('/hello',(req,res)=>{
 })
 
 app.use('/data',seedDateRoute)
-
-
-
+app.use('/user',createUserRoute)
 
 
 app.get(/.*/,(req,res)=>{

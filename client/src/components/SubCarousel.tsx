@@ -14,6 +14,7 @@ interface propType{
 export default function SubCarousel(props:propType) {
     const {message} = props
     const [subcategoryList,setSubcategoryList] = useState([])
+    
 
       if (subcategoryList.length==0){
         return(

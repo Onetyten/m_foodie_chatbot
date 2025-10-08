@@ -23,7 +23,6 @@ export default function BotMessage(props:propType) {
     useEffect(()=>{
         indexRef.current = -1
         let isCancelled = false
-        console.log(message.content.length);
         function loadNextMessage(){
             if (isCancelled) return
             if (indexRef.current < message.content.length-1){
@@ -66,9 +65,9 @@ export default function BotMessage(props:propType) {
             })}
             {isTyping&&(
                 <div className=" flex justify-start items-center text-primary ">
-                    <p className='bg-secondary-100 p-2.5 px-6 rounded-2xl text-sm' >
+                    <div className='bg-secondary-100 p-2.5 px-6 rounded-2xl text-sm' >
                     <Digital/>  
-                    </p>
+                    </div>
                 </div>
             )}
         </div>

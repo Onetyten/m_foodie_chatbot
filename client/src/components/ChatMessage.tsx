@@ -20,7 +20,6 @@ export default function ChatMessage (props:propType) {
     useEffect(()=>{
         indexRef.current = -1
         let isCancelled = false
-        console.log(message.content.length);
         function loadNextMessage(){
             if (isCancelled) return
             if (indexRef.current < message.content.length-1){
@@ -63,9 +62,9 @@ export default function ChatMessage (props:propType) {
             })}
             {isTyping&&(
                 <div className=" flex justify-end items-center text-primary ">
-                    <p className='bg-white p-2.5 px-6 rounded-2xl text-sm' >
-                    <Digital/>  
-                    </p>
+                    <div className='bg-white p-2.5 px-6 rounded-2xl text-sm' >
+                        <Digital/>  
+                    </div>
                 </div>
             )}
         </div>
