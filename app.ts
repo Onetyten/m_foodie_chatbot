@@ -6,6 +6,8 @@ import path from "path"
 import mongoConnect from './config/mongoConnect'
 import seedDateRoute from './router/seed/seed.route'
 import createUserRoute from './router/createUser.route'
+import fetchSubcategoryRoute from './router/food/subcategory.route'
+import foodListRoute from './router/food/list.route'
 
 const app = express()
 app.use(cors({origin:"*"}))
@@ -23,6 +25,8 @@ app.get('/hello',(req,res)=>{
 
 app.use('/data',seedDateRoute)
 app.use('/user',createUserRoute)
+app.use('/food',fetchSubcategoryRoute)
+app.use('/food',foodListRoute)
 
 
 app.get(/.*/,(req,res)=>{

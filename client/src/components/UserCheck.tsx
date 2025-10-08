@@ -11,14 +11,13 @@ export default function UserCheck() {
     const hasFetched = useRef(false)
     useEffect(()=>{
         async function createUser() {
-            if (user) return console.log("id:",user)
+            if (user) return
             if (hasFetched.current) return
             hasFetched.current = true
             try {
               const response = await api.get('/user/create')
-              if (!response.data.success) return console.log(response.data)
+              if (!response.data.success) return
               dispatch(setUser(response.data.data))
-              console.log("id saved",response.data.data)
             }
             catch (error) {
               console.error(error)
