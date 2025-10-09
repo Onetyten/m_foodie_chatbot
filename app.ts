@@ -22,7 +22,8 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 const environment = process.env.ENVIRONMENT
 const rootDir = environment != "dev"?path.join(__dirname,".."):__dirname
-app.use(express.static(path.join(rootDir, "client", "dist")));
+const clientDistPath = path.join(rootDir, "client", "dist")
+app.use(express.static(clientDistPath));
 
 const port  = process.env.PORT
 if (!port) throw new Error ('add a PORT variable to the env file')
