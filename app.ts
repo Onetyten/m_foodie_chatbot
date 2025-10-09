@@ -8,6 +8,13 @@ import seedDateRoute from './router/seed/seed.route'
 import createUserRoute from './router/createUser.route'
 import fetchSubcategoryRoute from './router/food/subcategory.route'
 import foodListRoute from './router/food/list.route'
+import { Authorization } from './middleware/authorization'
+
+declare module "express-serve-static-core"{
+    interface Request{
+        userId?:string
+    }
+}
 
 const app = express()
 app.use(cors({origin:"*"}))
@@ -23,15 +30,19 @@ app.get('/hello',(req,res)=>{
     res.json({message:"hello"})
 })
 
+
+
 app.use('/data',seedDateRoute)
 app.use('/user',createUserRoute)
 app.use('/food',fetchSubcategoryRoute)
 app.use('/food',foodListRoute)
+app.use('/order',Authorization)
 
 
 app.get(/.*/,(req,res)=>{
     res.sendFile(path.join(rootDir,"client","dist","index.html"))
 })
+
 
 
 
