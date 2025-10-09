@@ -20,7 +20,8 @@ const app = express()
 app.use(cors({origin:"*"}))
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-const rootDir = __dirname.includes("dist")?path.join(__dirname,".."):__dirname
+const environment = process.env.ENVIRONMENT
+const rootDir = environment != "dev"?path.join(__dirname,".."):__dirname
 app.use(express.static(path.join(rootDir, "client", "dist")));
 
 const port  = process.env.PORT
