@@ -42,7 +42,8 @@ app.use('/food',foodListRoute)
 app.use('/order',Authorization)
 
 
-app.get(/.*/,(req,res)=>{
+// app.get(/.*/,(req,res)=>{
+app.get("/",(req,res)=>{
     res.sendFile(path.join(rootDir,"client","dist","index.html"))
 })
 
