@@ -22,7 +22,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 const environment = process.env.ENVIRONMENT
 const rootDir = environment != "dev"?path.join(__dirname,".."):__dirname
-const clientDistPath = path.join(rootDir, "client", "dist")
+const clientDistPath = path.join(rootDir, "client", "dist","assets")
 app.use(express.static(clientDistPath));
 
 const port  = process.env.PORT
