@@ -27,7 +27,9 @@ const app = (0, express_1.default)();
 app.use((0, cors_1.default)({ origin: "*" }));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
-const rootDir = __dirname.includes("dist") ? path_1.default.join(__dirname, "..") : __dirname;
+const environment = process.env.ENVIRONMENT;
+const rootDir = environment != "dev" ? path_1.default.join(__dirname, "..") : __dirname;
+app.use(express_1.default.static(path_1.default.join(rootDir, "client", "dist")));
 const port = process.env.PORT;
 if (!port)
     throw new Error('add a PORT variable to the env file');

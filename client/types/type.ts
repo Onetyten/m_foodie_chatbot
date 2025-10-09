@@ -10,7 +10,8 @@ export interface messageListType{
      type:string,
     sender:string,
     next:()=>void,
-    content:string[]
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    content:any[]
 }
 
 export interface FoodType {
@@ -24,4 +25,14 @@ export interface FoodType {
   name: string;
   price: number;
   subCategoryId: string;
+}
+
+export interface cartType{
+  foodId:string,
+  quantity:number,
+  customisation:{
+    name:string
+    type:string
+    value:string
+  }[]
 }

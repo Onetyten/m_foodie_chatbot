@@ -22,8 +22,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 const environment = process.env.ENVIRONMENT
 const rootDir = environment != "dev"?path.join(__dirname,".."):__dirname
-const clientDistPath = path.join(rootDir, "client", "dist","assets")
-app.use(express.static(clientDistPath));
+app.use(express.static(path.join(rootDir, "client", "dist")));
 
 const port  = process.env.PORT
 if (!port) throw new Error ('add a PORT variable to the env file')
@@ -42,13 +41,9 @@ app.use('/food',foodListRoute)
 app.use('/order',Authorization)
 
 
-// app.get(/.*/,(req,res)=>{
-app.get("/",(req,res)=>{
+app.get(/.*/,(req,res)=>{
     res.sendFile(path.join(rootDir,"client","dist","index.html"))
 })
-
-
-
 
 async function startServer(){
     try {

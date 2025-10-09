@@ -6,7 +6,6 @@ const userSchema = Joi.object({
 })
 
 export async function Authorization(req:Request,res:Response,next:NextFunction){
-    
     const authHeader = req.headers.authorization
     if (!authHeader) return res.status(400).json({message:"No authorization header found",success:false})
     if (!authHeader.startsWith("Bearer")) return res.status(400).json({message:"Invalid Auth format",success:false})

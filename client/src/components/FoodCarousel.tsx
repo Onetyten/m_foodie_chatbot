@@ -5,6 +5,7 @@ import api from "../../config/api"
 import type {FoodType} from '../../types/type'
 import { useDispatch } from "react-redux"
 import { setList } from "../../store/currentList"
+import FoodCard from "./FoodCard"
 
 interface propType{
     message:{
@@ -14,17 +15,19 @@ interface propType{
         content:string[]
     },
     setLoading:React.Dispatch<React.SetStateAction<boolean>>,
-    onClick:(food:FoodType)=>void
+    onClick:(food:FoodType)=>void,
+    setShowOptions:React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default function FoodCarousel(props:propType) {
-    const {message,setLoading,onClick} = props
+    const {message,setLoading,onClick,setShowOptions} = props
     const dispatch = useDispatch()
     const [foodList,setFoodList] = useState<FoodType[]>([])
     const [displayedFood,setDisplayedFood] = useState<FoodType[]>([])
     useEffect(()=>{
         async function getFoodList() {
            try {
+             setShowOptions(false)
              const response = await api.get(`/food/list/${message.content[0]}`)
              if (response.data.success == false) return
              dispatch(setList(response.data.data))
@@ -37,6 +40,7 @@ export default function FoodCarousel(props:propType) {
            }
            finally{
             setLoading(false)
+            setShowOptions(true)
            }
         }
         getFoodList()
@@ -67,25 +71,14 @@ export default function FoodCarousel(props:propType) {
         <div className="flex w-full gap-2 flex-wrap justify-center items-center">
             {displayedFood.map((item,index)=>{
                 return(
-                    <div onClick={()=>{onClick(item)}} key={index} className="bg-white overflow-hidden hover:bg-background hover:shadow-xl shadow-secondary-300/10 cursor-pointer p-3 flex justify-center items-center flex-col w-[186px] h-72 gap-1 rounded-md">
-                        <div className="flex-1 flex justify-center items-center text-center h-full w-full">
-                            <img className="size-32 object-contain rounded-md" src={item.imageUrl} alt="" />
-                        </div>
-                        <div className="font-squada capitalize text-center text-2xl">
-                            {item.name}
-                        </div>
-                        <div className="w-full text-xs text-stone-500 flex justify-between items-center">
-                            <p>
-                                {item.calories} calories
-                            </p>
-                            <p className="p-2 text-secondary-100 font-squada text-xl">
-                                &#8358;{item.price}
-                            </p>
-                        </div>
-                    </div>
+                    <FoodCard key={index} food={item} onClick={onClick}/>
                 )
             })}
         </div>
     </motion.div>
   )
 }
+
+
+
+
