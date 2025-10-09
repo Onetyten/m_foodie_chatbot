@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react"
 import { Spinner } from "react-activity"
 import {motion} from 'framer-motion'
 import api from "../../config/api"
-import type {subCategoryType} from '../../types/type'
+import type {FoodType} from '../../types/type'
+import { useDispatch } from "react-redux"
+import { setList } from "../../store/currentList"
 
 interface propType{
     message:{
@@ -11,21 +13,21 @@ interface propType{
         next?:()=>void, 
         content:string[]
     },
-    setLoadingFood:React.Dispatch<React.SetStateAction<boolean>>,
-    messageSize:number,
-    index:number,
-    setShowModal:React.Dispatch<React.SetStateAction<boolean>>
+    setLoading:React.Dispatch<React.SetStateAction<boolean>>,
+    onClick:(food:FoodType)=>void
 }
 
 export default function FoodCarousel(props:propType) {
-    const {message,setLoadingFood,messageSize,index,setShowModal} = props
-    const [foodList,setFoodList] = useState<subCategoryType[]>([])
-    const [displayedFood,setDisplayedFood] = useState<subCategoryType[]>([])
+    const {message,setLoading,onClick} = props
+    const dispatch = useDispatch()
+    const [foodList,setFoodList] = useState<FoodType[]>([])
+    const [displayedFood,setDisplayedFood] = useState<FoodType[]>([])
     useEffect(()=>{
         async function getFoodList() {
            try {
              const response = await api.get(`/food/list/${message.content[0]}`)
              if (response.data.success == false) return
+             dispatch(setList(response.data.data))
              setFoodList(response.data.data)
              setDisplayedFood(response.data.data.slice(0,3))
              if (message.next) message.next()
@@ -34,7 +36,7 @@ export default function FoodCarousel(props:propType) {
             console.log(error)
            }
            finally{
-            setLoadingFood(false)
+            setLoading(false)
            }
         }
         getFoodList()
@@ -65,24 +67,25 @@ export default function FoodCarousel(props:propType) {
         <div className="flex w-full gap-2 flex-wrap justify-center items-center">
             {displayedFood.map((item,index)=>{
                 return(
-                    <div key={index} className="bg-white hover:bg-background hover:shadow-xl shadow-secondary-300/10 cursor-pointer p-3 flex justify-center items-center flex-col w-[186px] h-60 rounded-md">
+                    <div onClick={()=>{onClick(item)}} key={index} className="bg-white overflow-hidden hover:bg-background hover:shadow-xl shadow-secondary-300/10 cursor-pointer p-3 flex justify-center items-center flex-col w-[186px] h-72 gap-1 rounded-md">
                         <div className="flex-1 flex justify-center items-center text-center h-full w-full">
-                            <img className="size-40 object-contain rounded-md" src={item.imageUrl} alt="" />
+                            <img className="size-32 object-contain rounded-md" src={item.imageUrl} alt="" />
                         </div>
-                        <div className="font-squada text-center text-xl">
+                        <div className="font-squada capitalize text-center text-2xl">
                             {item.name}
+                        </div>
+                        <div className="w-full text-xs text-stone-500 flex justify-between items-center">
+                            <p>
+                                {item.calories} calories
+                            </p>
+                            <p className="p-2 text-secondary-100 font-squada text-xl">
+                                &#8358;{item.price}
+                            </p>
                         </div>
                     </div>
                 )
             })}
         </div>
-        {index+1 == messageSize&&foodList.length>3 && (
-            <motion.div onClick={()=>{setShowModal(true)}} initial={{opacity:0,y:50}} animate={{opacity:100, y:0}} transition={{delay:1}} className="p-2 border rounded-sm cursor-pointer hover:bg-secondary-300/10">
-                View all
-            </motion.div>
-        )}
     </motion.div>
-
-
   )
 }

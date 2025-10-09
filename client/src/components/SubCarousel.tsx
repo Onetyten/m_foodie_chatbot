@@ -36,13 +36,13 @@ export default function SubCarousel(props:propType) {
       if (subcategoryList.length==0){
         return(
             <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:2}} className="flex w-full gap-2 flex-wrap justify-center">
-                <div className="bg-muted/40 flex justify-center items-center w-[186px] h-60 rounded-md">
+                <div className="bg-muted/40 flex justify-center items-center w-[186px] h-72 rounded-md">
                     <Spinner/>
                 </div>
-                <div className="bg-muted/40 flex justify-center items-center w-[186px] h-60 rounded-md">
+                <div className="bg-muted/40 flex justify-center items-center w-[186px] h-72 rounded-md">
                     <Spinner/>
                 </div>
-                <div className="bg-muted/40 flex justify-center items-center w-[186px] h-60 rounded-md">
+                <div className="bg-muted/40 flex justify-center items-center w-[186px] h-72 rounded-md">
                     <Spinner/>
                 </div>
             </motion.div>
@@ -53,11 +53,11 @@ export default function SubCarousel(props:propType) {
     <div className="flex w-full gap-2 flex-wrap justify-center items-center">
         {subcategoryList.map((item,index)=>{
             return(
-                <div onClick={()=>{fetchFoodList(item)}} key={index} className="bg-white hover:bg-background hover:shadow-xl shadow-secondary-300/10 cursor-pointer p-3 flex justify-center items-center flex-col w-[186px] h-60 rounded-md">
+                <div onClick={()=>{fetchFoodList(item)}} key={index} className="bg-white hover:bg-background hover:shadow-xl shadow-secondary-300/10 cursor-pointer p-3 flex justify-center items-center flex-col w-[186px] h-72 rounded-md">
                     <div className="flex-1 flex justify-center items-center text-center h-full w-full">
                         <img className="size-40 object-contain rounded-md" src={item.imageUrl} alt="" />
                     </div>
-                    <div className="font-squada text-center text-xl">
+                    <div className="font-squada capitalize text-center text-2xl">
                         {item.name}
                     </div>
                 </div>

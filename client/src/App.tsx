@@ -9,15 +9,7 @@ import FoodModal from "./components/FoodModal"
 import { useState } from "react"
 
 function App() {
-
   const [showModal,setShowModal] =useState(false)
-  const [messagelist,setMessageList] = useState([
-      {type:"message", sender:"bot", next:()=>showAnsweroptions(), content:['Hey there! I’m Mori','your digital barista','What are you craving today?']},
-  ])
-  const [showoptions,setShowOptions] = useState(false)
-  function showAnsweroptions(){
-      setShowOptions(true)
-  }
 
   return (
     <Provider store={store}>
@@ -28,10 +20,10 @@ function App() {
             Mori cafe
           </div>
           <div className="w-xl h-full flex flex-col gap-4">
-            <ChatBox messagelist = {messagelist} setMessageList={setMessageList} showoptions={showoptions} setShowModal={setShowModal} setShowOptions={setShowOptions} />
+            <ChatBox setShowModal={setShowModal} />
             <SearchBar/>
           </div>
-          {showModal&&<FoodModal items = {messagelist}  setShowModal={setShowModal}/>}
+          {showModal&&<FoodModal setShowModal={setShowModal}/>}
         </main>
       </PersistGate>
     </Provider>
