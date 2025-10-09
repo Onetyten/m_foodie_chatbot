@@ -21,6 +21,7 @@ app.use(cors({origin:"*"}))
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 const rootDir = __dirname.includes("dist")?path.join(__dirname,".."):__dirname
+app.use(express.static(path.join(rootDir, "client", "dist")));
 
 const port  = process.env.PORT
 if (!port) throw new Error ('add a PORT variable to the env file')
