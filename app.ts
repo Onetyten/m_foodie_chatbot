@@ -8,6 +8,8 @@ import seedDateRoute from './router/seed/seed.route'
 import createUserRoute from './router/createUser.route'
 import fetchSubcategoryRoute from './router/food/subcategory.route'
 import foodListRoute from './router/food/list.route'
+import getCustomRoute from './router/food/getCustomisation.route'
+import addCartRoute from './router/order/addCart.route'
 import { Authorization } from './middleware/authorization'
 
 declare module "express-serve-static-core"{
@@ -38,8 +40,10 @@ app.use('/data',seedDateRoute)
 app.use('/user',createUserRoute)
 app.use('/food',fetchSubcategoryRoute)
 app.use('/food',foodListRoute)
-app.use('/order',Authorization)
+app.use('/food',getCustomRoute)
 
+app.use('/order',Authorization)
+app.use('/order', addCartRoute)
 
 app.get(/.*/,(req,res)=>{
     res.sendFile(path.join(rootDir,"client","dist","index.html"))
@@ -59,7 +63,6 @@ async function startServer(){
             console.log(`MoriCafe has run into an error: ${error}`)
         }      
     })
-
     }
     catch (error) {
         console.log(`Failed to connect to server: ${error}`)

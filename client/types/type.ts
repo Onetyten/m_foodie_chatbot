@@ -27,12 +27,31 @@ export interface FoodType {
   subCategoryId: string;
 }
 
+export interface optionType{
+  label: string,
+  extraPrice: number
+}
+
+export interface customisationType{
+    name:string,
+    type:string,
+    options: optionType[],
+    quantity:{
+        min:number,
+        max:number,
+        size:number
+    }
+}
+export interface tweakType{
+  name:string,
+  type:string,
+  value:string,
+  price:number
+}
+
 export interface cartType{
-  foodId:string,
-  quantity:number,
-  customisation:{
-    name:string
-    type:string
-    value:string
-  }[]
+  foodId:string
+  quantity:number
+  customisation:tweakType[],
+  totalPrice:number
 }

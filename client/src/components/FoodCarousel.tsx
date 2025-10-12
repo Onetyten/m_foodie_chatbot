@@ -2,18 +2,13 @@ import React, { useEffect, useState } from "react"
 import { Spinner } from "react-activity"
 import {motion} from 'framer-motion'
 import api from "../../config/api"
-import type {FoodType} from '../../types/type'
+import type {FoodType, messageListType} from '../../types/type'
 import { useDispatch } from "react-redux"
 import { setList } from "../../store/currentList"
 import FoodCard from "./FoodCard"
 
 interface propType{
-    message:{
-        type:string,
-        sender:string,
-        next?:()=>void, 
-        content:string[]
-    },
+    message:messageListType
     setLoading:React.Dispatch<React.SetStateAction<boolean>>,
     onClick:(food:FoodType)=>void,
     setShowOptions:React.Dispatch<React.SetStateAction<boolean>>
@@ -27,13 +22,13 @@ export default function FoodCarousel(props:propType) {
     useEffect(()=>{
         async function getFoodList() {
            try {
-             setShowOptions(false)
-             const response = await api.get(`/food/list/${message.content[0]}`)
-             if (response.data.success == false) return
-             dispatch(setList(response.data.data))
-             setFoodList(response.data.data)
-             setDisplayedFood(response.data.data.slice(0,3))
-             if (message.next) message.next()
+                setShowOptions(false)
+                const response = await api.get(`/food/list/${message.content[0]}`)
+                if (response.data.success == false) return
+                dispatch(setList(response.data.data))
+                setFoodList(response.data.data)
+                setDisplayedFood(response.data.data.slice(0,3))
+                message.next()
            }
            catch (error) {
             console.log(error)

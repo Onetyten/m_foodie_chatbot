@@ -4,6 +4,8 @@ import {persistReducer, persistStore} from 'redux-persist'
 import userReducer from '../store/userSlice'
 import currentListReducer from '../store/currentList'
 import currentFoodReducer from '../store/currentFoodSlice'
+import currentCartReducer from "../store/currentCartItem"
+
 
 const persistConfig = {
     key:'root',
@@ -15,7 +17,8 @@ const persistConfig = {
 const reducer = combineReducers({
     user:userReducer,
     foodlist:currentListReducer,
-    food:currentFoodReducer
+    food:currentFoodReducer,
+    cart: currentCartReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig,reducer)
