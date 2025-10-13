@@ -40,7 +40,6 @@ export default function CartFeedBack(props:propType) {
             finally{
                 message.next()
                 setAdded(true)
-                
             }
         }
         addToCart()

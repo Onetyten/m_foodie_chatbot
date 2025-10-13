@@ -3,6 +3,7 @@ import Joi from "joi";
 import mongoConnect from "../config/mongoConnect";
 import Cart from "../schema/cartShema";
 import User from "../schema/userShema";
+import { tweakType } from "../types/jsonTypes";
 
 const tweakSchema = Joi.object({
   name: Joi.string().required(),
@@ -19,24 +20,26 @@ const cartSchema = Joi.object({
 });
 
 export async function AddToCart(req:Request,res:Response) {
-    const {error,value} = cartSchema.validate(req.body)
+    const {error,value} = cartSchema.validate(req.body);
     if (error){
-        console.log("validation error",error)
-        return res.status(400).json({message:"validation error",success:false})
+        console.log("validation error",error);
+        return res.status(400).json({message:"validation error",success:false});
     }
     if (!req.userId){
-        console.log("no user_id provided",error)
-        return res.status(400).json({message:"no user_id provided",success:false})
+        console.log("no user_id provided",error);
+        return res.status(400).json({message:"no user_id provided",success:false});
     }
+    const customisation:tweakType[] = value.customisation;
     try {
-        await mongoConnect()
-        const user = await User.findById(req.userId)
+        await mongoConnect();
+        const user = await User.findById(req.userId);
         if (!user){
-          console.log("user not found",error)
-          return res.status(400).json({message:"user not found",success:false})
+          console.log("user not found",error);
+          return res.status(400).json({message:"user not found",success:false});
         }
-        const cart = await Cart.create({userId: req.userId,...value})
-        res.status(201).json({message:"Added to cart", success:true,data:cart})
+        const totalPrice = value.totalPrice + customisation.reduce((sum,tweak)=>sum+tweak.price,0)
+        const cart = await Cart.create({userId: req.userId,...value,totalPrice});
+        res.status(201).json({message:"Added to cart", success:true,data:cart});
     }
     catch (error) {
         console.log("error adding to cart",error)

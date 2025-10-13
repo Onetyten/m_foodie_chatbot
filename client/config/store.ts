@@ -5,7 +5,8 @@ import userReducer from '../store/userSlice'
 import currentListReducer from '../store/currentList'
 import currentFoodReducer from '../store/currentFoodSlice'
 import currentCartReducer from "../store/currentCartItem"
-
+import cartDelReducer from "../store/cartDeleteSlice";
+import orderCartListReducer from "../store/OrderCartList"
 
 const persistConfig = {
     key:'root',
@@ -19,6 +20,8 @@ const reducer = combineReducers({
     foodlist:currentListReducer,
     food:currentFoodReducer,
     cart: currentCartReducer,
+    cartDel:cartDelReducer,
+    orderList:orderCartListReducer
 })
 
 const persistedReducer = persistReducer(persistConfig,reducer)

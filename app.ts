@@ -10,6 +10,8 @@ import fetchSubcategoryRoute from './router/food/subcategory.route'
 import foodListRoute from './router/food/list.route'
 import getCustomRoute from './router/food/getCustomisation.route'
 import addCartRoute from './router/order/addCart.route'
+import fetchCartRoute from './router/order/fetchCart.route'
+import deleteCartRoute from './router/order/deleteCart.route'
 import { Authorization } from './middleware/authorization'
 
 declare module "express-serve-static-core"{
@@ -44,6 +46,8 @@ app.use('/food',getCustomRoute)
 
 app.use('/order',Authorization)
 app.use('/order', addCartRoute)
+app.use('/order', fetchCartRoute)
+app.use('/order', deleteCartRoute)
 
 app.get(/.*/,(req,res)=>{
     res.sendFile(path.join(rootDir,"client","dist","index.html"))

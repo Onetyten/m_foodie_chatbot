@@ -44,7 +44,7 @@ export default function NumberInput(props:propType) {
                   setValue(val)
                 }
               }}
-              className="p-2 border w-20 rounded-sm cursor-pointer focus:bg-secondary-300/10 focus:outline-0" />
+              className="p-2 border w-10 rounded-sm cursor-pointer focus:bg-secondary-300/10 focus:outline-0" />
             <div onClick={()=>{
               confirm(value,message.content[0])
               setConfirmed(true)

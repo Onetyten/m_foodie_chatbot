@@ -12,6 +12,7 @@ import type { RootState } from "../../config/store"
 import CustomisationList from "./customisationList"
 import CartFeedBack from "./CartFeedBack"
 import { setCurrentCart } from "../../store/currentCartItem"
+import CheckoutList from "./CheckoutList"
 
 
 interface propType{
@@ -78,7 +79,7 @@ export default function ChatBox(props:propType) {
             const newMessage = {type:"message",next:()=>{}, sender:"bot",content:[`Which one`]}
             setMessageList((prev)=>[...prev, newMessage ])
             setShowOptions(false)
-            const newList:messageListType = {type:"foodList",next:()=>{}, sender:"bot",content:[category._id]}
+            const newList:messageListType = {type:"food-list",next:()=>{}, sender:"bot",content:[category._id]}
             setMessageList((prev)=>[...prev, newList])
             setOptions([{name:'View all', onClick:()=>{setShowModal(true)}},{name:'Get something else', onClick:()=>getSomethingElseMessage("Let’s try something different.")}])
             setShowOptions(false)
@@ -100,7 +101,7 @@ export default function ChatBox(props:propType) {
             setMessageList((prev)=>[...prev, newMessage ])
         },1000)
         setTimeout(()=>{
-            const newInput = {type:"numberInput",next:()=>{}, sender:"user",content:[food]}
+            const newInput = {type:"number-input",next:()=>{}, sender:"user",content:[food]}
             setMessageList((prev)=>[...prev, newInput ])
         },1000)
     }
@@ -119,7 +120,7 @@ export default function ChatBox(props:propType) {
         dispatch(setCurrentCart(cartPayload))
         if (currentFood.customisationId.length>0){
             setTimeout(()=>{
-                const newMessage = {type:"message",next:()=>{}, sender:"bot",content:[`Should I add any custom options for your ${currentFood.name} order${value>1?"s":""}`]}
+                const newMessage = {type:"message",next:()=>{}, sender:"bot",content:[`Should I add any custom options to your order${value>1?"s":""}`]}
                 setMessageList((prev)=>[...prev, newMessage ])
             },1000)
             setTimeout(()=>{
@@ -144,28 +145,24 @@ export default function ChatBox(props:propType) {
             setMessageList((prev)=>[...prev, newConfirm ])
         },1000)
         setTimeout(()=>{
-            const editDisplay = {type:"editList",next:()=>{}, sender:"user",content:[food.customisationId,food._id]}
+            const editDisplay = {type:"edit-list",next:()=>{}, sender:"user",content:[food.customisationId,food._id]}
             setMessageList((prev)=>[...prev, editDisplay ])   
         },2500)
     }
 
     function addToCart(payload:cartType,foodName:string){
-        console.log("Adding to cart:", payload)
+        console.log("Added to cart")
         setShowOptions(false)
         setTimeout(()=>{
-            const newMessage = {type:"message",next:()=>{}, sender:"bot",content:[`Adding ${payload.quantity} ${foodName} to your tab`]}
-            setMessageList((prev)=>[...prev, newMessage ])
-        },1000)
-        setTimeout(()=>{
-            const CartfeedBack = {type:"cartFeedback",next:addToCartCleanup, sender:"bot",content:[foodName]}
+            const CartfeedBack = {type:"cart-feedback",next:addToCartCleanup, sender:"bot",content:[foodName]}
             setMessageList((prev)=>[...prev, CartfeedBack ])
-        },2000)
+        },500)
         console.log(payload)
     }
 
     function addToCartCleanup(){
         setLoading(false)
-        setOptions([{name:'Checkout', onClick:CartList},{name:'Continue shopping', onClick:()=>getSomethingElseMessage("Let's continue")}])
+        setOptions([{name:'Checkout tab', onClick:CartList},{name:'Continue shopping', onClick:()=>getSomethingElseMessage("Let's continue")}])
         setTimeout(()=>{
             setShowOptions(true)
         },1000)
@@ -175,16 +172,9 @@ export default function ChatBox(props:propType) {
         const newMessage = {type:"message",next:()=>{}, sender:"user",content:[`Let's Checkout`]}
         setMessageList((prev)=>[...prev, newMessage ])
         setShowOptions(false)
-
-        
-        setTimeout(()=>{
-            setOptions([
-                {name:'Checkout tab', onClick:()=>{}}
-            ])
-            setShowOptions(true)
-        },2000)
+        const newFeedBack = {type:"cart-list-feedback",next:addToCartCleanup, sender:"bot",content:['']}
+        setMessageList((prev)=>[...prev, newFeedBack ])
     }
-
 
   return (
     <div className="flex w-full text-sm pb-12 overflow-scroll bg-primary text-secondary-100 flex-1 flex-col justify-start mt-12 items-center gap-3 h-full">
@@ -195,10 +185,11 @@ export default function ChatBox(props:propType) {
                         { 
                         item.type === "message"?item.sender==="bot"?<BotMessage message={item}/>:<ChatMessage message={item}/>
                         :item.type === "subcarousel"?<SubCarousel message={item} fetchFoodList={fetchFoodList}  />
-                        :item.type === "numberInput"?<NumberInput message={item} confirm={comfirmToCart} />
-                        :item.type === "cartFeedback"?<CartFeedBack message={item}/>
-                        :item.type === "editList"?<CustomisationList message={item} addToCart = {addToCart} />
-                        :item.type === "foodList"?<FoodCarousel setShowOptions={setShowOptions} setLoading={setLoading} message={item} onClick={optionCount}/>:''
+                        :item.type === "number-input"?<NumberInput message={item} confirm={comfirmToCart} />
+                        :item.type === "cart-feedback"?<CartFeedBack message={item}/>
+                        :item.type === "cart-list-feedback"?<CheckoutList message={item} />
+                        :item.type === "edit-list"?<CustomisationList message={item} addToCart = {addToCart} />
+                        :item.type === "food-list"?<FoodCarousel setShowOptions={setShowOptions} setLoading={setLoading} message={item} onClick={optionCount}/>:''
                         }
                     </div>
                 )

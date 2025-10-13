@@ -7,6 +7,7 @@ import store,{persistor} from "../config/store"
 import UserCheck from "./components/UserCheck"
 import FoodModal from "./components/FoodModal"
 import { useState } from "react"
+import Comfirmation from "./components/Comfirmation"
 
 function App() {
   const [showModal,setShowModal] =useState(false)
@@ -23,6 +24,7 @@ function App() {
             <ChatBox setShowModal={setShowModal} />
             <SearchBar/>
           </div>
+          <Comfirmation/>
           {showModal&&<FoodModal setShowModal={setShowModal}/>}
         </main>
       </PersistGate>

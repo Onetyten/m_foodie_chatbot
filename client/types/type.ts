@@ -55,3 +55,14 @@ export interface cartType{
   customisation:tweakType[],
   totalPrice:number
 }
+
+export interface cartListType
+{
+    _id:string,
+    quantity: number,
+    totalPrice: number,
+    foodId: {
+      name: string,
+      imageUrl:string,
+    }
+}

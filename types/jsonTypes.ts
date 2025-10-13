@@ -28,3 +28,10 @@ export interface seedFoodType{
     subCategory:string,
     customisations: string[]
 }
+
+export interface tweakType{
+  name:string,
+  type:string,
+  value:string,
+  price:number
+}
