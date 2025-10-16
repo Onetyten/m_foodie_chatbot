@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Spinner } from "react-activity";
 import {motion} from 'framer-motion';
-import api from "../../config/api";
+import api from "../../utils/api";
 import type {FoodType, messageListType} from '../../types/type';
 import FoodCard from "./FoodCard";
 import { Swiper,SwiperSlide} from 'swiper/react';

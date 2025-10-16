@@ -8,19 +8,20 @@ import FoodCarousel from "./FoodCarousel"
 import NumberInput from "./NumberInput"
 import { useDispatch, useSelector, useStore } from "react-redux"
 import { setFood } from "../../store/currentFoodSlice"
-import type { RootState } from "../../config/store"
+import type { RootState } from "../../utils/store"
 import CustomisationList from "./customisationList"
 import CartFeedBack from "./CartFeedBack"
 import { setCurrentCart } from "../../store/currentCartItem"
 import CheckoutList from "./CheckoutList"
-import UserInfoInput from "./selectAddressInput"
+import UserInfoInput from "./UserInfoInput"
 import BotErrorMessage from "./BotErrorMessage"
+import {setOrder} from '../../store/newOrderSlice'
 
 
 
 
 export default function ChatBox() {
-
+    const scrollRef = useRef<HTMLDivElement|null>(null)
     const dispatch = useDispatch()
     const store = useStore<RootState>()
     const currentFood = useSelector((state:RootState)=>state.food.food)
@@ -71,6 +72,12 @@ export default function ChatBox() {
             setShowOptions(true)
         },1000)
     }
+    useEffect(()=>{
+        const timer = setTimeout(()=>{
+            scrollRef.current?.scrollIntoView({behavior:"smooth"})
+        },500)
+        return ()=>clearTimeout(timer)
+    },[messagelist])
 
     function fetchFoodList(category:subCategoryType){
         if (loading) return
@@ -107,6 +114,7 @@ export default function ChatBox() {
             setMessageList((prev)=>[...prev, newInput ])
         },1000)
     }
+
 
     
 
@@ -172,7 +180,6 @@ export default function ChatBox() {
             setShowOptions(true)
         },1000)
     }
-    const cartList = useSelector((state:RootState)=>state.orderList.orderList)
     
     function CartList(){
         const newMessage = {type:"message",next:()=>{}, sender:"user",content:[`Let's Checkout`]}
@@ -183,24 +190,28 @@ export default function ChatBox() {
     }
 
     function calculateSelectedPrice(){
-        const cart = store.getState().orderList.orderList 
-        console.log("calculating price",cart)
+        const cart = store.getState().orderList.orderList
+        const OrderPayload = {
+            name:"",
+            address:"",
+            city:"",
+            country:"",
+            phone_number:"",
+            items:cart
+        }
+        dispatch(setOrder(OrderPayload))
         setShowOptions(false)
         const orderPrice = cart.reduce((sum,delta)=>sum+(delta.totalPrice*delta.quantity),0)
         const newMessage = {type:"message",next:()=>{}, sender:"bot",content:[`Your total is ${orderPrice}`]}
         setMessageList((prev)=>[...prev, newMessage ])
-        setOptions([{name:'Select address', onClick:selectInfo},{name:'Continue shopping', onClick:()=>getSomethingElseMessage("Let's continue")}])
-        setShowOptions(true)
+        setTimeout(()=>{
+            setOptions([{name:'Select address', onClick:selectInfo},{name:'Continue shopping', onClick:()=>getSomethingElseMessage("Let's continue")}])
+            setShowOptions(true)
+        },1500)
     }
-
-    useEffect(()=>{
-        console.log("Logging cart list",cartList)
-    },[cartList])
-
 
     
     const checkOutListSuccess=() => {
-        console.log("checkedlist success running");
         setTimeout(() => {
             setOptions([...[
             { name: 'Checkout', onClick: ()=>calculateSelectedPrice() },
@@ -218,16 +229,21 @@ export default function ChatBox() {
     function selectInfo(){
         const newMessage = {type:"message",next:()=>{}, sender:"bot",content:[`enter your delivery information`]}
         setMessageList((prev)=>[...prev, newMessage ])
+        
         setTimeout(()=>{
             setOptions([{name:'Continue shopping', onClick:()=>getSomethingElseMessage("Let's continue")}])
-            const newInput = {type:"message",next:()=>{}, sender:"bot",content:[]}
+            const newInput = {type:"enter-info",next:()=>{}, sender:"bot",content:[]}
             setMessageList((prev)=>[...prev, newInput ])
         },1000)
     }
 
+    function ProceedToPayment(){
+        console.log("50 million payment made")
+    }
+
 
   return (
-    <div className="flex w-full font-outfit text-sm pb-12 overflow-scroll bg-primary text-secondary-100 flex-1 flex-col justify-start mt-12 items-center gap-3 h-full">
+    <div className="flex w-full chat-box font-outfit text-sm pb-12 overflow-scroll scroll-hide bg-primary text-secondary-100 flex-1 flex-col justify-start mt-12 items-center gap-3 h-full">
         <div className="w-full flex flex-col gap-6 justify-start">
             {messagelist.map((item,index:number)=>{
                 return(
@@ -237,12 +253,15 @@ export default function ChatBox() {
                         :item.type === "cart-feedback"?<CartFeedBack message={item} key={index} isAdding={isAdding}/>
                         :item.type === "cart-list-feedback"?<CheckoutList key={index} message={item} setShowOptions={setShowOptions} setOptions={setOptions} getSomethingElseMessage = {getSomethingElseMessage} checkOutListSuccess={checkOutListSuccess} checkOutListCleared={checkOutListCleared}/>
                         :item.type === "edit-list"?<CustomisationList key={index} message={item} addToCart = {addToCart} />
-                        :item.type === "enter-info"?<UserInfoInput message={item} key={index} confirm={comfirmToCart} setMessageList={setMessageList} />
+                        :item.type === "enter-info"?<UserInfoInput key={index} setMessageList={setMessageList} setOptions={setOptions} setShowOptions={setShowOptions} getSomethingElseMessage={getSomethingElseMessage} ProceedToPayment={ProceedToPayment} />
                         :item.type === "food-list"?<FoodCarousel key={index} setShowOptions={setShowOptions} setLoading={setLoading} message={item} onClick={optionCount}/>:''
                 )
             })}
         </div>
         {showoptions&& <OptionsInput options = {options}/>}
+        <div ref={scrollRef} className="w-2 h-2">
+
+        </div>
     </div>
   )
 }

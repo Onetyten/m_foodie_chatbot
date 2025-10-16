@@ -66,3 +66,17 @@ export interface cartListType
       imageUrl:string,
     }
 }
+
+export interface orderType{
+  name:string,
+  address:string,
+  city:string,
+  country:string,
+  phone_number:string,
+  items:cartListType[]
+}
+
+export interface countryCodeType {
+    flag: string,
+    val: string,
+}

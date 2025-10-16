@@ -3,7 +3,7 @@ import SearchBar from "./components/SearchBar"
 import "react-activity/dist/library.css"
 import { Provider} from "react-redux"
 import {PersistGate} from "redux-persist/integration/react"
-import store,{persistor} from "../config/store"
+import store,{persistor} from "../utils/store"
 import UserCheck from "./components/UserCheck"
 import Comfirmation from "./components/Comfirmation"
 

@@ -2,9 +2,9 @@ import { useEffect, useState } from "react"
 import { Digital } from "react-activity"
 import logoImg from '../assets/logo.gif'
 import {motion} from 'framer-motion'
-import api from "../../config/api"
+import api from "../../utils/api"
 import { useSelector } from "react-redux"
-import type { RootState } from "../../config/store"
+import type { RootState } from "../../utils/store"
 
 interface propType{
     message:{

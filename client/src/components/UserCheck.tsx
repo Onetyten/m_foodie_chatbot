@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
-import type { RootState } from '../../config/store'
+import type { RootState } from '../../utils/store'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from '../../store/userSlice'
-import api from '../../config/api'
+import api from '../../utils/api'
 
 
 export default function UserCheck() {

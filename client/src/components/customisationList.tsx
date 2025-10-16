@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react"
 import { Spinner } from "react-activity"
-import api from "../../config/api"
+import api from "../../utils/api"
 import type { customisationType, messageListType, tweakType } from "../../types/type"
 import {motion} from 'framer-motion'
 import OptionSelect from "./OptionSelect"
 import OptionCheckbox from "./OptionCheckbox"
 import OptionQuantity from "./OptionQuantity"
 import { useDispatch, useSelector } from "react-redux"
-import type { RootState } from "../../config/store"
+import type { RootState } from "../../utils/store"
 import { toWords } from "number-to-words"
 import { setCurrentCart } from "../../store/currentCartItem"
 

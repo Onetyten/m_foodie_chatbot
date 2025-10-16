@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Spinner } from "react-activity"
 import {motion} from 'framer-motion'
-import api from "../../config/api"
+import api from "../../utils/api"
 import type {subCategoryType} from '../../types/type'
 
 interface propType{

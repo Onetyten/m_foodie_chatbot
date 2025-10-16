@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import logoImg from '../assets/logo.gif'
 import { Digital } from "react-activity"
-import BotChatBubble from './BotChatBubble'
+import ErrorBubble from './ErrorBubble'
 
 
 
@@ -39,7 +39,7 @@ export default function BotErrorMessage(props:propType) {
                         if (message.next) message.next()
                         
                     }
-                },800)
+                },300)
             }
         }
         loadNextMessage()
@@ -59,7 +59,7 @@ export default function BotErrorMessage(props:propType) {
             {displayedMessage.map((item,index)=>{
                 return(
                     <div key={index} className=" flex justify-start items-center text-primary ">
-                        <BotChatBubble message={item}/>
+                        <ErrorBubble message={item}/>
                     </div>
                 )
             })}

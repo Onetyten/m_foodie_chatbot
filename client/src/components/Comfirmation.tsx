@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
-import type { RootState } from '../../config/store'
+import type { RootState } from '../../utils/store'
 import { clearDeleteCartItem } from '../../store/cartDeleteSlice'
 import { deleteOrder } from '../../store/OrderCartList'
-import api from '../../config/api'
+import api from '../../utils/api'
 
 export default function Comfirmation() {
     const deletedItem = useSelector((state:RootState)=>state.cartDel.cartDel)
