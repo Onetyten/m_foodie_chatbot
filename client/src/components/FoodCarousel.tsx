@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react"
-import { Spinner } from "react-activity"
-import {motion} from 'framer-motion'
-import api from "../../config/api"
-import type {FoodType, messageListType} from '../../types/type'
-import { useDispatch } from "react-redux"
-import { setList } from "../../store/currentList"
-import FoodCard from "./FoodCard"
+import React, { useEffect, useState } from "react";
+import { Spinner } from "react-activity";
+import {motion} from 'framer-motion';
+import api from "../../config/api";
+import type {FoodType, messageListType} from '../../types/type';
+import FoodCard from "./FoodCard";
+import { Swiper,SwiperSlide} from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Pagination ,Autoplay,EffectCoverflow,Navigation} from 'swiper/modules';
 
 interface propType{
     message:messageListType
@@ -16,18 +19,14 @@ interface propType{
 
 export default function FoodCarousel(props:propType) {
     const {message,setLoading,onClick,setShowOptions} = props
-    const dispatch = useDispatch()
     const [foodList,setFoodList] = useState<FoodType[]>([])
-    const [displayedFood,setDisplayedFood] = useState<FoodType[]>([])
     useEffect(()=>{
         async function getFoodList() {
            try {
                 setShowOptions(false)
                 const response = await api.get(`/food/list/${message.content[0]}`)
                 if (response.data.success == false) return
-                dispatch(setList(response.data.data))
                 setFoodList(response.data.data)
-                setDisplayedFood(response.data.data.slice(0,3))
                 message.next()
            }
            catch (error) {
@@ -63,13 +62,15 @@ export default function FoodCarousel(props:propType) {
 
   return (
     <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:2}} className="flex flex-col justify-center items-center gap-2">
-        <div className="flex w-full gap-2 flex-wrap justify-center items-center">
-            {displayedFood.map((item,index)=>{
+        <Swiper slidesPerView={3} spaceBetween={6} loop={true} pagination={{clickable: true,}} modules={[Pagination,Autoplay,EffectCoverflow,Navigation]} autoplay={{delay:5000, disableOnInteraction:false}} coverflowEffect={{ rotate: 0, stretch: 0, depth: 100, modifier: 2.5, slideShadows: true}}  className="flex w-full gap-2 flex-wrap justify-center items-center">
+            {foodList.map((item,index)=>{
                 return(
-                    <FoodCard key={index} food={item} onClick={onClick}/>
+                    <SwiperSlide className='flex pb-12 justify-center items-center'>
+                        <FoodCard key={index} food={item} onClick={onClick}/>
+                    </SwiperSlide>
                 )
             })}
-        </div>
+        </Swiper>
     </motion.div>
   )
 }

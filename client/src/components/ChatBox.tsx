@@ -1,27 +1,28 @@
-import React, { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import BotMessage from "./BotMessage"
 import ChatMessage from "./ChatMessage"
 import OptionsInput from "./OptionsInput"
 import SubCarousel from "./SubCarousel"
-import type { cartType, FoodType, messageListType, subCategoryType } from "../../types/type"
+import type {cartType, FoodType, messageListType, subCategoryType } from "../../types/type"
 import FoodCarousel from "./FoodCarousel"
 import NumberInput from "./NumberInput"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch, useSelector, useStore } from "react-redux"
 import { setFood } from "../../store/currentFoodSlice"
 import type { RootState } from "../../config/store"
 import CustomisationList from "./customisationList"
 import CartFeedBack from "./CartFeedBack"
 import { setCurrentCart } from "../../store/currentCartItem"
 import CheckoutList from "./CheckoutList"
+import UserInfoInput from "./selectAddressInput"
+import BotErrorMessage from "./BotErrorMessage"
 
 
-interface propType{
-    setShowModal:React.Dispatch<React.SetStateAction<boolean>>
-}
 
-export default function ChatBox(props:propType) {
-    const {setShowModal} = props
+
+export default function ChatBox() {
+
     const dispatch = useDispatch()
+    const store = useStore<RootState>()
     const currentFood = useSelector((state:RootState)=>state.food.food)
     // const currentCartItem = useSelector((state:RootState)=>state.cart.cart)
     const [messagelist,setMessageList] = useState<messageListType[]>([
@@ -81,7 +82,7 @@ export default function ChatBox(props:propType) {
             setShowOptions(false)
             const newList:messageListType = {type:"food-list",next:()=>{}, sender:"bot",content:[category._id]}
             setMessageList((prev)=>[...prev, newList])
-            setOptions([{name:'View all', onClick:()=>{setShowModal(true)}},{name:'Get something else', onClick:()=>getSomethingElseMessage("Let’s try something different.")}])
+            setOptions([{name:'Get something else', onClick:()=>getSomethingElseMessage("Let’s try something different.")}])
             setShowOptions(false)
         }
         catch (error) {
@@ -97,6 +98,7 @@ export default function ChatBox(props:propType) {
         dispatch(setFood(food))
         setMessageList((prev)=>[...prev, newPick ])
         setTimeout(()=>{
+            setShowOptions(false)
             const newMessage = {type:"message",next:()=>{}, sender:"bot",content:[`Great choice! How many ${food.name} orders should I add?`]}
             setMessageList((prev)=>[...prev, newMessage ])
         },1000)
@@ -113,9 +115,7 @@ export default function ChatBox(props:propType) {
             setShowOptions(true)
             return setLoading(false)
         }
-        
         setLoading(true)
-        console.log(value,currentFood.name)
         const cartPayload:cartType = {foodId:currentFood._id,quantity:value,customisation:[],totalPrice:currentFood.price}
         dispatch(setCurrentCart(cartPayload))
         if (currentFood.customisationId.length>0){
@@ -125,14 +125,16 @@ export default function ChatBox(props:propType) {
             },1000)
             setTimeout(()=>{
                 setOptions([{name:'Yes',onClick:()=>customiseOrder(currentFood)},{name:'No', onClick:()=>{
-                            const newAnswer = {type:"message",next:()=>{}, sender:"user",content:[`No`]}
-        setMessageList((prev)=>[...prev, newAnswer ])
-                    addToCart(cartPayload,currentFood.name)}}])
+                            const newAnswer = {
+                            type:"message",next:()=>{}, sender:"user",content:[`No`]}
+                            setMessageList((prev)=>[...prev, newAnswer ])
+                            addToCart(currentFood.name)}}])
+
                 setShowOptions(true)
             },2000)
         }
         else{
-            addToCart(cartPayload,currentFood.name)
+            addToCart(currentFood.name)
         }
     }
     
@@ -145,19 +147,22 @@ export default function ChatBox(props:propType) {
             setMessageList((prev)=>[...prev, newConfirm ])
         },1000)
         setTimeout(()=>{
+            setShowOptions(false)
             const editDisplay = {type:"edit-list",next:()=>{}, sender:"user",content:[food.customisationId,food._id]}
             setMessageList((prev)=>[...prev, editDisplay ])   
         },2500)
     }
 
-    function addToCart(payload:cartType,foodName:string){
-        console.log("Added to cart")
+    const isAdding = useRef(false)
+    function addToCart(foodName:string){
+        if (isAdding.current) return
+        isAdding.current = true
         setShowOptions(false)
         setTimeout(()=>{
+            setShowOptions(false)
             const CartfeedBack = {type:"cart-feedback",next:addToCartCleanup, sender:"bot",content:[foodName]}
             setMessageList((prev)=>[...prev, CartfeedBack ])
         },500)
-        console.log(payload)
     }
 
     function addToCartCleanup(){
@@ -167,7 +172,8 @@ export default function ChatBox(props:propType) {
             setShowOptions(true)
         },1000)
     }
-
+    const cartList = useSelector((state:RootState)=>state.orderList.orderList)
+    
     function CartList(){
         const newMessage = {type:"message",next:()=>{}, sender:"user",content:[`Let's Checkout`]}
         setMessageList((prev)=>[...prev, newMessage ])
@@ -176,22 +182,63 @@ export default function ChatBox(props:propType) {
         setMessageList((prev)=>[...prev, newFeedBack ])
     }
 
+    function calculateSelectedPrice(){
+        const cart = store.getState().orderList.orderList 
+        console.log("calculating price",cart)
+        setShowOptions(false)
+        const orderPrice = cart.reduce((sum,delta)=>sum+(delta.totalPrice*delta.quantity),0)
+        const newMessage = {type:"message",next:()=>{}, sender:"bot",content:[`Your total is ${orderPrice}`]}
+        setMessageList((prev)=>[...prev, newMessage ])
+        setOptions([{name:'Select address', onClick:selectInfo},{name:'Continue shopping', onClick:()=>getSomethingElseMessage("Let's continue")}])
+        setShowOptions(true)
+    }
+
+    useEffect(()=>{
+        console.log("Logging cart list",cartList)
+    },[cartList])
+
+
+    
+    const checkOutListSuccess=() => {
+        console.log("checkedlist success running");
+        setTimeout(() => {
+            setOptions([...[
+            { name: 'Checkout', onClick: ()=>calculateSelectedPrice() },
+            { name: 'Continue shopping', onClick: () => getSomethingElseMessage("Let's continue") }
+            ]]);
+            setShowOptions(true);
+        }, 100);
+    }
+
+
+    function checkOutListCleared(){
+        setOptions([{name:'Continue shopping', onClick:()=>getSomethingElseMessage("Let's continue")}])
+    }
+
+    function selectInfo(){
+        const newMessage = {type:"message",next:()=>{}, sender:"bot",content:[`enter your delivery information`]}
+        setMessageList((prev)=>[...prev, newMessage ])
+        setTimeout(()=>{
+            setOptions([{name:'Continue shopping', onClick:()=>getSomethingElseMessage("Let's continue")}])
+            const newInput = {type:"message",next:()=>{}, sender:"bot",content:[]}
+            setMessageList((prev)=>[...prev, newInput ])
+        },1000)
+    }
+
+
   return (
-    <div className="flex w-full text-sm pb-12 overflow-scroll bg-primary text-secondary-100 flex-1 flex-col justify-start mt-12 items-center gap-3 h-full">
+    <div className="flex w-full font-outfit text-sm pb-12 overflow-scroll bg-primary text-secondary-100 flex-1 flex-col justify-start mt-12 items-center gap-3 h-full">
         <div className="w-full flex flex-col gap-6 justify-start">
             {messagelist.map((item,index:number)=>{
                 return(
-                    <div className="w-full" key={index}>
-                        { 
-                        item.type === "message"?item.sender==="bot"?<BotMessage message={item}/>:<ChatMessage message={item}/>
-                        :item.type === "subcarousel"?<SubCarousel message={item} fetchFoodList={fetchFoodList}  />
-                        :item.type === "number-input"?<NumberInput message={item} confirm={comfirmToCart} />
-                        :item.type === "cart-feedback"?<CartFeedBack message={item}/>
-                        :item.type === "cart-list-feedback"?<CheckoutList message={item} />
-                        :item.type === "edit-list"?<CustomisationList message={item} addToCart = {addToCart} />
-                        :item.type === "food-list"?<FoodCarousel setShowOptions={setShowOptions} setLoading={setLoading} message={item} onClick={optionCount}/>:''
-                        }
-                    </div>
+                        item.type === "message"?item.sender==="bot"?<BotMessage key={index} message={item}/>:item.sender === "bot-error"?<BotErrorMessage key={index} message={item}/>:<ChatMessage message={item} key={index}/>
+                        :item.type === "subcarousel"?<SubCarousel message={item} key={index} fetchFoodList={fetchFoodList}  />
+                        :item.type === "number-input"?<NumberInput message={item} key={index} confirm={comfirmToCart} />
+                        :item.type === "cart-feedback"?<CartFeedBack message={item} key={index} isAdding={isAdding}/>
+                        :item.type === "cart-list-feedback"?<CheckoutList key={index} message={item} setShowOptions={setShowOptions} setOptions={setOptions} getSomethingElseMessage = {getSomethingElseMessage} checkOutListSuccess={checkOutListSuccess} checkOutListCleared={checkOutListCleared}/>
+                        :item.type === "edit-list"?<CustomisationList key={index} message={item} addToCart = {addToCart} />
+                        :item.type === "enter-info"?<UserInfoInput message={item} key={index} confirm={comfirmToCart} setMessageList={setMessageList} />
+                        :item.type === "food-list"?<FoodCarousel key={index} setShowOptions={setShowOptions} setLoading={setLoading} message={item} onClick={optionCount}/>:''
                 )
             })}
         </div>

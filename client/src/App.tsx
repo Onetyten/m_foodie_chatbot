@@ -5,27 +5,22 @@ import { Provider} from "react-redux"
 import {PersistGate} from "redux-persist/integration/react"
 import store,{persistor} from "../config/store"
 import UserCheck from "./components/UserCheck"
-import FoodModal from "./components/FoodModal"
-import { useState } from "react"
 import Comfirmation from "./components/Comfirmation"
 
 function App() {
-  const [showModal,setShowModal] =useState(false)
-
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <main className='w-screen h-screen font-baskerville relative overflow-hidden bg-primary flex flex-col justify-center items-center'>
+        <main className='w-screen h-screen font-outfit relative overflow-hidden bg-primary flex flex-col justify-center items-center'>
           <UserCheck/>
-          <div className="absolute top-4 left-4 text-2xl font-squada">
+          <div className="absolute font-black capitalize top-4 left-4 text-2xl font-squada">
             Mori cafe
           </div>
           <div className="w-xl h-full flex flex-col gap-4">
-            <ChatBox setShowModal={setShowModal} />
+            <ChatBox />
             <SearchBar/>
           </div>
           <Comfirmation/>
-          {showModal&&<FoodModal setShowModal={setShowModal}/>}
         </main>
       </PersistGate>
     </Provider>

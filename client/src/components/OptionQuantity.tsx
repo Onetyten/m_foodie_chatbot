@@ -46,7 +46,7 @@ export default function OptionQuantity(props:propType) {
 
   return (
     <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1, ease:['easeOut']}} className="w-72 rounded-sm h-10 text-sm flex justify-between px-4 items-center gap-1 border border-secondary-100">
-        <div>
+        <div className="capitalize">
             {edit.name.slice(0,20)}
         </div>
         <div className="flex gap-1 text-2xl justify-center items-center">

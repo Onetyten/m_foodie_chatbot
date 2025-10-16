@@ -12,14 +12,15 @@ interface propType{
         sender:string,
         next:()=>void, 
         content:string[]
-    }
+    },
+    isAdding: React.RefObject<boolean>
 }
 
 export default function CartFeedBack(props:propType) {
-    const {message} = props
+    const {message,isAdding} = props
     const [added,setAdded] = useState(false)
     const food = useSelector((state:RootState)=>state.cart.cart)
-    const [feedBack,setFeedack] = useState(`Added ${message.content[0]} to cart, would you like anything else`)
+    const [feedBack,setFeedack] = useState(`Added ${message.content[0]} to tab, would you like anything else`)
 
     useEffect(()=>{
         if (!food) return
@@ -38,6 +39,7 @@ export default function CartFeedBack(props:propType) {
                 setFeedack(`Couldn't add ${message.content[0]} to cart, please try again`)
             }
             finally{
+                isAdding.current = false
                 message.next()
                 setAdded(true)
             }

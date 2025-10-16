@@ -2,7 +2,6 @@ import storage from 'redux-persist/lib/storage'
 import {combineReducers, configureStore} from '@reduxjs/toolkit'
 import {persistReducer, persistStore} from 'redux-persist'
 import userReducer from '../store/userSlice'
-import currentListReducer from '../store/currentList'
 import currentFoodReducer from '../store/currentFoodSlice'
 import currentCartReducer from "../store/currentCartItem"
 import cartDelReducer from "../store/cartDeleteSlice";
@@ -17,7 +16,6 @@ const persistConfig = {
 
 const reducer = combineReducers({
     user:userReducer,
-    foodlist:currentListReducer,
     food:currentFoodReducer,
     cart: currentCartReducer,
     cartDel:cartDelReducer,

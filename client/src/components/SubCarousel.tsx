@@ -59,7 +59,7 @@ export default function SubCarousel(props:propType) {
                     <div className="flex-1 flex justify-center items-center text-center h-full w-full">
                         <img className="size-32 object-contain rounded-full" src={item.imageUrl} alt="" />
                     </div>
-                    <div className="font-squada capitalize text-center text-2xl">
+                    <div className="capitalize text-center text-xl font-bold">
                         {item.name}
                     </div>
                 </div>

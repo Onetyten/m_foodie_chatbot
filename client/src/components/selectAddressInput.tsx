@@ -1,5 +1,5 @@
 import {motion} from 'framer-motion'
-import type { FoodType } from '../../types/type'
+import type { FoodType, messageListType } from '../../types/type'
 import { useEffect, useState } from 'react'
 import { Digital } from 'react-activity'
 import { toWords } from 'number-to-words'
@@ -12,10 +12,11 @@ interface propType{
         next?:()=>void, 
         content:FoodType[]
     },
-    confirm:(value:number,food:FoodType)=>void
+    confirm:(value:number,food:FoodType)=>void,
+    setMessageList: React.Dispatch<React.SetStateAction<messageListType[]>>
 }
 
-export default function NumberInput(props:propType) {
+export default function UserInfoInput(props:propType) {
   const {confirm,message} = props 
   const [value,setValue] = useState(1)
   const [confirmed,setConfirmed] = useState(false)

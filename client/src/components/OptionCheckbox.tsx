@@ -33,9 +33,9 @@ export default function OptionCheckbox(props:propType) {
     }
 
   return (
-    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1, ease:['easeOut']}} className="w-72 rounded-sm h-10 text-sm flex justify-between px-4 items-center gap-1 border border-secondary-100">
+    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1, ease:['easeOut']}} className="w-72 rounded-sm h-10 text-sm flex justify-between px-4 items-center gap-1 border capitalize border-secondary-100">
         {edit.name}
-        <div onClick={HandleCheck} className="text-3xl cursor-pointer">
+        <div onClick={HandleCheck} className="text-2xl cursor-pointer">
             {isChecked?<MdCheckBox/>:<MdOutlineCheckBoxOutlineBlank/>}
         </div>
     </motion.div>

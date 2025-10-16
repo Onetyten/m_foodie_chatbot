@@ -3,7 +3,8 @@
     "module": "ESNext",
     "target": "ES2022",
     "moduleResolution": "bundler",
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "skipLibCheck": true
   },
   "files": [],
   "references": [

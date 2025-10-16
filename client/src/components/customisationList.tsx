@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Spinner } from "react-activity"
 import api from "../../config/api"
-import type { cartType, customisationType, messageListType, tweakType } from "../../types/type"
+import type { customisationType, messageListType, tweakType } from "../../types/type"
 import {motion} from 'framer-motion'
 import OptionSelect from "./OptionSelect"
 import OptionCheckbox from "./OptionCheckbox"
@@ -15,7 +15,7 @@ import { setCurrentCart } from "../../store/currentCartItem"
 
 interface propType{
     message:messageListType,
-    addToCart:(payload:cartType,foodName:string)=>void
+    addToCart:(foodName:string)=>void
 }
 
 export default function CustomisationList(props:propType) {
@@ -31,8 +31,11 @@ export default function CustomisationList(props:propType) {
     const foodId = message.content[1]
     const [tweakList,setTweakList] = useState<tweakType[]>(currentCartFood?.customisation??[])
     const [addedToCart,setAddedToCart] = useState(false)
+    const gettingOptions = useRef(false)
 
     useEffect(()=>{
+        if (gettingOptions.current == true) return
+        gettingOptions.current = true
         if (foodId !== foodRedux?._id){
             return message.next()
         }
@@ -47,18 +50,19 @@ export default function CustomisationList(props:propType) {
                 console.error(error)
                 message.next()
             }
+            finally{
+                gettingOptions.current = false
+            }
         }
         getOptions()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[message, message.content])
 
     function handleAddCustomOptions() {
-        console.log("foodRedux",foodRedux)
-        console.log("currentCartFood",currentCartFood)
         if (!foodRedux || !currentCartFood) return
         const updatedCart = { ...currentCartFood, customisation: tweakList }
         dispatch(setCurrentCart(updatedCart))
-        addToCart(updatedCart, foodRedux.name)
+        addToCart(foodRedux.name)
         setAddedToCart(true)
     }
 
@@ -96,7 +100,7 @@ export default function CustomisationList(props:propType) {
                     )   
                 })}
                 <motion.div onClick={handleAddCustomOptions}
-                initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1,delay:1.5,ease:['easeOut']}} className="rounded-sm h-10 text-sm flex justify-center px-4 items-center gap-1 border border-secondary-100 cursor-pointer">
+                initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1,delay:1.5,ease:['easeOut']}} className="rounded-sm h-10 text-sm flex justify-center px-4 items-center gap-1 select-none border border-secondary-100 cursor-pointer">
                     Confirm
                 </motion.div>
             </div>
