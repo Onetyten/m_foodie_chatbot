@@ -105,7 +105,7 @@ function seedDataController(req, res) {
         }
         catch (error) {
             console.log("error seeding data", error);
-            res.status(500).json({ message: `error seeding data : ${error instanceof Error ? error.message : ""}`, error, success: "false" });
+            res.status(500).json({ message: `error seeding data : ${error instanceof Error ? error.message : ""}`, error, success: false });
         }
     });
 }
