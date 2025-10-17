@@ -14,6 +14,7 @@ import fetchCartRoute from './router/order/fetchCart.route'
 import deleteCartRoute from './router/order/deleteCart.route'
 import createOrderRoute from './router/order/createorder.route'
 import verifyHookRoute from './router/order/webhook/verify.route'
+import fetchOrderRoute from './router/order/fetchOrder.route'
 import { Authorization } from './middleware/authorization'
 
 declare module "express-serve-static-core"{
@@ -52,6 +53,7 @@ app.use('/order', fetchCartRoute)
 app.use('/order', deleteCartRoute)
 app.use('/order', createOrderRoute)
 app.use('/order', verifyHookRoute)
+app.use('/order', fetchOrderRoute)
 
 app.get(/.*/,(req,res)=>{
     res.sendFile(path.join(rootDir,"client","dist","index.html"))

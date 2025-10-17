@@ -25,6 +25,7 @@ body{
   --font-outfit: "Outfit", sans-serif;
   --color-primary: var(--primary);
   --color-secondary-100: var(--secondary-100);
+  /* --color-secondary-100: #e60023 ; */
   --color-secondary-200: var(--secondary-200);
   --color-secondary-300: #592c0d;
   --color-background: var(--background);

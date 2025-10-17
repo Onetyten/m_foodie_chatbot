@@ -4,7 +4,6 @@ import { Digital } from "react-activity"
 import BotChatBubble from './BotChatBubble'
 
 
-
 interface propType{
     message:{
         type:string,
@@ -59,7 +58,7 @@ export default function BotMessage(props:propType) {
             {displayedMessage.map((item,index)=>{
                 return(
                     <div key={index} className=" flex justify-start items-center text-primary ">
-                        <BotChatBubble message={item}/>
+                        <BotChatBubble message={item} index ={index}/>
                     </div>
                 )
             })}

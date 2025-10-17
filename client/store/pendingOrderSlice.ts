@@ -15,7 +15,7 @@ const pendingOrderSlice = createSlice({
             state.pendingOrders.push(action.payload)
         },
         clearPendingOrder:(state,action:PayloadAction<string>)=>{
-            state.pendingOrders.filter(item=>item !== action.payload)
+            state.pendingOrders = state.pendingOrders.filter(item=>item !== action.payload)
         }
     }
 })

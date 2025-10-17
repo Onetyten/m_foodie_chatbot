@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from "react"
 import BotMessage from "./BotMessage"
 import ChatMessage from "./ChatMessage"
@@ -17,6 +18,7 @@ import UserInfoInput from "./UserInfoInput"
 import BotErrorMessage from "./BotErrorMessage"
 import {setOrder} from '../../store/newOrderSlice'
 import OrderFeedback from "./OrderFeedback"
+import OrderReceipt from "./OrderReceipt"
 
 
 
@@ -26,10 +28,37 @@ export default function ChatBox() {
     const dispatch = useDispatch()
     const store = useStore<RootState>()
     const currentFood = useSelector((state:RootState)=>state.food.food)
-    // const currentCartItem = useSelector((state:RootState)=>state.cart.cart)
-    const [messagelist,setMessageList] = useState<messageListType[]>([
-        {type:"message", sender:"bot", next:()=>showAnsweroptions(), content:['Hey there! I’m Mori','your digital barista','What are you craving today?']},
-    ])
+    const user = useSelector((state:RootState)=>state.user.user)
+    const pendingOrders = useSelector((state:RootState)=>state.pendingOrders.pendingOrders)
+    const [messagelist,setMessageList] = useState<messageListType[]>([])
+    const initiatedRef = useRef<boolean>(false)
+
+
+    useEffect(()=>{
+        if (!initiatedRef.current==false)return
+        initiatedRef.current = true
+        if (pendingOrders.length>0 && user ){
+            const newMessage = {type:"message", sender:"bot", next:()=>{}, content:['Please wait while I confirm your payment…']}
+            setMessageList((prev)=>[...prev,newMessage])
+
+            setTimeout(()=>{
+               const newMessage = {type:"order-receipt", sender:"bot", next:()=>introMessage(), content:[]}
+                setMessageList((prev)=>[...prev,newMessage]) 
+            },1500)
+        }
+        else{
+            introMessage()
+        }
+        return ()=>{
+            initiatedRef.current = true
+        }
+    },[])
+
+    function introMessage(){
+        const newMessage = {type:"message", sender:"bot", next:()=>showAnsweroptions(), content:['Hey there! I’m Mori','your digital barista','What are you craving today?']}
+        setMessageList((prev)=>[...prev,newMessage])
+    }
+
     const [showoptions,setShowOptions] = useState(false)
     function showAnsweroptions(){
         setShowOptions(true)
@@ -261,6 +290,7 @@ export default function ChatBox() {
                         :item.type === "number-input"?<NumberInput message={item} key={index} confirm={comfirmToCart} />
                         :item.type === "cart-feedback"?<CartFeedBack message={item} key={index} isAdding={isAdding}/>
                         :item.type === "order-feedback"?<OrderFeedback key={index}/>
+                        :item.type === "order-receipt"?<OrderReceipt key={index} setMessageList={setMessageList} message={item}/>
                         :item.type === "cart-list-feedback"?<CheckoutList key={index} message={item} setShowOptions={setShowOptions} setOptions={setOptions} getSomethingElseMessage = {getSomethingElseMessage} checkOutListSuccess={checkOutListSuccess} checkOutListCleared={checkOutListCleared}/>
                         :item.type === "edit-list"?<CustomisationList key={index} message={item} addToCart = {addToCart} />
                         :item.type === "enter-info"?<UserInfoInput key={index} setMessageList={setMessageList} setOptions={setOptions} setShowOptions={setShowOptions} getSomethingElseMessage={getSomethingElseMessage} ProceedToPayment={ProceedToPayment} />

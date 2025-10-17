@@ -21,7 +21,7 @@ export async function verifyPaymentController (req:Request,res:Response){
     if (event.event === "charge.success"){
         const reference = event.data.reference
         const email = event.data.email
-        const paidOrder = await Order.findByIdAndUpdate({email,reference,status:"pending"},{status:"completed"},{new:true})
+        const paidOrder = await Order.findByIdAndUpdate({email,reference,status:"pending"},{status:"completed",paidAt:new Date()},{new:true})
         console.log(paidOrder)
     }
     res.sendStatus(200)

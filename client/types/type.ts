@@ -79,3 +79,28 @@ export interface countryCodeType {
     flag: string,
     val: string,
 }
+
+
+export interface Customisation {
+  name: string;
+  type: string;
+  value: string;
+}
+
+export interface OrderItem {
+  _id: string;
+  foodId: string;
+  quantity: number;
+  priceAtPurchase: number;
+  customisation?: Customisation[];
+}
+
+export interface FetchedOrderType {
+  _id: string;
+  status: "pending" | "completed" | "canceled";
+  reference:string
+  items: OrderItem[];
+  paidAt?: string;
+  email: string;
+  total: number;
+}
