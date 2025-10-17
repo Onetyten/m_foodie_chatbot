@@ -70,8 +70,7 @@ export interface cartListType
 export interface orderType{
   name:string,
   address:string,
-  city:string,
-  country:string,
+  email:string
   phone_number:string,
   items:cartListType[]
 }

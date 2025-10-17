@@ -7,6 +7,8 @@ import currentCartReducer from "../store/currentCartItem"
 import cartDelReducer from "../store/cartDeleteSlice";
 import orderCartListReducer from "../store/OrderCartList"
 import newOrderReducer from "../store/newOrderSlice"
+import pendingOrderReducer from "../store/pendingOrderSlice"
+
 
 const persistConfig = {
     key:'root',
@@ -21,7 +23,8 @@ const reducer = combineReducers({
     cart: currentCartReducer,
     cartDel:cartDelReducer,
     orderList:orderCartListReducer,
-    newOrder:newOrderReducer
+    newOrder:newOrderReducer,
+    pendingOrders:pendingOrderReducer
 })
 
 const persistedReducer = persistReducer(persistConfig,reducer)

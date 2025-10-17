@@ -35,3 +35,33 @@ export interface tweakType{
   value:string,
   price:number
 }
+
+export interface cartListType
+{
+    _id:string,
+    quantity: number,
+    totalPrice: number,
+    foodId: {
+      name: string,
+      imageUrl:string,
+    }
+}
+
+export interface orderType{
+  name:string,
+  address:string,
+  email:string
+  phone_number:string,
+  items:cartListType[]
+}
+
+export interface cartListType
+{
+    _id:string,
+    quantity: number,
+    totalPrice: number,
+    foodId: {
+      name: string,
+      imageUrl:string,
+    }
+}

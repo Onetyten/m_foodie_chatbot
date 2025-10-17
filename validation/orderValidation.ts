@@ -10,19 +10,21 @@ export const OrderSchema = Joi.object({
       'string.min': 'Name must be at least 3 characters long',
       'any.required': 'Name is required'
     }),
-  email: Joi.string().email({tlds:{allow:false}}).required()
-    .messages({
-      'string.base': 'Email must be a text value',
-      'string.email': 'Email must be a valid email address',
-      'string.empty': 'Email is required',
-      'any.required': 'Email is required'
-    }),
+
   address: Joi.string()
     .required()
     .messages({
       'string.base': 'Address must be a text value',
       'string.empty': 'Address is required',
       'any.required': 'Address is required'
+    }),
+
+  email: Joi.string().email({tlds:{allow:false}}).required()
+    .messages({
+      'string.base': 'Email must be a text value',
+      'string.email': 'Email must be a valid email address',
+      'string.empty': 'Email is required',
+      'any.required': 'Email is required'
     }),
   phone_number: Joi.string()
     .pattern(/^[+0-9]{7,15}$/)
@@ -49,14 +51,3 @@ export const OrderSchema = Joi.object({
       .error(() => new Error('Malformed order'))
 
 });
-
-// export interface cartListType
-// {
-//     _id:string,
-//     quantity: number,
-//     totalPrice: number,
-//     foodId: {
-//       name: string,
-//       imageUrl:string,
-//     }
-// }

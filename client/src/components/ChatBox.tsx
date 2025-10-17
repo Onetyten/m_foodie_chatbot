@@ -16,6 +16,7 @@ import CheckoutList from "./CheckoutList"
 import UserInfoInput from "./UserInfoInput"
 import BotErrorMessage from "./BotErrorMessage"
 import {setOrder} from '../../store/newOrderSlice'
+import OrderFeedback from "./OrderFeedback"
 
 
 
@@ -194,8 +195,7 @@ export default function ChatBox() {
         const OrderPayload = {
             name:"",
             address:"",
-            city:"",
-            country:"",
+            email:"",
             phone_number:"",
             items:cart
         }
@@ -227,7 +227,7 @@ export default function ChatBox() {
     }
 
     function selectInfo(){
-        const newMessage = {type:"message",next:()=>{}, sender:"bot",content:[`enter your delivery information`]}
+        const newMessage = {type:"message",next:()=>{}, sender:"bot",content:[`Enter your delivery information`]}
         setMessageList((prev)=>[...prev, newMessage ])
         
         setTimeout(()=>{
@@ -236,9 +236,18 @@ export default function ChatBox() {
             setMessageList((prev)=>[...prev, newInput ])
         },1000)
     }
-
+    
     function ProceedToPayment(){
-        console.log("50 million payment made")
+        // const newOrder = store.getState().newOrder.newOrder
+        setShowOptions(false)
+        const newMessage = {type:"message",next:()=>{}, sender:"user",content:[`Proceed to payment`]}
+        setMessageList((prev)=>[...prev, newMessage ])
+        setTimeout(()=>{
+            const newResponse = {type:"message",next:()=>{}, sender:"bot",content:[`Creating your order`]}
+            setMessageList((prev)=>[...prev, newResponse ])
+            const orderMessage = {type:"order-feedback",next:()=>{}, sender:"bot",content:[]}
+            setMessageList((prev)=>[...prev, orderMessage ])
+        },1000)
     }
 
 
@@ -251,6 +260,7 @@ export default function ChatBox() {
                         :item.type === "subcarousel"?<SubCarousel message={item} key={index} fetchFoodList={fetchFoodList}  />
                         :item.type === "number-input"?<NumberInput message={item} key={index} confirm={comfirmToCart} />
                         :item.type === "cart-feedback"?<CartFeedBack message={item} key={index} isAdding={isAdding}/>
+                        :item.type === "order-feedback"?<OrderFeedback key={index}/>
                         :item.type === "cart-list-feedback"?<CheckoutList key={index} message={item} setShowOptions={setShowOptions} setOptions={setOptions} getSomethingElseMessage = {getSomethingElseMessage} checkOutListSuccess={checkOutListSuccess} checkOutListCleared={checkOutListCleared}/>
                         :item.type === "edit-list"?<CustomisationList key={index} message={item} addToCart = {addToCart} />
                         :item.type === "enter-info"?<UserInfoInput key={index} setMessageList={setMessageList} setOptions={setOptions} setShowOptions={setShowOptions} getSomethingElseMessage={getSomethingElseMessage} ProceedToPayment={ProceedToPayment} />

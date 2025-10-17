@@ -35,6 +35,9 @@ export default function NumberInput(props:propType) {
             <input type='number' value={value} onChange={(e)=>
               {
                 const val = parseInt(e.target.value)
+                if (isNaN(val)){
+                  setValue(1)
+                }
                 if (val>10){
                   setValue(10)
                 }

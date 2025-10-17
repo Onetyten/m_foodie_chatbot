@@ -29,10 +29,9 @@ export default function UserInfoInput(props:propType) {
   const [confirmed,setConfirmed] = useState(false)
   const [selectedCode,setSelectedCode] = useState<countryCodeType>(countryCodes[0])
   const [name,setName] = useState("")
-  const [country,setCountry] = useState("")
-  const [city,setCity] = useState("")
   const [address,setAddress] = useState("")
   const [phoneNum,setPhoneNum] = useState("")
+  const [email,setEmail] = useState("")
   const neworder = useSelector((state:RootState)=>state.newOrder.newOrder)
   
   function SubmitInfo(){
@@ -40,8 +39,7 @@ export default function UserInfoInput(props:propType) {
     const payload = {
       name:name,
       address:address,
-      city:city,
-      country:country,
+      email:email,
       phone_number:selectedCode.val+phoneNum,
       items:neworder.items
     }
@@ -56,7 +54,7 @@ export default function UserInfoInput(props:propType) {
     setShowOptions(false)
     dispatch(setOrder(value))
     setConfirmed(true)
-    const newMessage = {type:"message",next:()=>{}, sender:"user",content:[`Name: ${value.name}`,`Delivery Address: ${value.address}`,`Phone number ${value.phone_number}`]}
+    const newMessage = {type:"message",next:()=>{}, sender:"user",content:[`Name: ${value.name}`,`Delivery Address: ${value.address}`,`Phone number: ${value.phone_number}`]}
     setMessageList((prev)=>[...prev, newMessage ])
     setOptions([{name:'Proceed to payment', onClick:()=>ProceedToPayment()},{name:'Continue shopping', onClick:()=>getSomethingElseMessage("Let's continue")}])
     setShowOptions(true)
@@ -70,11 +68,9 @@ export default function UserInfoInput(props:propType) {
     <div className="w-full justify-end flex">
       <motion.div initial={{opacity:0,x:50}} animate={{opacity:100, x:0}} transition={{duration:0.2, delay:0.5, ease:['easeOut']}}  className="flex gap-2 max-w-8/12 justify-end flex-col">
         <input type='text' placeholder='Full name' value={name} onChange={(e)=>setName(e.target.value)} className="p-2 border w-full rounded-sm cursor-pointer focus:bg-secondary-300/10 focus:outline-0" />
-        <input type='text' placeholder='Country' value={country} onChange={(e)=>setCountry(e.target.value)} className="p-2 border w-full rounded-sm cursor-pointer focus:bg-secondary-300/10 focus:outline-0" />
-        <input type='text' placeholder='City' value={city} onChange={(e)=>setCity(e.target.value)} className="p-2 border w-full rounded-sm cursor-pointer focus:bg-secondary-300/10 focus:outline-0" />
+        <input type='text' placeholder='Email' value={email} onChange={(e)=>setEmail(e.target.value)} className="p-2 border w-full rounded-sm cursor-pointer focus:bg-secondary-300/10 focus:outline-0" />
         <input type='text' placeholder='Address' value={address} onChange={(e)=>setAddress(e.target.value)} className="p-2 border w-full rounded-sm cursor-pointer focus:bg-secondary-300/10 focus:outline-0" />
         <div className='w-full flex gap-2'>
-
             <Listbox value={countryCodes[0]} onChange={(value)=>{setSelectedCode(value)}}>
               <div className="relative w-22">
                 <ListboxButton className="w-full gap-1 focus:outline-0 border p-2 h-10 flex justify-between items-center rounded-sm cursor-pointer">
