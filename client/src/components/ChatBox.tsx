@@ -281,7 +281,7 @@ export default function ChatBox() {
 
 
   return (
-    <div className="flex w-full chat-box font-outfit text-sm pb-12 overflow-scroll scroll-hide text-secondary-100 flex-1 flex-col justify-start mt-12 items-center gap-3 h-full">
+    <div className="flex w-full chat-box pointer-events-none font-outfit text-sm pb-12 overflow-scroll scroll-hide text-secondary-100 flex-1 flex-col justify-start mt-12 items-center gap-3 h-full">
         <div className="w-full flex flex-col gap-6 justify-start">
             {messagelist.map((item,index:number)=>{
                 return(

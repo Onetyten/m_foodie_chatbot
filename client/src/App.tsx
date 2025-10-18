@@ -14,7 +14,7 @@ function App() {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <main className='w-screen h-screen relative font-outfit overflow-hidden bg-background -z-20 flex flex-col justify-center items-center'>
+        <main className='w-screen h-screen relative font-outfit pointer-events-none overflow-hidden bg-background -z-20 flex flex-col justify-center items-center'>
           <UserCheck/>
           <div className="absolute font-black text-primary capitalize top-4 left-6 text-2xl font-squada">
             Mori cafe
