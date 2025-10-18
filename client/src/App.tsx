@@ -24,10 +24,9 @@ function App() {
             <SearchBar/>
           </div>
           <Comfirmation/>
-
-          <div className="size-52 absolute bg-secondary-200/30 rounded-full right-[5%] top-4/10"></div>
-          <div className="size-64 absolute bg-secondary-200/30 rounded-full right-1/10 -top-1/10"></div>
-          <div className="size-32 absolute bg-secondary-200/30 rounded-full right-[20%] top-[25%]"></div>
+          <BiSolidCoffeeBean className="size-52 absolute opacity-30 right-[5%] top-4/10"/>
+          <BiSolidCoffeeBean className="size-64 absolute opacity-30 right-1/10 -top-1/10"/>
+          <BiSolidCoffeeBean className="size-32 absolute opacity-30 right-[20%] rotate-45 top-[25%]"/>
           <img src={FloraImg} className="size-4/10 absolute object-contain -left-1/10 bottom-0"/>
 
 
