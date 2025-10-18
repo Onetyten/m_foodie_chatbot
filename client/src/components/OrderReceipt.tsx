@@ -44,25 +44,25 @@ export default function OrderReceipt(props:propType) {
                     console.log(response.data.message)
                     return messages.push("Internal server error")
                 }
-                
+                setAdded(true)
                 const orders:FetchedOrderType[] = response.data.data
                 for (const order of orders) {
-                    if (order.status=="pending"){
-                        messages.push(`Order ${order._id} is still uncomfirmed`)
-                        // dispatch(clearPendingOrder(order.reference))
-                    }
-                    else{
-                        if (order.paidAt) {
-                            const formatted = new Date(order.paidAt).toLocaleString("en-US", {
-                                dateStyle: "long",
-                                timeStyle: "short",
-                        })
-                        messages.push(`Order ${order._id} paid at ${formatted} `)}
-                        else{
-                            messages.push(`Order ${order._id} paid for`)
-                        }
+                    const feedback = order.status === "pending"? `Order ${order._id} is still unconfirmed`:order.paidAt?`Order ${order._id} paid at ${new Date(order.paidAt).toLocaleString("en-US", {dateStyle: "long",timeStyle: "short",})}`:`Order ${order._id} paid for`
+                    const botMessage =  {type:"message", sender:"bot", next:()=>{}, content:[feedback]}
+                    setMessageList((prev)=>[...prev,botMessage])
+
+                    await new Promise(resolve=>setTimeout(resolve,1000))
+                    
+                    
+                    const handlerMessage = {type:"order-handle", sender:"user", next:()=>{}, content:[order]}
+                    setMessageList((prev)=>[...prev,handlerMessage])
+
+                    await new Promise(resolve=>setTimeout(resolve,1000))
+                    
+                    if (order.status!=="pending"){
                         dispatch(clearPendingOrder(order.reference))
                     }
+           
                 }
             }
             catch (error) {
@@ -75,8 +75,10 @@ export default function OrderReceipt(props:propType) {
                 console.log(error)
             }
             finally{
-                const newMessage = {type:"message", sender:"bot", next:()=>{}, content:messages}
-                setMessageList((prev)=>[...prev,newMessage])
+                if (messages.length>0){
+                    const newMessage = {type:"message", sender:"bot", next:()=>{}, content:messages}
+                    setMessageList((prev)=>[...prev,newMessage])  
+                }
                 setAdded(true)
                 setTimeout(()=>{
                     message.next()
@@ -101,7 +103,7 @@ export default function OrderReceipt(props:propType) {
         </div>
 
             <div className=" flex justify-start items-center text-primary ">
-                <div className='bg-primary p-2.5 px-6 rounded-2xl text-sm' >
+                <div className='bg-primary text-background p-2.5 px-6 rounded-2xl text-sm' >
                 <Digital/>  
                 </div>
             </div>

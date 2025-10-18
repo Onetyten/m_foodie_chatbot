@@ -8,7 +8,7 @@ export async function fetchOrderController(req:Request,res:Response) {
     const {references} =  req.body as  { references: string[] }
     try {
         await mongoConnect()
-        const fetchedOrders = await Order.find({ userId, reference: { $in: references } }).select("_id status items paidAt reference email total").populate("items")
+        const fetchedOrders = await Order.find({ userId, reference: { $in: references } }).populate("items")
         return res.status(200).json({message:'orders fetched',success:true , data:fetchedOrders })
     }
     catch (error) {

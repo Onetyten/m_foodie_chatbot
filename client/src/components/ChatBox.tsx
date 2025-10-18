@@ -19,6 +19,7 @@ import BotErrorMessage from "./BotErrorMessage"
 import {setOrder} from '../../store/newOrderSlice'
 import OrderFeedback from "./OrderFeedback"
 import OrderReceipt from "./OrderReceipt"
+import OrderHandler from "./OrderHandler"
 
 
 
@@ -289,6 +290,7 @@ export default function ChatBox() {
                         :item.type === "subcarousel"?<SubCarousel message={item} key={index} fetchFoodList={fetchFoodList}  />
                         :item.type === "number-input"?<NumberInput message={item} key={index} confirm={comfirmToCart} />
                         :item.type === "cart-feedback"?<CartFeedBack message={item} key={index} isAdding={isAdding}/>
+                        :item.type === "order-handle"?<OrderHandler message={item} key={index}/>
                         :item.type === "order-feedback"?<OrderFeedback key={index}/>
                         :item.type === "order-receipt"?<OrderReceipt key={index} setMessageList={setMessageList} message={item}/>
                         :item.type === "cart-list-feedback"?<CheckoutList key={index} message={item} setShowOptions={setShowOptions} setOptions={setOptions} getSomethingElseMessage = {getSomethingElseMessage} checkOutListSuccess={checkOutListSuccess} checkOutListCleared={checkOutListCleared}/>

@@ -81,10 +81,11 @@ export interface countryCodeType {
 }
 
 
-export interface Customisation {
+export interface CustomisationType {
   name: string;
   type: string;
   value: string;
+  _id: string;
 }
 
 export interface OrderItem {
@@ -92,15 +93,26 @@ export interface OrderItem {
   foodId: string;
   quantity: number;
   priceAtPurchase: number;
-  customisation?: Customisation[];
+  customisation: CustomisationType[];
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
 }
 
 export interface FetchedOrderType {
   _id: string;
+  userId: string;
   status: "pending" | "completed" | "canceled";
-  reference:string
   items: OrderItem[];
-  paidAt?: string;
+  name: string;
+  reference: string;
+  payment_url: string;
+  access_code: string;
   email: string;
+  address: string;
+  phone_number: string;
   total: number;
+  placedAt: string;
+  paidAt?: string;
+  __v: number;
 }
