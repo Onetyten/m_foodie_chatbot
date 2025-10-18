@@ -16,23 +16,20 @@ function App() {
       <PersistGate persistor={persistor}>
         <main className='w-screen h-screen relative font-outfit overflow-hidden flex flex-col justify-center items-center'>
           <UserCheck/>
-          <div className="absolute font-black text-primary capitalize top-4 left-6 text-2xl font-squada">
+          <div className="absolute font-black text-primary capitalize top-2 xl:top-4 left-6 text-2xl font-squada">
             Mori cafe
           </div>
-          <div className="xs:w-md sm:w-lg md:w-xl w-full max-w-full pt-6 h-full px-2 flex flex-col gap-4">
+          <div className="xs:w-md sm:w-lg md:w-xl w-full max-w-full h-full px-2 flex flex-col gap-4">
             <ChatBox />
             <SearchBar/>
           </div>
           <Comfirmation/>
-           <BiSolidCoffeeBean className="xl:size-64 size-0 text-secondary-200 -z-10  absolute opacity-30 2xl:right-1/10 -right-20 sm:-right-1/10 md:-top-[13%] sm:-top-2/10 top-2/10 rotate-12 md:rotate-0"/>
+           <BiSolidCoffeeBean className="xl:size-64 size-0 text-secondary-200 -z-10  absolute opacity-15 2xl:right-1/10 -right-20 sm:-right-1/10 md:-top-[13%] sm:-top-2/10 top-2/10 rotate-12 md:rotate-0"/>
 
-          <BiSolidCoffeeBean className="xl:size-52 size-0 text-secondary-200 -z-10 absolute opacity-30 sm:-right-[5%] -right-[10%] sm:top-5/10 top-[75%] lg:top-4/10"/>
+          <BiSolidCoffeeBean className="xl:size-52 size-0 text-secondary-200 -z-10 absolute opacity-15 sm:-right-[5%] -right-[10%] sm:top-5/10 top-[75%] lg:top-4/10"/>
          
-          <BiSolidCoffeeBean className="xl:size-32 text-secondary-200 -z-10 size-0 absolute opacity-30 2xl:right-[20%] xl:right-[10%] lg:right-[15%] right-[25%] xl:top-[25%] lg:top-[25%] sm:top-[35%] top-[55%] -rotate-12 sm:rotate-12"/>
-          <img src={FloraImg} className="2xl:size-4/10 xl:size-3/10 size-0  -z-10 absolute object-contain -left-1/10 bottom-0"/>
-
-
-
+          <BiSolidCoffeeBean className="xl:size-32 text-secondary-200 -z-10 size-0 absolute opacity-15 2xl:right-[20%] xl:right-[10%] lg:right-[15%] right-[25%] xl:top-[25%] lg:top-[25%] sm:top-[35%] top-[55%] -rotate-12 sm:rotate-12"/>
+          <img src={FloraImg} className="2xl:size-4/10 xl:size-3/10 size-0 opacity-40 -z-10 absolute object-contain -left-1/10 bottom-0"/>
         </main>
       </PersistGate>
     </Provider>

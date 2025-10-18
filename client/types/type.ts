@@ -90,13 +90,14 @@ export interface CustomisationType {
 
 export interface OrderItem {
   _id: string;
-  foodId: string;
   quantity: number;
   priceAtPurchase: number;
-  customisation: CustomisationType[];
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
+  foodId: {
+    _id:string,
+    name:string,
+    price: number,
+    imageUrl: string
+  }
 }
 
 export interface FetchedOrderType {

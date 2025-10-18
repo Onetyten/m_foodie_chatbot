@@ -62,7 +62,7 @@ export default function CartFeedBack(props:propType) {
         ):
         (
             <div className=" flex justify-start items-center text-primary ">
-                <div className='bg-primary p-2.5 px-6 rounded-2xl text-sm' >
+                <div className='bg-primary text-background p-2.5 px-6 rounded-2xl text-sm' >
                 <Digital/>  
                 </div>
             </div>

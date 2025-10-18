@@ -1,9 +1,11 @@
 import {motion} from 'framer-motion'
 import type { FetchedOrderType } from '../../types/type'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Digital } from 'react-activity'
 import { useDispatch } from 'react-redux'
 import { clearPendingOrder } from '../../store/pendingOrderSlice'
+import { ReceiptDownloaded } from './ReceiptDownloaded'
+import { useReactToPrint } from "react-to-print";
 
 
 
@@ -23,7 +25,14 @@ export default function OrderHandler(props:propType) {
   const [confirmed,setConfirmed] = useState(false)
   const [isTyping,setIsTyping] = useState(true)
   const [feedback,setFeedback] = useState("order checked")
-  
+  const componentRef = useRef<HTMLDivElement>(null);
+  const handlePrint = useReactToPrint({
+    contentRef:componentRef,
+    documentTitle: `Mori cafe receipt-${order._id}`,
+    // onAfterPrint: "",
+  })
+
+
   useEffect(()=>{
     setIsTyping(true)
     setTimeout(()=>{
@@ -37,10 +46,12 @@ export default function OrderHandler(props:propType) {
     dispatch(clearPendingOrder(order.reference))
   }
 
+
   function handlePrintReceipt(){
     setConfirmed(true)
     setFeedback("Downloading receipt")
-    console.log("Downloading receipt")
+    console.log("Receipt printed")
+    handlePrint()
   }
 
   if (!confirmed){
@@ -53,6 +64,10 @@ export default function OrderHandler(props:propType) {
             <div onClick={handlePrintReceipt} className="p-2 border rounded-sm cursor-pointer hover:bg-secondary-300/10">
                   Print Receipt  
             </div>
+             <div className="hidden">
+              <ReceiptDownloaded ref={componentRef} order={order} />
+            </div>
+
           </motion.div>
         </div>
     )
