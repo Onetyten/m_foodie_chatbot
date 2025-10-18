@@ -100,13 +100,13 @@ export default function CustomisationList(props:propType) {
                     )   
                 })}
                 <motion.div onClick={handleAddCustomOptions}
-                initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1,delay:1.5,ease:['easeOut']}} className="rounded-sm h-10 text-sm flex justify-center px-4 items-center gap-1 select-none border border-secondary-100 cursor-pointer">
+                initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1,delay:1.5,ease:['easeOut']}} className="rounded-sm h-10 text-sm flex justify-center px-4 items-center gap-1 select-none border border-secondary-100 hover:bg-secondary-300/10 cursor-pointer">
                     Confirm
                 </motion.div>
             </div>
         ):(
             <div>
-                <div className='bg-white flex gap-2 flex-col items-start text-secondary-100 p-2.5 px-6 rounded-2xl text-sm' >
+                <div className='bg-secondary-200 flex gap-2 flex-col items-start text-white p-2.5 px-6 rounded-2xl rounded-tr-none text-sm' >
                     <p>
                         I want my <span>{foodRedux?.name || "food"}</span> to be made with:
                     </p>

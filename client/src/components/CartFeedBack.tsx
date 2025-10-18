@@ -50,12 +50,12 @@ export default function CartFeedBack(props:propType) {
 
   return (
     <div className="max-w-8/12 flex gap-2 items-start">
-        <div className='bg-secondary-100 min-w-10 size-10 rounded-full flex justify-center items-center'>
+        <div className='bg-primary min-w-10 size-10 rounded-full flex justify-center items-center'>
             <img src={logoImg} className="size-8" alt="" />
         </div>
         {added?(
             <div className=" flex justify-start items-center text-primary ">
-                <motion.p initial={{x:15, y:50, opacity:0}}  animate={{x:0,y:0,opacity:100}} transition={{duration:0.2}}  className='bg-secondary-100 p-2.5 px-6 rounded-2xl text-sm' >
+                <motion.p initial={{x:15, y:50, opacity:0}}  animate={{x:0,y:0,opacity:100}} transition={{duration:0.2}}  className='bg-primary text-background p-2.5 px-6 rounded-2xl rounded-tl-none text-sm' >
                     {feedBack}
                 </motion.p>
             </div>

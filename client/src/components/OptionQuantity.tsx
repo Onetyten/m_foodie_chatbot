@@ -51,7 +51,7 @@ export default function OptionQuantity(props:propType) {
         </div>
         <div className="flex gap-1 text-2xl justify-center items-center">
             <PiPlusCircle onClick={()=>handleSetSize(1)} className="cursor-pointer" />
-            <p className="text-sm">
+            <p className="text-sm select-none">
                 {quantity}
             </p>
             <PiMinusCircle onClick={()=>handleSetSize(-1)} className="cursor-pointer" />

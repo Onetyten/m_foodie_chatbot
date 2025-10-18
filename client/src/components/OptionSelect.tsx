@@ -40,14 +40,14 @@ export default function OptionSelect(props:propType) {
     <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1, ease:['easeOut']}} className="w-72 rounded-sm h-10 text-sm flex justify-between px-4 items-center border capitalize border-secondary-100 cursor-pointer">
         <div className="relative w-full h-full flex focus:outline-0">
             <Listbox value={edit.options[0]} onChange={(value)=>{setSelectedOption(value)}}>
-                <ListboxButton className='w-72 focus:outline-0 h-10 flex justify-between items-center rounded-sm cursor-pointer'>
+                <ListboxButton className='w-72 focus:outline-0 h-10 flex justify-between items-center select-none rounded-sm cursor-pointer'>
                     <p className='capitalize'>{selectedOption ? selectedOption.label : edit.name.slice(0,24)} </p>
                     <IoChevronDown/>
                 </ListboxButton>
-                <ListboxOptions className='absolute w-full border top-11 flex flex-col justify-center items-center text-center rounded-sm z-10 bg-primary'>
+                <ListboxOptions className='absolute w-full border top-11 flex flex-col justify-center items-center text-center rounded-sm z-10 bg-background'>
                     {edit.options.map((item,index)=>{
                         return(
-                            <ListboxOption className={({focus,selected})=>`w-full capitalize p-2 ${focus?"bg-secondary-300/10":selected?"bg-secondary-300/20":""}`} key={index} value={item}>
+                            <ListboxOption className={({focus,selected})=>`w-full capitalize select-none p-2 ${focus?"bg-secondary-200/20":selected?"bg-secondary-200/30":""}`} key={index} value={item}>
                                 {item.label}
                             </ListboxOption>
                         )

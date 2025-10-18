@@ -21,7 +21,7 @@ export default function Comfirmation() {
     deletedItem&&
     <div className='fixed w-full h-full flex justify-center items-center z-60 bg-secondary-300/50'>
         <div className='w-96 bg-white p-6 gap-4 flex flex-col justify-center items-center text-md rounded-md'>
-            <p className='text-center'>
+            <p className='text-center text-secondary-100'>
                 Are you sure you want to remove {deletedItem.foodId.name} from your tab
             </p>
             <div className='flex gap-1 w-full'>
@@ -29,7 +29,7 @@ export default function Comfirmation() {
                     No
                 </div>
                 <div onClick={handleDelete}
-                    className="rounded-sm flex-1 bg-red-500 text-white text-sm cursor-pointer flex justify-center p-2 items-center gap-6">
+                    className="rounded-sm flex-1 bg-red-500 hover:bg-red-600 text-white text-sm cursor-pointer flex justify-center p-2 items-center gap-6">
                     Yes
                 </div>
             </div>

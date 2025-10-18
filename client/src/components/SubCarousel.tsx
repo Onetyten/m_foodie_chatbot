@@ -3,6 +3,7 @@ import { Spinner } from "react-activity"
 import {motion} from 'framer-motion'
 import api from "../../utils/api"
 import type {subCategoryType} from '../../types/type'
+import patternImg from '../assets/patterns/pattern.webp'
 
 interface propType{
     message:{
@@ -55,11 +56,11 @@ export default function SubCarousel(props:propType) {
     <div className="flex w-full gap-2 flex-wrap justify-center items-center">
         {subcategoryList.map((item,index)=>{
             return(
-                <div onClick={()=>{fetchFoodList(item)}} key={index} className="bg-white hover:bg-background hover:shadow-xl shadow-secondary-300/10 cursor-pointer p-3 flex justify-center items-center flex-col w-[186px] h-52 rounded-md">
+                <div onClick={()=>{fetchFoodList(item)}} key={index} className="hover:bg-secondary-200/20 hover:shadow-xl shadow-secondary-100/10 cursor-pointer p-3 flex justify-center items-center flex-col w-[186px] h-52 rounded-md bg-auto bg-center" style={{backgroundImage:`url(${patternImg})`}}>
                     <div className="flex-1 flex justify-center items-center text-center h-full w-full">
                         <img className="size-32 object-contain rounded-full" src={item.imageUrl} alt="" />
                     </div>
-                    <div className="capitalize text-center text-xl font-bold">
+                    <div className="capitalize text-center text-secondary-100 text-lg font-bold">
                         {item.name}
                     </div>
                 </div>

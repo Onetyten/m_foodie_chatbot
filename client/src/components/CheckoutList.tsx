@@ -97,11 +97,11 @@ export default function CheckoutList(props:propType) {
                         {cartList.length>0?(
                             <div className="w-full flex flex-col gap-6">
                                 <div className="w-full max-w-8/12 flex gap-2 items-start justify-start">
-                                    <div className='bg-secondary-100 min-w-10 size-10 rounded-full flex justify-center items-center'>
+                                    <div className='bg-primary min-w-10 size-10 rounded-full flex justify-center items-center'>
                                         <img src={logoImg} className="size-8" alt="" />
                                     </div>
                                     <div className=" flex justify-start items-center text-primary ">
-                                        <div className='bg-secondary-100 p-2.5 px-6 rounded-2xl text-sm' >
+                                        <div className='bg-primary p-2.5 px-6 text-background rounded-2xl rounded-tl-none text-sm' >
                                             {feedBack}
                                         </div>
                                     </div>
@@ -118,11 +118,11 @@ export default function CheckoutList(props:propType) {
                             </div>
                         ):(
                             <div className="w-full max-w-8/12 flex gap-2 items-start justify-start">
-                                <div className='bg-secondary-100 min-w-10 size-10 rounded-full flex justify-center items-center'>
+                                <div className='bg-primary min-w-10 size-10 rounded-full flex justify-center items-center'>
                                     <img src={logoImg} className="size-8" alt="" />
                                 </div>
                                 <div className=" flex justify-start items-center text-primary ">
-                                    <div className='bg-secondary-100 p-2.5 px-6 rounded-2xl text-sm' >
+                                    <div className='bg-primary p-2.5 px-6 rounded-2xl rounded-tl-none text-sm' >
                                         {feedBack}
                                     </div>
                                 </div>
@@ -132,11 +132,11 @@ export default function CheckoutList(props:propType) {
                 ):
                 (
                     <div className="w-full max-w-8/12 flex gap-2 items-start">
-                        <div className='bg-secondary-100 min-w-10 size-10 rounded-full flex justify-center items-center'>
+                        <div className='bg-primary min-w-10 size-10 rounded-full flex justify-center items-center'>
                             <img src={logoImg} className="size-8" alt="" />
                         </div>
                         <div className=" flex justify-start items-center text-primary ">
-                            <div className='bg-secondary-100 p-2.5 px-6 rounded-2xl text-sm' >
+                            <div className='bg-primary p-2.5 px-6 rounded-2xl rounded-tl-none text-sm' >
                             <Digital/>  
                             </div>
                         </div>
@@ -146,7 +146,7 @@ export default function CheckoutList(props:propType) {
         <div className="w-full flex gap-2 justify-end">
             <div className='flex max-w-8/12 flex-col gap-0.5 justify-end w-full '>
                 <div className=" flex justify-end items-center text-primary ">
-                    <p className='bg-white text-secondary-100 p-2.5 px-6 rounded-2xl text-sm' >
+                    <p className='bg-secondary-200 text-white p-2.5 px-6 rounded-2xl rounded-tr-none text-sm' >
                         {feedBack}
                     </p>
                 </div>

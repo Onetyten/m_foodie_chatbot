@@ -54,7 +54,7 @@ export default function ChatMessage (props:propType) {
             {displayedMessage.map((item,index)=>{
                 return(
                     <div key={index} className=" flex justify-end items-center text-primary ">
-                        <p className={`bg-white text-secondary-100 p-2.5 px-6 rounded-2xl text-sm  ${index==0?"rounded-tr-none":""}`} >
+                        <p className={`bg-secondary-200 text-white p-2.5 px-6 rounded-2xl text-sm  ${index==0?"rounded-tr-none":""}`} >
                             {item}
                         </p>
                     </div>
@@ -62,7 +62,7 @@ export default function ChatMessage (props:propType) {
             })}
             {isTyping&&(
                 <div className=" flex justify-end items-center text-primary ">
-                    <div className='bg-white p-2.5 px-6 rounded-2xl text-sm' >
+                    <div className='bg-secondary-200 text-white p-2.5 px-6 rounded-2xl text-sm' >
                         <Digital/>  
                     </div>
                 </div>

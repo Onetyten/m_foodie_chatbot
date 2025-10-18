@@ -28,7 +28,7 @@ export default function CheckoutItem(props:propType) {
     }
 
   return (
-    <div className="rounded-sm w-sm text-sm flex justify-between p-2 items-center gap-6 border border-secondary-100">
+    <div className="rounded-sm w-sm text-sm flex text-secondary-100 justify-between p-2 items-center gap-6 border border-secondary-100">
         <div className='flex items-center gap-2'>
             <img src={food.foodId.imageUrl} className="rounded-full size-10" alt={food.foodId.name} />
             <div className='flex flex-col gap-2'>

@@ -79,9 +79,9 @@ export default function UserInfoInput(props:propType) {
                   <IoChevronDown />
                 </ListboxButton>
 
-                <ListboxOptions className="absolute w-24 left-1/2 -translate-x-1/2 max-h-40 mt-1 py-2 overflow-y-auto scroll border flex flex-col text-center rounded-sm z-50 bg-primary shadow-lg">
+                <ListboxOptions className="absolute w-24 left-1/2 -translate-x-1/2 max-h-40 mt-1 py-2 overflow-y-auto scroll border flex flex-col text-center rounded-sm z-50 bg-background shadow-lg">
                   {countryCodes.map((item, index) => (
-                    <ListboxOption key={index} value={item} className={({ focus, selected }) => `w-full capitalize p-2 flex gap-2 cursor-pointer ${focus? 'bg-secondary-300/10' : selected ? 'bg-secondary-300/20' : '' }`} >
+                    <ListboxOption key={index} value={item} className={({ focus, selected }) => `w-full capitalize p-2 flex gap-2 cursor-pointer ${focus? 'bg-secondary-200/20' : selected ? 'bg-secondary-200/30' : '' }`} >
                       <p>{item.flag}</p>
                       <p>{item.val}</p>
                     </ListboxOption>

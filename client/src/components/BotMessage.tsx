@@ -51,7 +51,7 @@ export default function BotMessage(props:propType) {
     
   return (
     <div className="max-w-8/12 flex gap-2 items-start">
-        <div className='bg-secondary-100 min-w-10 size-10 rounded-full flex justify-center items-center'>
+        <div className='bg-primary min-w-10 size-10 rounded-full flex justify-center items-center'>
             <img src={logoImg} className="size-8" alt="" />
         </div>
         <div className='flex flex-col gap-0.5 justify-start '>
@@ -64,7 +64,7 @@ export default function BotMessage(props:propType) {
             })}
             {isTyping&&(
                 <div className=" flex justify-start items-center text-primary ">
-                    <div className='bg-secondary-100 p-2.5 px-6 rounded-2xl text-sm' >
+                    <div className='bg-primary text-background p-2.5 px-6 rounded-2xl text-sm' >
                     <Digital/>  
                     </div>
                 </div>

@@ -55,14 +55,14 @@ export default function OrderFeedback() {
         </div>
         {added?(
             <div className=" flex justify-start items-center text-primary ">
-                <motion.p initial={{x:15, y:50, opacity:0}}  animate={{x:0,y:0,opacity:100}} transition={{duration:0.2}}  className='bg-secondary-100 p-2.5 px-6 rounded-2xl text-sm' >
+                <motion.p initial={{x:15, y:50, opacity:0}}  animate={{x:0,y:0,opacity:100}} transition={{duration:0.2}}  className='bg-primary text-background p-2.5 px-6 rounded-2xl rounded-tl-none text-sm' >
                     {feedBack}
                 </motion.p>
             </div>
         ):
         (
             <div className=" flex justify-start items-center text-primary ">
-                <div className='bg-secondary-100 p-2.5 px-6 rounded-2xl text-sm' >
+                <div className='bg-primary p-2.5 px-6 rounded-2xl text-sm' >
                 <Digital/>  
                 </div>
             </div>

@@ -5,10 +5,10 @@
 @import "tailwindcss";
 
 :root {
-  --primary : #e9d5ca;
-  --secondary-100: #38292a;
-  --secondary-200: #2d1607;
-  --background: #f8f1ee;
+  --primary : #588159;
+  --secondary-100: #395a3f;
+  --secondary-200: #a2b18a;
+  --background: #e9d5ca;
   --muted:#4f4849;
 }
 
@@ -25,7 +25,6 @@ body{
   --font-outfit: "Outfit", sans-serif;
   --color-primary: var(--primary);
   --color-secondary-100: var(--secondary-100);
-  /* --color-secondary-100: #e60023 ; */
   --color-secondary-200: var(--secondary-200);
   --color-secondary-300: #592c0d;
   --color-background: var(--background);
