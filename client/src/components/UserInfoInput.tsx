@@ -66,7 +66,7 @@ export default function UserInfoInput(props:propType) {
 
   return (
     <div className="w-full justify-end flex">
-      <motion.div initial={{opacity:0,x:50}} animate={{opacity:100, x:0}} transition={{duration:0.2, delay:0.5, ease:['easeOut']}}  className="flex gap-2 max-w-8/12 justify-end flex-col">
+      <motion.div initial={{opacity:0,x:50}} animate={{opacity:100, x:0}} transition={{duration:0.2, delay:0.5, ease:['easeOut']}}  className="flex gap-2 max-w-8/12 justify-end text-xs sm:text-sm flex-col">
         <input type='text' placeholder='Full name' value={name} onChange={(e)=>setName(e.target.value)} className="p-2 border w-full rounded-sm cursor-pointer focus:bg-secondary-300/10 focus:outline-0" />
         <input type='text' placeholder='Email' value={email} onChange={(e)=>setEmail(e.target.value)} className="p-2 border w-full rounded-sm cursor-pointer focus:bg-secondary-300/10 focus:outline-0" />
         <input type='text' placeholder='Address' value={address} onChange={(e)=>setAddress(e.target.value)} className="p-2 border w-full rounded-sm cursor-pointer focus:bg-secondary-300/10 focus:outline-0" />

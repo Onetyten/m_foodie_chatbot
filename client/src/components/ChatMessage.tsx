@@ -54,7 +54,7 @@ export default function ChatMessage (props:propType) {
             {displayedMessage.map((item,index)=>{
                 return(
                     <div key={index} className=" flex justify-end items-center text-primary ">
-                        <p className={`bg-secondary-200 text-white p-2.5 px-6 rounded-2xl text-sm  ${index==0?"rounded-tr-none":""}`} >
+                        <p className={`bg-secondary-200 text-white sm:text-sm text-xs p-2.5 px-4 sm:px-6 rounded-2xl ${index==0?"rounded-tr-none":""}`} >
                             {item}
                         </p>
                     </div>

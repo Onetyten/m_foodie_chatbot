@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Spinner } from "react-activity";
 import {motion} from 'framer-motion';
-import api from "../../utils/api";
 import type {FoodType, messageListType} from '../../types/type';
 import FoodCard from "./FoodCard";
 import { Swiper,SwiperSlide} from 'swiper/react';
@@ -9,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination ,Autoplay,EffectCoverflow,Navigation} from 'swiper/modules';
+import api from "../../utils/api";
 
 interface propType{
     message:messageListType
@@ -45,14 +45,14 @@ export default function FoodCarousel(props:propType) {
       if (foodList.length==0){
         return(
             <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:2}} className="flex flex-col justify-center items-center gap-2">
-                <div className="flex w-full gap-2 flex-wrap justify-center">
-                    <div className="bg-muted/40 flex justify-center items-center w-[186px] h-60 rounded-md">
+                <div className="w-full gap-2 grid sm:grid-cols-3 xxs:grid-cols-2 grid-cols-1">
+                    <div className="bg-muted/40 flex justify-center items-center w-full h-60 rounded-md">
                         <Spinner/>
                     </div>
-                    <div className="bg-muted/40 flex justify-center items-center w-[186px] h-60 rounded-md">
+                    <div className="bg-muted/40 flex justify-center items-center w-full h-60 rounded-md">
                         <Spinner/>
                     </div>
-                    <div className="bg-muted/40 flex justify-center items-center w-[186px] h-60 rounded-md">
+                    <div className="bg-muted/40 hidden sm:flex justify-center items-center w-full h-60 rounded-md">
                         <Spinner/>
                     </div>
                 </div>
@@ -62,10 +62,11 @@ export default function FoodCarousel(props:propType) {
 
   return (
     <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:2}} className="flex flex-col justify-center items-center gap-2">
-        <Swiper slidesPerView={3} spaceBetween={6} loop={true} pagination={{clickable: true,}} modules={[Pagination,Autoplay,EffectCoverflow,Navigation]} autoplay={{delay:5000, disableOnInteraction:false}} coverflowEffect={{ rotate: 0, stretch: 0, depth: 100, modifier: 2.5, slideShadows: true}}  className="flex w-full gap-2 flex-wrap justify-center items-center">
+        <Swiper slidesPerView={3} spaceBetween={6} loop={true} pagination={{clickable: true,}} modules={[Pagination,Autoplay,EffectCoverflow,Navigation]} autoplay={{delay:5000, disableOnInteraction:false}} breakpoints={{0: {slidesPerView: 1},300: {slidesPerView: 2 },640:{slidesPerView: 3},
+    }}  coverflowEffect={{ rotate: 0, stretch: 0, depth: 100, modifier: 2.5, slideShadows: true}}  className="flex w-full gap-2 flex-wrap justify-center items-center">
             {foodList.map((item,index)=>{
                 return(
-                    <SwiperSlide className='flex pb-12 justify-center items-center'>
+                    <SwiperSlide className='flex w-full pb-12 justify-center items-center'>
                         <FoodCard key={index} food={item} onClick={onClick}/>
                     </SwiperSlide>
                 )

@@ -66,7 +66,7 @@ export default function NumberInput(props:propType) {
       <div className='flex w-full flex-col gap-0.5 justify-end'>
           {!isTyping?
           (<div className=" flex justify-end items-center text-primary ">
-              <p className='bg-secondary-200 text-white rounded-tr-none p-2.5 px-6 rounded-2xl capitalize text-sm' >
+              <p className='bg-secondary-200 text-white rounded-tr-none sm:text-sm text-xs p-2.5 px-4 sm:px-6 rounded-2xl capitalize' >
                   {toWords(value)}
               </p>
           </div>):(

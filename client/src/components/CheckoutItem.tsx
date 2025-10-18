@@ -28,20 +28,20 @@ export default function CheckoutItem(props:propType) {
     }
 
   return (
-    <div className="rounded-sm w-sm text-sm flex text-secondary-100 justify-between p-2 items-center gap-6 border border-secondary-100">
+    <div className="rounded-sm w-full text-xs  sm:text-sm flex text-secondary-100 justify-between p-2 items-center gap-6 xs:gap-12 border border-secondary-100">
         <div className='flex items-center gap-2'>
             <img src={food.foodId.imageUrl} className="rounded-full size-10" alt={food.foodId.name} />
             <div className='flex flex-col gap-2'>
                 <p>{food.foodId.name.slice(0,20)}{food.foodId.name.length>20?"...":""}</p>
-                <div className='flex gap-2'>
-                    <p>&#8358; {food.totalPrice}</p>
-                    <p> x {food.quantity}</p>
+                <div className='flex flex-nowrap gap-2'>
+                    <p className='text-nowrap'>&#8358; {food.totalPrice}</p>
+                    <p className='text-nowrap'> x {food.quantity}</p>
                 </div>
             </div>
         </div>
-        <div className='flex select-none items-center gap-2'>
+        <div className='flex text-sm select-none items-center gap-2'>
                 <FaPlus onClick={()=>{handleChange(1)}} className='cursor-pointer' />
-                    <p className='text-sm'>{quantity} </p>
+                    <p>{quantity} </p>
                 <FaMinus onClick={()=>{handleChange(-1)}} className='cursor-pointer' />
         </div>
 

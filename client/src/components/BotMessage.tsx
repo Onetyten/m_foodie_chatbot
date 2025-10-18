@@ -51,8 +51,8 @@ export default function BotMessage(props:propType) {
     
   return (
     <div className="max-w-8/12 flex gap-2 items-start">
-        <div className='bg-primary min-w-10 size-10 rounded-full flex justify-center items-center'>
-            <img src={logoImg} className="size-8" alt="" />
+        <div className='bg-primary sm:min-w-10 min-w-8 size-8 sm:size-10 rounded-full flex justify-center items-center'>
+            <img src={logoImg} className="size-6 sm:size-8" alt="" />
         </div>
         <div className='flex flex-col gap-0.5 justify-start '>
             {displayedMessage.map((item,index)=>{

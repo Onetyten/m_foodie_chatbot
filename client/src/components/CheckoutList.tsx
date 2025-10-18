@@ -101,13 +101,13 @@ export default function CheckoutList(props:propType) {
                                         <img src={logoImg} className="size-8" alt="" />
                                     </div>
                                     <div className=" flex justify-start items-center text-primary ">
-                                        <div className='bg-primary p-2.5 px-6 text-background rounded-2xl rounded-tl-none text-sm' >
+                                        <div className='bg-primary p-2.5 px-6 text-background rounded-2xl rounded-tl-none text-xs sm:text-sm' >
                                             {feedBack}
                                         </div>
                                     </div>
                                 </div>
                                 <div className="w-full flex gap-2 items-start justify-end">     
-                                    <motion.div className="flex max-w-8/12 justify-end text-sm text-secondary-100 flex-col gap-2 ">
+                                    <motion.div className="flex max-w-full justify-end text-sm text-secondary-100 flex-col gap-2 ">
                                         {cartList.map((item,index)=>{
                                             return(
                                                 <CheckoutItem food={item} key={index}/>
@@ -136,17 +136,17 @@ export default function CheckoutList(props:propType) {
                             <img src={logoImg} className="size-8" alt="" />
                         </div>
                         <div className=" flex justify-start items-center text-primary ">
-                            <div className='bg-primary p-2.5 px-6 rounded-2xl rounded-tl-none text-sm' >
+                            <div className='bg-primary text-background p-2.5 px-6 rounded-2xl rounded-tl-none text-sm' >
                             <Digital/>  
                             </div>
                         </div>
                     </div>)}
             </div>
         ):(
-        <div className="w-full flex gap-2 justify-end">
+        <div className="w-full text-xs sm:text-sm  flex gap-2 justify-end">
             <div className='flex max-w-8/12 flex-col gap-0.5 justify-end w-full '>
                 <div className=" flex justify-end items-center text-primary ">
-                    <p className='bg-secondary-200 text-white p-2.5 px-6 rounded-2xl rounded-tr-none text-sm' >
+                    <p className='bg-secondary-200 text-white p-2.5 px-6 rounded-2xl rounded-tr-none text-xs sm:text-sm' >
                         {feedBack}
                     </p>
                 </div>

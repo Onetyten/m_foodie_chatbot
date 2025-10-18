@@ -106,7 +106,7 @@ export default function CustomisationList(props:propType) {
             </div>
         ):(
             <div>
-                <div className='bg-secondary-200 flex gap-2 flex-col items-start text-white p-2.5 px-6 rounded-2xl rounded-tr-none text-sm' >
+                <div className='bg-secondary-200 flex gap-2 flex-col items-start text-white sm:text-sm text-xs p-2.5 px-4 sm:px-6 rounded-2xl rounded-tr-none' >
                     <p>
                         I want my <span>{foodRedux?.name || "food"}</span> to be made with:
                     </p>

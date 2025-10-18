@@ -38,14 +38,14 @@ export default function SubCarousel(props:propType) {
       if (subcategoryList.length==0){
         
         return(
-            <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:2}} className="flex w-full gap-2 flex-wrap justify-center">
-                <div className="bg-muted/40 flex justify-center items-center w-[186px] h-52 rounded-md">
+            <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:2}} className="grid sm:grid-cols-3 xxs:grid-cols-2 grid-cols-1 w-full gap-2 flex-wrap justify-center">
+                <div className="bg-muted/40 flex justify-center items-center w-full h-52 rounded-md">
                     <Spinner/>
                 </div>
-                <div className="bg-muted/40 flex justify-center items-center w-[186px] h-52 rounded-md">
+                <div className="bg-muted/40 flex justify-center items-center w-full h-52 rounded-md">
                     <Spinner/>
                 </div>
-                <div className="bg-muted/40 flex justify-center items-center w-[186px] h-52 rounded-md">
+                <div className="bg-muted/40 hidden sm:flex justify-center items-center w-full h-52 rounded-md">
                     <Spinner/>
                 </div>
             </motion.div>
@@ -53,10 +53,10 @@ export default function SubCarousel(props:propType) {
       }
 
   return (
-    <div className="flex w-full gap-2 flex-wrap justify-center items-center">
+    <div className="w-full gap-2 grid sm:grid-cols-3 xxs:grid-cols-2 grid-cols-1">
         {subcategoryList.map((item,index)=>{
             return(
-                <div onClick={()=>{fetchFoodList(item)}} key={index} className="hover:bg-secondary-200/20 hover:shadow-xl shadow-secondary-100/10 cursor-pointer p-3 flex justify-center items-center flex-col w-[186px] h-52 overflow-hidden rounded-md bg-auto relative bg-center" style={{backgroundImage:`url(${patternImg})`}}>
+                <div onClick={()=>{fetchFoodList(item)}} key={index} className="hover:bg-secondary-200/20 hover:shadow-xl shadow-secondary-100/10 cursor-pointer p-3 flex justify-center items-center flex-col w-full h-52 overflow-hidden rounded-md bg-auto relative bg-center" style={{backgroundImage:`url(${patternImg})`}}>
 
                     <div className="flex-1 z-20 flex justify-center items-center text-center h-full w-full">
                         <img className="size-32 object-contain rounded-full" src={item.imageUrl} alt="" />

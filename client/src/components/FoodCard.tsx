@@ -10,8 +10,8 @@ interface propType{
 export default function FoodCard(props:propType) {
     const {food,onClick} = props
   return (
-        <div onClick={()=>{onClick(food)}} className="overflow-hidden hover:bg-secondary-200/20 hover:shadow-xl shadow-secondary-100/10 cursor-pointer p-3 flex justify-center items-center flex-col w-[186px] h-72 gap-1 rounded-md relative" style={{backgroundImage:`url(${patternImg})`}}>
-            <div className="w-16 h-10 font-bold text-md gap-0.5 z-30 rounded-bl-2xl absolute bg-secondary-100 top-0 text-background flex justify-center items-center right-0">
+        <div onClick={()=>{onClick(food)}} className="overflow-hidden hover:bg-secondary-200/20 hover:shadow-xl shadow-secondary-100/10 cursor-pointer p-3 flex justify-center items-center flex-col w-full h-72 gap-1 rounded-md relative" style={{backgroundImage:`url(${patternImg})`}}>
+            <div className="w-16 h-10 font-bold text-sm sm:text-md gap-0.5 z-30 rounded-bl-2xl absolute bg-secondary-100 top-0 text-background flex justify-center items-center right-0">
                 &#8358;{food.price}
             </div>
             <div className="flex-1 flex justify-center items-center text-center h-full w-full">
