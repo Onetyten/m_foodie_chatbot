@@ -1,5 +1,4 @@
 import ChatBox from "./components/ChatBox"
-import SearchBar from "./components/SearchBar"
 import "react-activity/dist/library.css"
 import { Provider} from "react-redux"
 import {PersistGate} from "redux-persist/integration/react"
@@ -8,9 +7,13 @@ import UserCheck from "./components/UserCheck"
 import Comfirmation from "./components/Comfirmation"
 import { BiSolidCoffeeBean } from "react-icons/bi";
 import FloraImg from "./assets/floral/flora.webp"
+import type { messageListType } from "../types/type"
+import { useState } from "react"
 
 
 function App() {
+  const [messagelist,setMessageList] = useState<messageListType[]>([])
+  const [showoptions,setShowOptions] = useState(false)
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
@@ -19,10 +22,9 @@ function App() {
           <div className="absolute font-black text-primary capitalize top-2 xl:top-4 left-6 text-2xl font-squada">
             Mori cafe
           </div>
-          <div className="xs:w-md sm:w-lg md:w-xl w-full max-w-full h-full px-2 flex flex-col gap-4">
-            <ChatBox />
-            <SearchBar/>
-          </div>
+          
+          <ChatBox messagelist={messagelist} setMessageList={setMessageList} showoptions={showoptions} setShowOptions={setShowOptions} />
+        
           <Comfirmation/>
            <BiSolidCoffeeBean className="xl:size-64 size-0 text-secondary-200 -z-10  absolute opacity-15 2xl:right-1/10 -right-20 sm:-right-1/10 md:-top-[13%] sm:-top-2/10 top-2/10 rotate-12 md:rotate-0"/>
 

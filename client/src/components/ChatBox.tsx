@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import BotMessage from "./BotMessage"
 import ChatMessage from "./ChatMessage"
 import OptionsInput from "./OptionsInput"
 import SubCarousel from "./SubCarousel"
-import type {cartType, FoodType, messageListType, subCategoryType } from "../../types/type"
+import type {cartType, FoodType, messageListType, } from "../../types/type"
 import FoodCarousel from "./FoodCarousel"
 import NumberInput from "./NumberInput"
 import { useDispatch, useSelector, useStore } from "react-redux"
@@ -20,18 +20,28 @@ import {setOrder} from '../../store/newOrderSlice'
 import OrderFeedback from "./OrderFeedback"
 import OrderReceipt from "./OrderReceipt"
 import OrderHandler from "./OrderHandler"
+import useListCart from "../../hooks/useListCart"
+import useFetchFoodList from "../../hooks/useFetchFoodList.ts"
+import SearchBar from "./SearchBar"
 
 
+interface propType{
+    messagelist:messageListType[];
+    setMessageList:React.Dispatch<React.SetStateAction<messageListType[]>>;
+    setShowOptions: React.Dispatch<React.SetStateAction<boolean>>;
+    showoptions: boolean;
+}
 
 
-export default function ChatBox() {
+export default function ChatBox(props:propType) {
+    const {messagelist,setMessageList,setShowOptions,showoptions} = props
     const scrollRef = useRef<HTMLDivElement|null>(null)
     const dispatch = useDispatch()
     const store = useStore<RootState>()
     const currentFood = useSelector((state:RootState)=>state.food.food)
     const user = useSelector((state:RootState)=>state.user.user)
     const pendingOrders = useSelector((state:RootState)=>state.pendingOrders.pendingOrders)
-    const [messagelist,setMessageList] = useState<messageListType[]>([])
+
     const initiatedRef = useRef<boolean>(false)
 
 
@@ -60,7 +70,6 @@ export default function ChatBox() {
         setMessageList((prev)=>[...prev,newMessage])
     }
 
-    const [showoptions,setShowOptions] = useState(false)
     function showAnsweroptions(){
         setShowOptions(true)
     }
@@ -110,23 +119,9 @@ export default function ChatBox() {
         return ()=>clearTimeout(timer)
     },[messagelist])
 
-    function fetchFoodList(category:subCategoryType){
-        if (loading) return
-        setLoading(true)
-        try
-        {
-            const newMessage = {type:"message",next:()=>{}, sender:"bot",content:[`Which one`]}
-            setMessageList((prev)=>[...prev, newMessage ])
-            setShowOptions(false)
-            const newList:messageListType = {type:"food-list",next:()=>{}, sender:"bot",content:[category._id]}
-            setMessageList((prev)=>[...prev, newList])
-            setOptions([{name:'Get something else', onClick:()=>getSomethingElseMessage("Let’s try something different.")}])
-            setShowOptions(false)
-        }
-        catch (error) {
-            console.error(error)
-        }
-    }
+    const fetchFoodList = useFetchFoodList(loading,setLoading,setMessageList,setShowOptions,setOptions,getSomethingElseMessage)
+    const CartList = useListCart(setMessageList,addToCartCleanup,setShowOptions)
+
 
     function optionCount(food:FoodType){
         if (loading) return console.log("something is loading")
@@ -211,14 +206,6 @@ export default function ChatBox() {
             setShowOptions(true)
         },1000)
     }
-    
-    function CartList(){
-        const newMessage = {type:"message",next:()=>{}, sender:"user",content:[`Let's Checkout`]}
-        setMessageList((prev)=>[...prev, newMessage ])
-        setShowOptions(false)
-        const newFeedBack = {type:"cart-list-feedback",next:addToCartCleanup, sender:"bot",content:['']}
-        setMessageList((prev)=>[...prev, newFeedBack ])
-    }
 
     function calculateSelectedPrice(){
         const cart = store.getState().orderList.orderList
@@ -282,28 +269,32 @@ export default function ChatBox() {
 
 
   return (
-    <div className="flex w-full chat-box font-outfit text-sm pb-12 overflow-y-scroll overflow-x-hidden  scroll-hide text-secondary-100 flex-1 flex-col justify-start mt-12 items-center gap-3 h-full">
-        <div className="w-full flex flex-col gap-6 justify-start">
-            {messagelist.map((item,index:number)=>{
-                return(
-                        item.type === "message"?item.sender==="bot"?<BotMessage key={index} message={item}/>:item.sender === "bot-error"?<BotErrorMessage key={index} message={item}/>:<ChatMessage message={item} key={index}/>
-                        :item.type === "subcarousel"?<SubCarousel message={item} key={index} fetchFoodList={fetchFoodList}  />
-                        :item.type === "number-input"?<NumberInput message={item} key={index} confirm={comfirmToCart} />
-                        :item.type === "cart-feedback"?<CartFeedBack message={item} key={index} isAdding={isAdding}/>
-                        :item.type === "order-handle"?<OrderHandler message={item} key={index}/>
-                        :item.type === "order-feedback"?<OrderFeedback key={index}/>
-                        :item.type === "order-receipt"?<OrderReceipt key={index} setMessageList={setMessageList} message={item}/>
-                        :item.type === "cart-list-feedback"?<CheckoutList key={index} message={item} setShowOptions={setShowOptions} setOptions={setOptions} getSomethingElseMessage = {getSomethingElseMessage} checkOutListSuccess={checkOutListSuccess} checkOutListCleared={checkOutListCleared}/>
-                        :item.type === "edit-list"?<CustomisationList key={index} message={item} addToCart = {addToCart} />
-                        :item.type === "enter-info"?<UserInfoInput key={index} setMessageList={setMessageList} setOptions={setOptions} setShowOptions={setShowOptions} getSomethingElseMessage={getSomethingElseMessage} ProceedToPayment={ProceedToPayment} />
-                        :item.type === "food-list"?<FoodCarousel key={index} setShowOptions={setShowOptions} setLoading={setLoading} message={item} onClick={optionCount}/>:''
-                )
-            })}
-        </div>
-        {showoptions&& <OptionsInput options = {options}/>}
-        <div ref={scrollRef} className="w-2 h-2">
+    <div className="xs:w-md sm:w-lg md:w-xl w-full max-w-full h-full px-2 flex flex-col gap-4">
+        <div className="flex w-full chat-box font-outfit text-sm pb-12 overflow-y-scroll overflow-x-hidden  scroll-hide text-secondary-100 flex-1 flex-col justify-start mt-12 items-center gap-3 h-full">
+            <div className="w-full flex flex-col gap-6 justify-start">
+                {messagelist.map((item,index:number)=>{
+                    return(
+                            item.type === "message"?item.sender==="bot"?<BotMessage key={index} message={item}/>:item.sender === "bot-error"?<BotErrorMessage key={index} message={item}/>:<ChatMessage message={item} key={index}/>
+                            :item.type === "subcarousel"?<SubCarousel message={item} key={index} fetchFoodList={fetchFoodList}  />
+                            :item.type === "number-input"?<NumberInput message={item} key={index} confirm={comfirmToCart} />
+                            :item.type === "cart-feedback"?<CartFeedBack message={item} key={index} isAdding={isAdding}/>
+                            :item.type === "order-handle"?<OrderHandler message={item} key={index}/>
+                            :item.type === "order-feedback"?<OrderFeedback key={index}/>
+                            :item.type === "order-receipt"?<OrderReceipt key={index} setMessageList={setMessageList} message={item}/>
+                            :item.type === "cart-list-feedback"?<CheckoutList key={index} message={item} setShowOptions={setShowOptions} setOptions={setOptions} getSomethingElseMessage = {getSomethingElseMessage} checkOutListSuccess={checkOutListSuccess} checkOutListCleared={checkOutListCleared}/>
+                            :item.type === "edit-list"?<CustomisationList key={index} message={item} addToCart = {addToCart} />
+                            :item.type === "enter-info"?<UserInfoInput key={index} setMessageList={setMessageList} setOptions={setOptions} setShowOptions={setShowOptions} getSomethingElseMessage={getSomethingElseMessage} ProceedToPayment={ProceedToPayment} />
+                            :item.type === "food-list"?<FoodCarousel key={index} setShowOptions={setShowOptions} setLoading={setLoading} message={item} onClick={optionCount}/>:''
+                    )
+                })}
+            </div>
+            {showoptions&& <OptionsInput options = {options}/>}
+            <div ref={scrollRef} className="w-2 h-2">
 
+            </div>
         </div>
+        <SearchBar messagelist={messagelist} setMessageList={setMessageList}/>
     </div>
+    
   )
 }

@@ -2,10 +2,16 @@ import { useState } from "react";
 import { BiSolidCoffeeBean } from "react-icons/bi";
 import { IoSend } from "react-icons/io5";
 import OutsideClickHandler from 'react-outside-click-handler';
+import QuickActions from "./searchbar/QuickActions";
+import type { messageListType } from "../../types/type";
 
+interface propType{
+    messagelist:messageListType[];
+    setMessageList:React.Dispatch<React.SetStateAction<messageListType[]>>
+}
 
-
-export default function SearchBar() {
+export default function SearchBar(props:propType) {
+  const {messagelist,setMessageList} = props
   const [showButtons,setShowButtons] = useState(false)
   return (
     <div className="w-full flex justify-center items-center h-11 mb-2 xl:mb-6">
@@ -17,7 +23,7 @@ export default function SearchBar() {
               <div className="bg-primary hover:text-white p-2 rounded-full z-20 text-background relative">
                 <BiSolidCoffeeBean onClick={()=>setShowButtons(!showButtons)} className="text-xl" />
               </div>
-              <div className={`${showButtons?"size-80":"size-0"} transition-all duration-250 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 absolute bg-primary/95 z-10 rounded-full`}> </div>
+              <QuickActions showButtons={showButtons} messagelist={messagelist} setMessageList={setMessageList} />
             </OutsideClickHandler>
           
 
