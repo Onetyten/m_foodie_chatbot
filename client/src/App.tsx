@@ -7,13 +7,10 @@ import UserCheck from "./components/UserCheck"
 import Comfirmation from "./components/Comfirmation"
 import { BiSolidCoffeeBean } from "react-icons/bi";
 import FloraImg from "./assets/floral/flora.webp"
-import type { messageListType } from "../types/type"
-import { useState } from "react"
 
 
 function App() {
-  const [messagelist,setMessageList] = useState<messageListType[]>([])
-  const [showoptions,setShowOptions] = useState(false)
+
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
@@ -23,7 +20,7 @@ function App() {
             Mori cafe
           </div>
           
-          <ChatBox messagelist={messagelist} setMessageList={setMessageList} showoptions={showoptions} setShowOptions={setShowOptions} />
+          <ChatBox/>
         
           <Comfirmation/>
            <BiSolidCoffeeBean className="xl:size-64 size-0 text-secondary-200 -z-10  absolute opacity-15 2xl:right-1/10 -right-20 sm:-right-1/10 md:-top-[13%] sm:-top-2/10 top-2/10 rotate-12 md:rotate-0"/>

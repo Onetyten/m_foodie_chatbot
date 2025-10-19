@@ -2,17 +2,28 @@ import { FaCartShopping } from "react-icons/fa6";
 import { GiPerspectiveDiceSixFacesRandom } from "react-icons/gi";
 import { GrHistory } from "react-icons/gr";
 import type { messageListType } from "../../../types/type";
+import useListCart from "../../../hooks/useListCart";
+import useGetElse from "../../../hooks/useGetElse";
+import useSubcategory from "../../../hooks/useSubcategory";
 
 interface propType{
     showButtons:boolean;
     messagelist:messageListType[];
     setMessageList:React.Dispatch<React.SetStateAction<messageListType[]>>;
+    setShowOptions: React.Dispatch<React.SetStateAction<boolean>>;
+    setOptions: React.Dispatch<React.SetStateAction<{name: string; onClick: () => void;}[]>>;
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default function QuickActions(props:propType) {
-    const {showButtons} = props
+    const {showButtons,setMessageList,setShowOptions,setOptions,setLoading} = props
+    const {getCategory} = useSubcategory(setOptions,setMessageList,setShowOptions)
+    const getSomethingElseMessage = useGetElse(setShowOptions,setMessageList,setOptions,getCategory)
+    const CartList = useListCart(setMessageList,setShowOptions,setLoading,setOptions,getSomethingElseMessage)
+
     function showTab(){
         console.log("tab it")
+        CartList()
     }
 
   return (

@@ -9,6 +9,10 @@ import CheckoutItem from "./CheckoutItem"
 import { useDispatch, useSelector } from "react-redux"
 import type { RootState } from "../../utils/store"
 import { setOrderList } from "../../store/OrderCartList"
+import useGetElse from "../../hooks/useGetElse"
+import useCalculatePrice from "../../hooks/useCalculatePrice"
+import type { messageListType } from "../../types/type"
+import useSubcategory from "../../hooks/useSubcategory"
 
 
 
@@ -25,18 +29,38 @@ interface propType{
     }[]>>,
     getSomethingElseMessage: (message: string) => void,
     setShowOptions: React.Dispatch<React.SetStateAction<boolean>>,
-    checkOutListSuccess: ()=> void
-    checkOutListCleared: ()=> void
+    setMessageList: React.Dispatch<React.SetStateAction<messageListType[]>>
 }
 
 export default function CheckoutList(props:propType) {
-    const {message,setShowOptions,checkOutListSuccess,checkOutListCleared} = props
+    const {message,setShowOptions,setOptions,setMessageList} = props
+    const {getCategory} = useSubcategory(setOptions,setMessageList,setShowOptions)
+    const getSomethingElseMessage = useGetElse(setShowOptions,setMessageList,setOptions,getCategory)
+    const calculateSelectedPrice = useCalculatePrice(getSomethingElseMessage,setShowOptions,setOptions,setMessageList)
     const [added,setAdded] = useState(false)
     const [checkedOut,setCheckedOut] = useState(false)
-    const [feedBack,setFeedack] = useState(`Select item to order`)
+    const [feedBack,setFeedback] = useState(`Select item to order`)
     const cartList = useSelector((state:RootState)=>state.orderList.orderList)
     const newOrder = useSelector((state:RootState)=>state.newOrder.newOrder)
     const dispatch = useDispatch()
+
+    
+    const checkOutListSuccess=() => {
+        setTimeout(() => {
+            setOptions([...[
+            { name: 'Checkout', onClick: ()=>calculateSelectedPrice() },
+            { name: 'Continue shopping', onClick: () => getSomethingElseMessage("Let's continue") }
+            ]]);
+            setShowOptions(true);
+        }, 100);
+    }
+    
+    function checkOutListCleared(){
+        setOptions([{name:'Continue shopping', onClick:()=>getSomethingElseMessage("Let's continue")}])
+    }
+
+
+
     useEffect(()=>{
         async function fetchCart() {
             try {
@@ -44,7 +68,7 @@ export default function CheckoutList(props:propType) {
                 if (!message.next) return
                 const response = await api.get('/order/cart/fetch')
                 if (response.data.success === false){
-                     return setFeedack(response.data.message)
+                     return setFeedback(response.data.message)
                 }
                 const items = response.data.data
                 dispatch(setOrderList(items))
@@ -53,9 +77,9 @@ export default function CheckoutList(props:propType) {
             catch (error) {
                 console.error(error)
                 if (axios.isAxiosError(error)){
-                    return setFeedack(error.response?.data.message)
+                    return setFeedback(error.response?.data.message)
                 }
-                setFeedack(`Error getting your tab, please try again`)
+                setFeedback(`Error getting your tab, please try again`)
             }
             finally{
                 message.next()
@@ -69,7 +93,9 @@ export default function CheckoutList(props:propType) {
     useEffect(() => {
         if (added && cartList.length === 0 && !checkedOut) {
             setCheckedOut(true)
-            setFeedack("Your tab is clear.")
+            const newMessage = {type:"message",next:()=>{}, sender:"bot",content:["Your tab is empty."]}
+            setMessageList((prev)=>[...prev, newMessage ])
+            setFeedback("Your tab is empty.")
             checkOutListCleared()
         }
         }, [cartList, checkedOut, added])
@@ -77,7 +103,7 @@ export default function CheckoutList(props:propType) {
     useEffect(() => {
         if (added && !checkedOut && newOrder !== null) {
             setCheckedOut(true)
-            setFeedack(`Ordering ${newOrder.items.map(item=>`${item.quantity} ${item.foodId.name}`).join(', ')}.`)
+            setFeedback(`Ordering ${newOrder.items.map(item=>`${item.quantity} ${item.foodId.name}`).join(', ')}.`)
             checkOutListCleared()
         }
         }, [newOrder])
