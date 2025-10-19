@@ -22,7 +22,9 @@ function fetchOrderController(req, res) {
         const { references } = req.body;
         try {
             yield (0, mongoConnect_1.default)();
-            const fetchedOrders = yield orderSchema_1.default.find({ userId, reference: { $in: references } }).select("_id status items paidAt reference email total").populate("items");
+            const fetchedOrders = yield orderSchema_1.default.find({ userId, reference: { $in: references } }).populate({
+                path: "items", populate: { path: "foodId", model: "Food", select: "name price imageUrl calories", },
+            });
             return res.status(200).json({ message: 'orders fetched', success: true, data: fetchedOrders });
         }
         catch (error) {
