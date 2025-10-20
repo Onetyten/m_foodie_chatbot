@@ -19,7 +19,7 @@ export default function Comfirmation() {
 
   return (
     deletedItem&&
-    <div className='fixed w-full h-full flex justify-center items-center z-60 bg-secondary-300/50'>
+    <div className='fixed w-full h-full flex justify-center items-center z-70 bg-secondary-300/50'>
         <div className='w-96 max-w-full mx-6 bg-white p-6 gap-4 flex flex-col justify-center items-center text-sm sm:text-md rounded-md'>
             <p className='text-center text-secondary-100'>
                 Are you sure you want to remove {deletedItem.foodId.name} from your tab

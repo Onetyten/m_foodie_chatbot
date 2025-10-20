@@ -6,7 +6,7 @@ export default function useFetchReceiptList(setMessageList:React.Dispatch<React.
     function fetchReceiptList(){
         try
         {   
-            const newCommand = {type:"message",next:()=>{}, sender:"bot",content:['Fetch my order history']}
+            const newCommand = {type:"message",next:()=>{}, sender:"user",content:['Fetch my order history']}
             setMessageList((prev)=>[...prev, newCommand ])
 
             setTimeout(()=>{

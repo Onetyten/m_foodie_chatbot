@@ -10,7 +10,7 @@ interface ReceiptProps {
 export const HistoryReceipt = React.forwardRef<HTMLDivElement, ReceiptProps>(({ order }, ref) => {
   return (  
     <div className="w-full justify-center flex items-center">
-        <div ref={ref} className="w-[300px] text-xs bg-white flex relative justify-center items-center  text-secondary-100 font-mono">
+        <div ref={ref} className="w-[300px] max-w-full text-xs bg-white flex relative justify-center items-center  text-secondary-100 font-mono">
             <img src={logoImg} alt="" className="absolute opacity-10" />
             <div className="p-5 w-full relative flex justify-center items-center gap-4 flex-col">
                 

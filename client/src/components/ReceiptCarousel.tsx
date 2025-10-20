@@ -56,7 +56,7 @@ export default function ReceiptCarousel(props:propType) {
             return(
             <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:2}} className="flex flex-col justify-center items-center gap-2">
                 <div className="w-full gap-2 grid grid-cols-1">
-                    <div className="bg-muted/40 hidden sm:flex justify-center items-center w-full h-60 rounded-md">
+                    <div className="bg-muted/40 hidden sm:flex justify-center items-center w-[400px] max-w-full h-60 rounded-md">
                         <Spinner/>
                     </div>
                 </div>
