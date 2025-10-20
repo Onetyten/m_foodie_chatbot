@@ -6,6 +6,7 @@ import Order from '../../schema/orderSchema';
 
 
 export async function verifyPaymentController (req:Request,res:Response){
+    console.log("Webhook event triggered")
     const paystackKey = process.env.PAYSTACK_KEY
     if (!paystackKey) throw new Error("PAYSTACK_KEY variable not found, add it to the .env")
     const signature = req.headers["x-paystack-signature"] as string
