@@ -49,7 +49,7 @@ export default function OrderFeedback() {
 
   return (
     <div className="max-w-8/12 flex gap-2 items-start">
-        <div className='bg-secondary-100 sm:min-w-10 min-w-8 size-8 sm:size-10 rounded-full flex justify-center items-center'>
+        <div className='bg-primary sm:min-w-10 min-w-8 size-8 sm:size-10 rounded-full flex justify-center items-center'>
             <img src={logoImg} className="size-6 sm:size-8" alt="" />
         </div>
         {added?(
