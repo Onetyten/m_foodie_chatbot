@@ -46,13 +46,13 @@ app.use('/user',createUserRoute)
 app.use('/food',fetchSubcategoryRoute)
 app.use('/food',foodListRoute)
 app.use('/food',getCustomRoute)
-
+app.use('/webhook', verifyHookRoute)
 app.use('/order',Authorization)
 app.use('/order', addCartRoute)
 app.use('/order', fetchCartRoute)
 app.use('/order', deleteCartRoute)
 app.use('/order', createOrderRoute)
-app.use('/order', verifyHookRoute)
+
 app.use('/order', fetchOrderRoute)
 
 app.get(/.*/,(req,res)=>{

@@ -3,6 +3,6 @@ import { verifyPaymentController } from '../../../controller/webhooks/verify.con
 
 const router = express.Router()
 
-router.post('/webhook/verify',verifyPaymentController)
+router.post('/verify',verifyPaymentController)
 
 export default router
