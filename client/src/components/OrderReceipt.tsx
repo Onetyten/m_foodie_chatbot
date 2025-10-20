@@ -41,7 +41,6 @@ export default function OrderReceipt(props:propType) {
             try {
                 const response = await api.post('/order/fetch', {references})
                 if (response.data.success===false){
-                    console.log(response.data.message)
                     return messages.push("Internal server error")
                 }
                 setAdded(true)
@@ -72,7 +71,6 @@ export default function OrderReceipt(props:propType) {
                 else{
                     messages.push("Internal server error")
                 }
-                console.log(error)
             }
             finally{
                 if (messages.length>0){

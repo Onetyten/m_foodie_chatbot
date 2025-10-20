@@ -49,8 +49,7 @@ export default function OrderHandler(props:propType) {
 
   function handlePrintReceipt(){
     setConfirmed(true)
-    setFeedback("Downloading receipt")
-    console.log("Receipt printed")
+    setFeedback("Receipt printed")
     handlePrint()
   }
 

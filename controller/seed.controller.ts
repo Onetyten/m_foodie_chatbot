@@ -57,7 +57,7 @@ export async function seedDataController(req:Request,res:Response){
             console.log(`subcategory ${newSubcategory.name} seeded`)
         }
         console.log("sub-categories seeded, seeding cutomisations")
-        Customisation.deleteMany()
+        await Customisation.deleteMany()
         for (const customisation of customisationData){
             const newCustomisation = await Customisation.create(customisation)
             seededCustomisation.push(newCustomisation)
@@ -65,7 +65,7 @@ export async function seedDataController(req:Request,res:Response){
         }
         console.log("seeding food...")
 
-        Food.deleteMany()
+        await Food.deleteMany()
         for (const food of foodData){
             const category = seededCategory.find((cat)=>cat.name === food.category)
             const subCategory = seededSubCategory.find((sub)=>sub.name === food.subCategory)

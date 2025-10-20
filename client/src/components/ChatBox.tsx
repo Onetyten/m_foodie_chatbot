@@ -24,6 +24,7 @@ import useOptionCount from "../../hooks/useOptionCount.ts"
 import useAddToCart from "../../hooks/useAddToCart.ts"
 import {useChatInit} from "../../hooks/useChatInit.ts"
 import SearchBar from "./SearchBar"
+import ReceiptCarousel from "./ReceiptCarousel.tsx"
 
 
 
@@ -35,10 +36,11 @@ export default function ChatBox() {
     const [loading,setLoading] = useState(false)
     const initiatedRef = useRef<boolean>(false)
     const [options,setOptions] = useState([{name:'Coffee', onClick:()=>getCategory('coffee')},{name:'Drink',onClick:()=>getCategory('drink')},{name:'Snacks',onClick:()=>getCategory('snack')}])
+    const [showButtons,setShowButtons] = useState(false)
     const isAdding = useRef(false)
 
     // hooks
-    useChatInit({scrollRef,messagelist,initiatedRef,setMessageList,setShowOptions})
+    useChatInit({scrollRef,messagelist,initiatedRef,setMessageList,setShowOptions,setShowButtons})
     const {getCategory} = useSubcategory(setOptions,setMessageList,setShowOptions)
     const getSomethingElseMessage = useGetElse(setShowOptions,setMessageList,setOptions,getCategory)
     const fetchFoodList = useFetchFoodList(loading,setLoading,setMessageList,setShowOptions,setOptions,getSomethingElseMessage)
@@ -64,16 +66,18 @@ export default function ChatBox() {
                             :item.type === "cart-list-feedback"?<CheckoutList key={index} message={item} setShowOptions={setShowOptions} setOptions={setOptions} getSomethingElseMessage = {getSomethingElseMessage} setMessageList={setMessageList}/>
                             :item.type === "edit-list"?<CustomisationList key={index} message={item} addToCart = {addToCart} />
                             :item.type === "enter-info"?<UserInfoInput key={index} setMessageList={setMessageList} setOptions={setOptions} setShowOptions={setShowOptions} getSomethingElseMessage={getSomethingElseMessage} ProceedToPayment={ProceedToPayment} />
-                            :item.type === "food-list"?<FoodCarousel key={index} setShowOptions={setShowOptions} setLoading={setLoading} message={item} onClick={optionCount}/>:''
+                            :item.type === "food-list"?<FoodCarousel key={index} setShowOptions={setShowOptions} setMessageList={setMessageList} setLoading={setLoading} message={item} onClick={optionCount}/>
+                            :item.type === "receipt-list"?<ReceiptCarousel key={index} setShowOptions={setShowOptions} setMessageList={setMessageList} setLoading={setLoading} message={item}/>:''
                     )
                 })}
             </div>
-            {showoptions&& <OptionsInput options = {options}/>}
-            <div ref={scrollRef} className="w-2 h-2">
+              <div ref={scrollRef} className="w-2 h-2">
 
             </div>
+            {showoptions&& <OptionsInput options = {options}/>}
+          
         </div>
-        <SearchBar messagelist={messagelist} setMessageList={setMessageList} setOptions={setOptions} setShowOptions={setShowOptions} setLoading={setLoading}/>
+        <SearchBar messagelist={messagelist} setMessageList={setMessageList} setOptions={setOptions} setShowOptions={setShowOptions} setLoading={setLoading} loading = {loading} showButtons={showButtons} setShowButtons={setShowButtons}/>
     </div>
     
   )

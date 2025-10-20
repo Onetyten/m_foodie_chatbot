@@ -106,14 +106,12 @@ export default function CheckoutList(props:propType) {
             setFeedback(`Ordering ${newOrder.items.map(item=>`${item.quantity} ${item.foodId.name}`).join(', ')}.`)
             checkOutListCleared()
         }
-        }, [newOrder])
-
+    }, [newOrder])
 
     if (checkedOut && newOrder === null){
         return null
     }
-
-
+    
   return (
     <div className="w-full">
         {!checkedOut?(
@@ -134,11 +132,11 @@ export default function CheckoutList(props:propType) {
                                 </div>
                                 <div className="w-full flex gap-2 items-start justify-end">     
                                     <motion.div className="flex max-w-full justify-end text-sm text-secondary-100 flex-col gap-2 ">
-                                        {cartList.map((item,index)=>{
-                                            return(
-                                                <CheckoutItem food={item} key={index}/>
-                                            )
-                                        })}
+                                        {cartList
+                                        .filter((item) => item && item.foodId)
+                                        .map((item, index) => (
+                                            <CheckoutItem food={item} key={index} />
+                                        ))}
                                     </motion.div>
                                 </div>
                             </div>

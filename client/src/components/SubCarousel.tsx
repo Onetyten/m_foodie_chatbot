@@ -12,7 +12,7 @@ interface propType{
         next?:()=>void, 
         content:string[]
     },
-    fetchFoodList:(category:subCategoryType)=>void,
+    fetchFoodList:(endpoint:string,expression: string)=>void,
     
 }
 
@@ -21,15 +21,11 @@ export default function SubCarousel(props:propType) {
     const [subcategoryList,setSubcategoryList] = useState<subCategoryType[]>([])
     useEffect(()=>{
         async function getSubCategory() {
-           try {
              const response = await api.get(`/food/subcategory/${message.content[0]}`)
              if (response.data.success == false) return
              setSubcategoryList(response.data.data)
              if (message.next) message.next()
-           }
-           catch (error) {
-            console.log(error)
-           }
+           
         }
         getSubCategory()
     },[message, message.content])
@@ -56,7 +52,7 @@ export default function SubCarousel(props:propType) {
     <div className="w-full gap-2 grid sm:grid-cols-3 xxs:grid-cols-2 grid-cols-1">
         {subcategoryList.map((item,index)=>{
             return(
-                <div onClick={()=>{fetchFoodList(item)}} key={index} className="hover:bg-secondary-200/20 hover:shadow-xl shadow-secondary-100/10 cursor-pointer p-3 flex justify-center items-center flex-col w-full h-52 overflow-hidden rounded-md bg-auto relative bg-center" style={{backgroundImage:`url(${patternImg})`}}>
+                <div onClick={()=>{fetchFoodList(`/food/list?sub_id=${item._id}`,"Which one")}} key={index} className="hover:bg-secondary-200/20 hover:shadow-xl shadow-secondary-100/10 cursor-pointer p-3 flex justify-center items-center flex-col w-full h-52 overflow-hidden rounded-md bg-auto relative bg-center" style={{backgroundImage:`url(${patternImg})`}}>
 
                     <div className="flex-1 z-20 flex justify-center items-center text-center h-full w-full">
                         <img className="size-32 object-contain rounded-full" src={item.imageUrl} alt="" />

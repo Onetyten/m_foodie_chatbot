@@ -32,7 +32,8 @@ export async function OrderController(req:Request,res:Response){
         const cartItems:cartListType[] = value.items
         const createdOrderItemsId = []
         for (const item of cartItems){
-            const originCart = await Cart.findById(item._id)
+            const originCart = await Cart.findByIdAndDelete(item._id)
+            if (!originCart) continue
             const newCartItem = await OrderItem.create({
                 foodId:originCart?.foodId,
                 quantity:item.quantity,

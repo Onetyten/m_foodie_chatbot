@@ -8,10 +8,11 @@ interface UseChatInitProps {
     messagelist: messageListType[];
     initiatedRef: React.RefObject<boolean>;
     setMessageList: React.Dispatch<React.SetStateAction<messageListType[]>>;
-    setShowOptions:React.Dispatch<React.SetStateAction<boolean>>
+    setShowOptions:React.Dispatch<React.SetStateAction<boolean>>;
+    setShowButtons: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export function useChatInit({scrollRef,messagelist,initiatedRef,setMessageList,setShowOptions}: UseChatInitProps) {
+export function useChatInit({scrollRef,messagelist,initiatedRef,setMessageList,setShowOptions,setShowButtons}: UseChatInitProps) {
     const pendingOrders = useSelector((state:RootState)=>state.pendingOrders.pendingOrders)
     const user = useSelector((state:RootState)=>state.user.user)
 
@@ -22,10 +23,12 @@ export function useChatInit({scrollRef,messagelist,initiatedRef,setMessageList,s
 
     useEffect(() => {
         const timer = setTimeout(() => {
+        setShowButtons(false)
         scrollRef.current?.scrollIntoView({ behavior: "smooth" });
         }, 500);
 
         return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [messagelist, scrollRef]);
 
 

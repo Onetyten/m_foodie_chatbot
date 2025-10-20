@@ -35,7 +35,7 @@ export default function UserInfoInput(props:propType) {
   const neworder = useSelector((state:RootState)=>state.newOrder.newOrder)
   
   function SubmitInfo(){
-    if (!neworder) return console.log("No order found")
+    if (!neworder) return
     const payload = {
       name:name,
       address:address,

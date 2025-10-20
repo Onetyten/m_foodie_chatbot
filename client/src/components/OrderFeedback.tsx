@@ -22,7 +22,7 @@ export default function OrderFeedback() {
             try {
                 const response = await api.post('/order/create',order)
                 if (response.data.success===false){
-                    return console.log(response.data.message)
+                    return
                 }
                 setFeedback("You will be redirected to your payment portal shortly")
                 const data = response.data.data
@@ -38,7 +38,6 @@ export default function OrderFeedback() {
                 else{
                     setFeedback("Internal server error")
                 }
-                console.log(error)
                 
             }
             finally{

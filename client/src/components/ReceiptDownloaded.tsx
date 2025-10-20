@@ -26,7 +26,7 @@ export const ReceiptDownloaded = React.forwardRef<HTMLDivElement, ReceiptProps>(
                 </p>
                 <p>
                     <span className={`font-bold text-secondary-100}`}>Status:</span> 
-                    <span className={`${order.status=="completed"?"text-green-400":"text-red-500"}`}>{order.status}</span>
+                    <span className={`${order.status=="completed"?"text-green-400":"text-red-500"}`}> {order.status}</span>
                 </p>
             </div>
 
