@@ -51,7 +51,7 @@ export default function ChatBox() {
     const ProceedToPayment = useProceedPayment(setShowOptions,setMessageList)
     
   return (
-    <div className="xs:w-md sm:w-lg md:w-xl w-full max-w-full h-full px-2 flex flex-col gap-4">
+    <div className="xs:w-md sm:w-lg md:w-xl w-full max-w-full h-full p-2 flex flex-col gap-4">
         <div className="flex w-full chat-box font-outfit text-sm pb-12 overflow-y-scroll overflow-x-hidden  scroll-hide text-secondary-100 flex-1 flex-col justify-start mt-12 items-center gap-3 h-full">
             <div className="w-full flex flex-col gap-6 justify-start">
                 {messagelist.map((item,index:number)=>{
