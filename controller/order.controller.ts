@@ -7,7 +7,7 @@ import OrderItem from "../schema/orderItemShema";
 import Cart from "../schema/cartShema";
 import { OrderSchema } from "../validation/orderValidation";
 import Order from "../schema/orderSchema";
-import axios from 'axios';
+import axios, { isAxiosError } from 'axios';
 
 
 
@@ -75,7 +75,7 @@ export async function OrderController(req:Request,res:Response){
         })
     }
     catch (error) {
-        if (axios.isAxiosError(error)){
+        if (isAxiosError(error)){
             console.error(error.response?.data)
             return res.status(500).json({message:`Payment initialization failed`,error,success:false})
         }
