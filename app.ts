@@ -15,6 +15,7 @@ import deleteCartRoute from './router/order/deleteCart.route'
 import createOrderRoute from './router/order/createorder.route'
 import verifyHookRoute from './router/order/webhook/verify.route'
 import fetchOrderRoute from './router/order/fetchOrder.route'
+import verifyPaymentRoute from './router/order/verifyPayment.route'
 import { Authorization } from './middleware/authorization'
 
 declare module "express-serve-static-core"{
@@ -47,17 +48,19 @@ app.use('/food',fetchSubcategoryRoute)
 app.use('/food',foodListRoute)
 app.use('/food',getCustomRoute)
 app.use('/webhook', verifyHookRoute)
+
 app.use('/order',Authorization)
 app.use('/order', addCartRoute)
 app.use('/order', fetchCartRoute)
 app.use('/order', deleteCartRoute)
 app.use('/order', createOrderRoute)
-
 app.use('/order', fetchOrderRoute)
+app.use('/order', verifyPaymentRoute )
 
 app.get(/.*/,(req,res)=>{
     res.sendFile(path.join(rootDir,"client","dist","index.html"))
 })
+
 
 async function startServer(){
     try {
