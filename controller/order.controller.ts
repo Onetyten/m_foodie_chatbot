@@ -20,13 +20,16 @@ export async function OrderController(req:Request,res:Response){
     }
 
     const {error,value} = OrderSchema.validate(req.body)
-    if (error) return res.status(400).json({message:`Validation error:${error.message}}`,success:false})
+    const isMobile  = req.query.isMobile === 'true'
+
+    if (error) return res.status(400).json({message:`Validation error:${error.message}`,success:false})
+    
     const userId = req.userId
-    if (!userId) 
-        {
-            console.log("No user id found")
-            res.status(400).json({message:`No user id found`,success:false})
-        }
+    if (!userId) {
+        console.log("No user id found")
+        return res.status(401).json({message:`No user id found`,success:false})
+    }
+
     try {
         await mongoConnect()
         const cartItems:cartListType[] = value.items
@@ -45,42 +48,61 @@ export async function OrderController(req:Request,res:Response){
         }
         const email = value.email.toLowerCase()
         const callback_url = process.env.CALLBACK_URL
-        const total  = cartItems.reduce((sum,item)=>sum+(item.totalPrice*item.quantity),0)        
-        const payParams = {
-          email: email,
-          amount: total*100,
-          callback_url
+        const total  = cartItems.reduce((sum,item)=>sum+(item.totalPrice*item.quantity),0)
+        let data = {}
+        
+        if (!isMobile){
+            const payParams = {
+            email: email,
+            amount: total*100,
+            callback_url
+            }
+
+            const paystack_response = await axios.post('https://api.paystack.co/transaction/initialize',payParams,{
+            headers: {
+                Authorization: `Bearer ${paystackKey}`,
+                'Content-Type': 'application/json'
+            }
+            })
+            const result = paystack_response.data
+            const newOrder = await Order.create({
+                userId,
+                items: createdOrderItemsId,
+                name:value.name,
+                email,
+                address:value.address,
+                reference:result.data.reference,
+                access_code: result.data.access_code,
+                payment_url: result.data.authorization_url,
+                phone_number:value.phone_number,
+                total
+            })
+            data = {orderId:newOrder._id,email, amount:total, authorization_url: result.data.authorization_url, reference: result.data.reference}
         }
-        const paystack_response = await axios.post('https://api.paystack.co/transaction/initialize',payParams,{
-        headers: {
-            Authorization: `Bearer ${paystackKey}`,
-            'Content-Type': 'application/json'
+        else{
+            const newOrder = await Order.create({
+                userId,
+                items: createdOrderItemsId,
+                name:value.name,
+                email,
+                address:value.address,
+                phone_number:value.phone_number,
+                total
+            })
+            data = {orderId:newOrder._id,email, amount:total,}
         }
-        }) 
-        const result = paystack_response.data
-        const newOrder = await Order.create({
-            userId,
-            items: createdOrderItemsId,
-            name:value.name,
-            email,
-            address:value.address,
-            reference:result.data.reference,
-            access_code: result.data.access_code,
-            payment_url: result.data.authorization_url,
-            phone_number:value.phone_number,
-            total
-        })
         console.log("order created")
-        return res.status(201).json({message:'Order created successfully',success:true,  data: { authorization_url: result.data.authorization_url, reference: result.data.reference}
-        })
+        return res.status(201).json({message:'Order created successfully',success:true,data})
+
     }
+    
     catch (error) {
         if (isAxiosError(error)){
             console.error(error.response?.data)
-            return res.status(500).json({message:`Payment initialization failed`,error,success:false})
+            return res.status(500).json({message:`Payment initialization failed`,error:error.message,success:false})
         }
         console.error("error creating order",error)
-        return res.status(500).json({message:`error creating order : ${error instanceof Error?error.message:""}`,error,success:false})
+        return res.status(500).json({message:`error creating order : ${error instanceof Error?error.message:""}`,success:false})
 
     }
 }
