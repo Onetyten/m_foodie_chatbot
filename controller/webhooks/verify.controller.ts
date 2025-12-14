@@ -3,11 +3,12 @@ dotenv.config()
 import { Request, Response } from "express";
 import crypto from 'crypto'
 import Order from '../../schema/orderSchema';
+import mongoConnect from '../../config/mongoConnect';
 
 
 export async function verifyPaymentController (req:Request,res:Response){
     try {
-        console.log("Webhook event triggered")
+        await mongoConnect()
         const paystackKey = process.env.PAYSTACK_KEY
         if (!paystackKey) throw new Error("PAYSTACK_KEY variable not found, add it to the .env")
         const signature = req.headers["x-paystack-signature"] as string
@@ -22,7 +23,9 @@ export async function verifyPaymentController (req:Request,res:Response){
         console.log("webhook event received: ",event.event)
         if (event.event === "charge.success"){
             const reference = event.data.reference
-            const email = event.data.customer?.email 
+            const email = event.data.customer?.email
+            console.log(event.data)
+
             const paidOrder = await Order.findOneAndUpdate({email,reference,status:"pending"},{status:"completed",paidAt:new Date()},{new:true})
             if (paidOrder) {
                 console.log("Order payment confirmed:", paidOrder._id);

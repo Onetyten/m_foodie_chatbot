@@ -45,22 +45,27 @@ export async function verifyPaymentController(req:Request,res:Response){
             return res.status(400).json({ message:"Payment not successful",success:false})
         }
         const order = await Order.findOne({_id:orderId,userId,status:"pending"})
+
         if (!order) {
+            console.log("Order not found or already completed")
             return res.status(200).json({message: "Order not found or already completed",success: false })
         }
         
         if (paymentData.amount !== order.total * 100) {
+            console.log("Incorrect amount paid, your payment has been refunded")
             return res.status(400).json({message: "Incorrect amount paid, your payment has been refunded", success: false })
         }
 
         if (paymentData.currency !== "NGN") {
+            console.log("Payments must be made in Naira, your payment has been refunded")
             return res.status(400).json({ message: "Payments must be made in Naira, your payment has been refunded", success: false})
         }
         if (paymentData.customer.email !== order.email) {
+            console.log("Email mismatch, your payment has been refunded")
             return res.status(400).json({ message: "Email mismatch, your payment has been refunded", success: false})
         }
         
-        const updatedOrder = await order.updateOne({_id:order._id},{status:"completed",reference,paidAt:new Date()})
+        const updatedOrder = await Order.updateOne({_id:order._id},{status:"completed",reference,paidAt:new Date()})
         
         return res.status(200).json({ 
             message: "Payment confirmed successfully", 
