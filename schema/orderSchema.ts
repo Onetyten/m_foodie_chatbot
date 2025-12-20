@@ -30,7 +30,7 @@ const orderSchema = new mongoose.Schema({
     email:{type:String,required:true},
     address:{type:String,required:true},
     phone_number:{type:String,required:true},
-    total:{type:Number, required:true,default:0}
+    total:{type:Number, required:true,default:0},
 })
 
 const Order = mongoose.model<orderType>("Order",orderSchema)
