@@ -23,6 +23,7 @@ export async function OrderController(req:Request,res:Response){
     const isMobile  = req.query.isMobile === 'true'
 
     if (error) return res.status(400).json({message:`Validation error:${error.message}`,success:false})
+    console.log(error)
     
     const userId = req.userId
     if (!userId) {

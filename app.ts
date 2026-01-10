@@ -6,6 +6,7 @@ import path from "path"
 import mongoConnect from './config/mongoConnect'
 import seedDateRoute from './router/seed/seed.route'
 import createUserRoute from './router/createUser.route'
+import validateUserRoute from './router/validateUser.route'
 import fetchSubcategoryRoute from './router/food/subcategory.route'
 import foodListRoute from './router/food/list.route'
 import getCustomRoute from './router/food/getCustomisation.route'
@@ -45,6 +46,7 @@ app.get('/hello',(req,res)=>{
 
 app.use('/data',seedDateRoute)
 app.use('/user',createUserRoute)
+app.use('/user',validateUserRoute)
 app.use('/food',fetchSubcategoryRoute)
 app.use('/food',foodListRoute)
 app.use('/food',getCustomRoute)
