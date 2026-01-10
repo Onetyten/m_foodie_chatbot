@@ -12,10 +12,6 @@ export async function getCartList(req:Request,res:Response){
     try {
         await mongoConnect()
         const cartList = await Cart.find({userId}).select("_id quantity totalPrice").populate({path:"foodId",select:["name","imageUrl"]})
-        if (!cartList.length){
-            console.log("No item found in cart")
-            return res.status(404).json({message:"No item found in cart",success:false})
-        }
         console.log("cart fetched")
         return res.status(200).json({message:"cart fetched",data:cartList,success:true})
     }
