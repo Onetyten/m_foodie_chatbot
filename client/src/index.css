@@ -2,14 +2,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
+
+
 @import "tailwindcss";
 
 :root {
   --primary : #588159;
   --secondary-100: #395a3f;
-  --secondary-200: #a2b18a;
+  --light: #a2b18a;
   --background: #e9d5ca;
   --muted:#4f4849;
+  --brown: #6f4e37;
+  --danger: #FA4032;
+  --warning: #f59e0b;
+  --success: #22c55e;
 }
 
 
@@ -22,11 +29,15 @@ body{
 @theme inline{
   --font-squada: "Squada One", sans-serif;
   --font-baskerville: "Libre Baskerville", serif;
+  --font-reader: "Newsreader", serif;
   --font-outfit: "Outfit", sans-serif;
   --color-primary: var(--primary);
   --color-secondary-100: var(--secondary-100);
-  --color-secondary-200: var(--secondary-200);
-  --color-secondary-300: #592c0d;
+  --color-secondary-200: var(--light);
+  --color-secondary-300: var(--brown);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-success: var(--success);
   --color-background: var(--background);
   --color-muted: var(--muted);
   --breakpoint-xs:375px;
