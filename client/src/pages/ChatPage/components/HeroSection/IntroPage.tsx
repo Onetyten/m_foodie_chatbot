@@ -6,7 +6,7 @@ import Background from "./Background";
 
 export default function IntroPage() {
   return (
-    <div className="w-screen max-w-screen overflow-x-hidden flex  flex-col min-h-[100dvh] p-6 font-outfit items-center relative">
+    <div className="w-screen max-w-screen overflow-hidden flex flex-col min-h-[100dvh] p-6 font-outfit items-center relative">
             <NavBar/>
             <div className="flex-1 pt-36 flex flex-col items-center text-center text-secondary-100 gap-8">
                 <p className="font-reader text-5xl w-[600px] font-light capitalize">

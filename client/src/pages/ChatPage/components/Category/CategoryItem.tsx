@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router'
 
 
 interface propTypes{
-    item: {name:string, imageUrls:string[]},
+    item: {name:string,value:string , imageUrls:string[]},
     index:number,
 }
-
 
 export default function CategoryItem(props:propTypes) {
     const {item,index} = props
     const delay = index * 1000
     const [canSwitch,setCanSwitch] = useState(false)
     const [imageIndex,setImageIndex] = useState(0)
+    const navigate = useNavigate()
 
     useEffect(()=>{
         if (canSwitch) return
@@ -22,22 +23,25 @@ export default function CategoryItem(props:propTypes) {
 
     useEffect(()=>{
         if (!canSwitch) return
-        setInterval(()=>{
+        const intervalId = setInterval(()=>{
             setImageIndex((prev)=>prev >= item.imageUrls.length-1?0:prev+1)
         },2000)
 
-    },[canSwitch, imageIndex, item.imageUrls.length])
+        return () => clearInterval(intervalId)
+
+    },[canSwitch, item.imageUrls.length])
 
   return (
-    <div className='flex items-center gap-6'>
-        <div className="bg-primary hover:shadow-xl shadow-secondary-100/10 cursor-pointer p-3 flex justify-center items-center flex-col size-60 overflow-hidden rounded-full">
+    <div className='flex flex-col w-full items-center gap-6'>
+        <div onClick={()=>navigate(`/chat?category=${item.value}`)} className="bg-primary hover:shadow-xl shadow-secondary-100/10 cursor-pointer p-3 flex justify-center items-center w-full aspect-square flex-col overflow-hidden rounded-full">
+            
             <div className='w-full h-full justify-center items-center flex hover:scale-110 transition-all duration-500'>  
-                <img className="size-52 object-contain rounded-full" src={item.imageUrls[imageIndex]} alt="" />  
+                <img className="w-1/2 object-contain rounded-full" src={item.imageUrls[imageIndex]} alt="" />  
             </div>
             
         </div>
 
-        <div className="capitalize text-center text-secondary-100 text-xl font-bold">
+        <div className="capitalize text-center text-secondary-100 text-2xl font-medium">
             {item.name}
         </div>
     </div>

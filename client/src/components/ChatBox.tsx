@@ -40,7 +40,7 @@ export default function ChatBox() {
     const isAdding = useRef(false)
 
     // hooks
-    useChatInit({scrollRef,messagelist,initiatedRef,setMessageList,setShowOptions,setShowButtons})
+    useChatInit({setOptions,scrollRef,messagelist,initiatedRef,setMessageList,setShowOptions,setShowButtons})
     const {getCategory} = useSubcategory(setOptions,setMessageList,setShowOptions)
     const getSomethingElseMessage = useGetElse(setShowOptions,setMessageList,setOptions,getCategory)
     const fetchFoodList = useFetchFoodList(loading,setLoading,setMessageList,setShowOptions,setOptions,getSomethingElseMessage)

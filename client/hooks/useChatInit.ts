@@ -2,8 +2,11 @@ import { useEffect } from "react";
 import type { messageListType } from "../types/type";
 import { useSelector } from "react-redux";
 import type { RootState } from "../utils/store";
+import { useSearchParams } from "react-router";
+import useSubcategory from "./useSubcategory";
 
 interface UseChatInitProps {
+    setOptions: React.Dispatch<React.SetStateAction<{ name: string;onClick: () => void }[]>>
     scrollRef: React.RefObject<HTMLDivElement | null>;
     messagelist: messageListType[];
     initiatedRef: React.RefObject<boolean>;
@@ -12,9 +15,12 @@ interface UseChatInitProps {
     setShowButtons: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export function useChatInit({scrollRef,messagelist,initiatedRef,setMessageList,setShowOptions,setShowButtons}: UseChatInitProps) {
-    const pendingOrders = useSelector((state:RootState)=>state.pendingOrders.pendingOrders)
-    const user = useSelector((state:RootState)=>state.user.user)
+export function useChatInit({setOptions,scrollRef,messagelist,initiatedRef,setMessageList,setShowOptions,setShowButtons}: UseChatInitProps) {
+    const pendingOrders = useSelector((state:RootState)=>state.pendingOrders.pendingOrders);
+    const {getCategory} = useSubcategory(setOptions,setMessageList,setShowOptions)
+    const user = useSelector((state:RootState)=>state.user.user);
+    const [searchParams]= useSearchParams();
+    const allowedCategories = ['coffee','drink','snack']
 
     function introMessage(){
         const newMessage = {type:"message", sender:"bot", next:()=>{setShowOptions(true)}, content:['Hey there! I’m Mori','your digital barista','What are you craving today?']}
@@ -26,7 +32,6 @@ export function useChatInit({scrollRef,messagelist,initiatedRef,setMessageList,s
         setShowButtons(false)
         scrollRef.current?.scrollIntoView({ behavior: "smooth" });
         }, 500);
-
         return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [messagelist, scrollRef]);
@@ -35,6 +40,8 @@ export function useChatInit({scrollRef,messagelist,initiatedRef,setMessageList,s
     useEffect(()=>{
         if (!initiatedRef.current==false)return
         initiatedRef.current = true
+
+        const category = searchParams.get("category")
         if (pendingOrders.length>0 && user ){
             const newMessage = {type:"message", sender:"bot", next:()=>{}, content:['Please wait while I confirm your payment…']}
             setMessageList((prev)=>[...prev,newMessage])
@@ -42,8 +49,17 @@ export function useChatInit({scrollRef,messagelist,initiatedRef,setMessageList,s
             setTimeout(()=>{const newMessage = {type:"order-receipt", sender:"bot", next:()=>introMessage(), content:[]}
                 setMessageList((prev)=>[...prev,newMessage]) 
             },1500)
+
+            if (category && allowedCategories.includes(category)){
+                getCategory(category)
+                return
+            }
         }
         else{
+            if (category && allowedCategories.includes(category)){
+                getCategory(category)
+                return
+            }
             introMessage()
         }
 

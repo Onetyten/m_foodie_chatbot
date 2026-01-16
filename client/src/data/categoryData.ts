@@ -1,5 +1,7 @@
 export const categoryData = [
-    {name:"Coffee", 
+    {
+        name:"Coffee", 
+        value:"coffee",
         imageUrls:[
             "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759532446/BrewedCoffee_adwhkx.png",
             "https://res.cloudinary.com/dl3gyvswk/image/upload/v1766942855/Vanilla_Protein_latte_jow9q8_souatv.png",
@@ -13,7 +15,9 @@ export const categoryData = [
             "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759538384/VanillaSweetCreamColdBrew_jbxftn.png"
         ]
     },
-    {name:"Drink",
+    {
+        name:"Drink",
+        value:"drink",
         imageUrls:[
             "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759538008/RaspberryCreamColdBrew_tru3no.png",
             "https://res.cloudinary.com/dl3gyvswk/image/upload/v1759541163/HoneyCitrusMintTea_f2dgef.png",
@@ -27,7 +31,9 @@ export const categoryData = [
             "https://res.cloudinary.com/dl3gyvswk/image/upload/v1766984369/Maltina_sghux3.png"
         ]
     },
-    {name:"Snacks",
+    {
+        name:"Snacks",
+        value:"snack",
         imageUrls:[
             "https://res.cloudinary.com/dl3gyvswk/image/upload/v1766998556/SBX20210915_BaconCheddarEggSandwich_aygibc.png",
             "https://res.cloudinary.com/dl3gyvswk/image/upload/v1766998556/SausageCheddarEggSandwich_q5uzq5.png",
