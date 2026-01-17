@@ -1,5 +1,6 @@
 import patternImg from '@/assets/patterns/pattern.webp'
 import { useState } from 'react'
+import { useNavigate } from 'react-router'
 
 
 interface propType{
@@ -10,10 +11,12 @@ interface propType{
 export default function BestsellerItem({food}:propType) {
 
     const [scaleImageUp,setScaleImageUp] = useState(false)
+    const navigate = useNavigate()
+    
 
   return (
-    <div onMouseEnter={()=>setScaleImageUp(true)} onMouseLeave={()=>setScaleImageUp(false)} className="overflow-hidden hover:bg-secondary-200/20 hover:shadow-xl shadow-secondary-100/10 cursor-pointer p-3 flex justify-center items-center flex-col w-full h-96 gap-1 rounded-md relative" style={{backgroundImage:`url(${patternImg})`}}>
-        <div className="w-24 h-16 font-bold text-lg gap-0.5 z-30 rounded-bl-2xl absolute bg-primary top-0 text-background flex justify-center items-center right-0">
+    <div onClick={()=>navigate(`/chat?query=${food.name}`)} onMouseEnter={()=>setScaleImageUp(true)} onMouseLeave={()=>setScaleImageUp(false)} className="overflow-hidden hover:bg-secondary-200/20 hover:shadow-xl shadow-secondary-100/10 cursor-pointer p-3 flex justify-center items-center flex-col w-full h-96 gap-1 rounded-md relative" style={{backgroundImage:`url(${patternImg})`}}>
+        <div className="w-20 h-14 sm:w-24 sm:h-16 font-bold text-base sm:text-lg gap-0.5 z-30 rounded-bl-2xl absolute bg-primary top-0 text-background flex justify-center items-center right-0">
             &#8358;{food.price}
         </div>
         <div className="flex-1 flex justify-center items-center text-center h-full w-full">

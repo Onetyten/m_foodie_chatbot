@@ -10,12 +10,12 @@ import OurCafe from "../ChatPage/components/OurCafe/OurCafe";
 
 export default function Home() {
   return (
-    <div className="flex flex-col overflow-x-hidden text-lg justify-center items-center" >
+    <div className="flex flex-col overflow-x-hidden sm:text-lg justify-center items-center" >
         <IntroPage/>
         <Category/>
         <Bestsellers/>
         <OurCafe/>
-        <Footer/>
+        {/* <Footer/> */}
     </div>
   )
 }
