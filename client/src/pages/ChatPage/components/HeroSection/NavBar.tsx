@@ -34,10 +34,10 @@ export default function NavBar() {
         
         <div className="flex lg:hidden relative">
             {showMenu?(
-                <HiX onClick={()=>setShowMenu(false)} size={32} className={`text-background z-20`}/>
+                <HiX onClick={()=>setShowMenu(false)} size={32} className={`text-background hover:text-white z-20`}/>
 
             ):(
-                <HiMenu onClick={()=>setShowMenu(!showMenu)} size={32} className={`text-primary z-20 `}/>
+                <HiMenu onClick={()=>setShowMenu(!showMenu)} size={32} className={`text-primary hover:text-secondary-200 z-20 `}/>
             )}
             
 
@@ -49,10 +49,10 @@ export default function NavBar() {
                             <button className="w-full hover:text-white text-left cursor-pointer">Download</button>
                         </div>
 
-                        <div className="flex flex-row text-background hover:text-white gap-1 justify-between">
+                        <div className="flex flex-row text-background gap-1 justify-between">
                             {IconLinks.map((item,index)=>
-                                <a key={index} href="" className="hover:text-secondary-100">
-                                    <item.icon size={25}/>
+                                <a key={index} href="" className="hover:text-white ">
+                                    <item.icon size={20}/>
                                 </a>)
                             }   
                         </div>

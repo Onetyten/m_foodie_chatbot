@@ -59,26 +59,26 @@ export default function Footer() {
     
 
   return (
-    <div className="w-full bg-primary px-64 flex flex-col items-start gap-16 py-32 relative">
+    <div className="w-full bg-primary px-6 sm:px-[15%] flex flex-col items-start gap-16 py-32 relative">
         <div className="absolute inset-0 z-0 opacity-20 bg-repeat" style={{ backgroundImage: `url(${patternImg})` }}/>
 
-        <div className="w-full grid z-10 grid-cols-4 auto-cols-fr">
+        <div className="w-full grid z-10 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8 2xl:grid-cols-4 auto-cols-fr">
             <div className="flex  text-background font-light capitalize flex-col gap-4">
-                <p className="text-white mb-4 font-medium text-xl "> {aboutUsData.title}  </p>
+                <p className="text-white mb-2 sm:mb-4 font-medium text-xl "> {aboutUsData.title}  </p>
                 {aboutUsData.links.map((item,index)=> <a key={index} className="hover:text-white" href={item.url}>{item.name}</a> )}  
             </div>
             
-            <div className="flex  text-background font-light capitalize flex-col gap-4">
-                <p className="text-white mb-4 font-medium text-xl "> Contact Us</p>
+            <div className="flex text-wrap text-background font-light capitalize flex-col gap-4">
+                <p className="text-white mb-2 sm:mb-4 font-medium text-xl "> Contact Us</p>
 
                 <div className="flex flex-col">
                     <p className="text-white font-medium">Mori Café Office </p>
                     <a href="tel:+2349155073769" className="cursor-pointer hover:text-white" target="_blank" rel="noopener noreferrer">+234 9155073769 </a>
                 </div>
                 <div className="flex flex-col">
-                    <p className="text-white font-medium">Labaeka Adetayo </p>
-                    <a href="https://onetyten.vercel.app/" className="cursor-pointer hover:text-white" target="_blank">Owner & CEO</a>
-                    <a href="mailto:labaekaabdulrazaq@gmail.com" className="cursor-pointer hover:text-white lowercase" target="_blank" >labaekaabdulrazaq@gmail.com</a>
+                    <p className="text-white font-medium text-wrap">Labaeka Adetayo </p>
+                    <a href="https://onetyten.vercel.app/" className="cursor-pointer text-wrap hover:text-white" target="_blank">Owner & CEO</a>
+                    <a href="mailto:labaekaabdulrazaq@gmail.com" className="cursor-pointer text-wrap hover:text-white lowercase" target="_blank" >labaekaabdulrazaq@gmail.com</a>
                 </div>
                 <div className="flex flex-col">
                     <p className="text-white font-medium">Commercial Orders</p>
@@ -87,12 +87,12 @@ export default function Footer() {
             </div>
 
             <div className="flex  text-background font-light capitalize flex-col gap-4">
-                <p className="text-white mb-4 font-medium text-xl "> {termData.title}  </p>
+                <p className="text-white mb-2 text-wrap sm:mb-4 font-medium text-xl "> {termData.title}  </p>
                 {termData.links.map((item,index)=> <a key={index} className="hover:text-white" href={item.url}>{item.name}</a> )}  
             </div>
 
             <form onSubmit={AddToNewsLetter} className="flex flex-col justify-start items-start gap-3">
-                <p className="text-3xl font-medium text-white mb-3">GET UPDATED</p>
+                <p className="text-3xl font-medium text-white mb-2 sm:mb-4">GET UPDATED</p>
 
                 <input type="email" required value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email" className="w-full placeholder:text-secondary-200 text-secondary-100 focus:outline-0 p-4 h-12 bg-white rounded-md" />
                 { success.length>0 && <p className="text-success text-sm">{success}</p> }

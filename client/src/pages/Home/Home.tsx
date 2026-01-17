@@ -15,7 +15,7 @@ export default function Home() {
         <Category/>
         <Bestsellers/>
         <OurCafe/>
-        {/* <Footer/> */}
+        <Footer/>
     </div>
   )
 }
