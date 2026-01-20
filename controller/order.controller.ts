@@ -24,11 +24,16 @@ export async function OrderController(req:Request,res:Response){
 
     if (error) return res.status(400).json({message:`Validation error:${error.message}`,success:false})
     console.log(error)
-    
+
     const userId = req.userId
     if (!userId) {
         console.log("No user id found")
         return res.status(401).json({message:`No user id found`,success:false})
+    }
+
+    if (!value.items || value.items.length===0) {
+        console.log("Your order is empty, please order something.")
+        return res.status(401).json({message:`Your order is empty, please order something.`,success:false})
     }
 
     try {
