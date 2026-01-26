@@ -20,7 +20,7 @@ export default function OurCafe() {
                 <p>Not just your average coffee. Not just your average café.</p>
                 <p>Daily home delivery from 7:30am - 6:00pm.</p>
             </div>
-            <a href="/chat" className="bg-primary p-3 rounded-xl cursor-pointer hover:bg-secondary-100 text-base sm:text-xl text-white">
+            <a href="/chat" className="bg-primary p-3 rounded-md cursor-pointer hover:bg-secondary-100 text-base sm:text-lg text-white">
                 View Menu
             </a>
         </motion.div>

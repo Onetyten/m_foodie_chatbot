@@ -8,7 +8,7 @@ import OutsideClickHandler from 'react-outside-click-handler';
 
 const navLinks = [
     {name:"Order", url:"/chat"},
-    {name:"Product", url:"/chat"},
+    {name:"Download", url:"https://github.com/Onetyten/Mori-Cafe/releases/download/v1.0.0/Mori.Cafe.v1.0.0.apk"},
 ]
 
 const IconLinks = [
@@ -46,7 +46,6 @@ export default function NavBar() {
                     <div className="flex flex-col justify-between h-72 w-60 max-w-[50vw] rounded-md -right-4 -top-4 p-4 bg-primary/70 absolute backdrop-blur-xs z-10">
                         <div className="flex flex-col text-background gap-2 w-full">
                             {navLinks.map((item,index)=> <a href={item.url} key={index} className=" w-full hover:text-white">{item.name}</a>)}
-                            <button className="w-full hover:text-white text-left cursor-pointer">Download</button>
                         </div>
 
                         <div className="flex flex-row text-background gap-1 justify-between">
@@ -66,7 +65,6 @@ export default function NavBar() {
 
         <div className="lg:flex hidden xl:gap-6 gap-4 font-light text-primary items-center">
             {navLinks.map((item,index)=> <a href={item.url} key={index} className="hover:text-secondary-100">{item.name}</a>)}
-            <button className="hover:text-secondary-100">Download</button>
             <a href="https://github.com/Onetyten/Mori-Cafe" className="hover:text-secondary-100">
                 <FaGithub size={25}/>
             </a>

@@ -18,12 +18,12 @@ export default function IntroPage() {
                 <p className="w-[600px] max-w-full font-light text-muted">
                     Available on Mac, Windows, and Android
                 </p>
-                <button className="p-1.5 max-w-full cursor-pointer hover:bg-secondary-100 text-background h-[64px] flex items-center sm:gap-6 gap-2 rounded-full font-light bg-primary">
+                <a href="https://github.com/Onetyten/Mori-Cafe/releases/download/v1.0.0/Mori.Cafe.v1.0.0.apk" className="p-1.5 max-w-full cursor-pointer hover:bg-secondary-100 text-background h-[64px] flex items-center sm:gap-6 gap-2 rounded-full font-light bg-primary">
                     <div className="bg-secondary-200 text-secondary-100 size-[50px] aspect-square flex justify-center items-center rounded-full">
                         <RxDownload size={27}/>
                     </div>
                     <p className="text-left mr-2 sm:mr-6 text-base sm:text-lg">Download Mori Cafe App</p> 
-                </button>
+                </a>
             </div>
             <Background/>
     </div>
