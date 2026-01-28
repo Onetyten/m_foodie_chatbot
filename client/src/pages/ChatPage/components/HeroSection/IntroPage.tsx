@@ -6,9 +6,9 @@ import Background from "./Background";
 
 export default function IntroPage() {
   return (
-    <div className="w-screen max-w-screen overflow-hidden flex flex-col min-h-[100dvh] p-6 font-outfit items-center relative">
+    <section className="w-screen section z-0 max-w-screen overflow-hidden flex flex-col min-h-[100dvh] p-6 font-outfit items-center relative">
             <NavBar/>
-            <div className="flex-1 w-full pt-36 flex flex-col items-center text-center text-secondary-100 gap-8">
+            <div className="flex-1 w-full py-36 flex flex-col items-center text-center text-secondary-100 gap-8">
                 <p className="font-reader text-4xl sm:text-5xl max-w-full w-[600px] font-light capitalize">
                     A cross-platform <span className="text-secondary-300">coffee</span> ordering app
                 </p>
@@ -26,6 +26,8 @@ export default function IntroPage() {
                 </a>
             </div>
             <Background/>
-    </div>
+            {/* <div className="overlay absolute inset-0 bg-muted/0 pointer-events-none" ></div> */}
+
+    </section>
   )
 }

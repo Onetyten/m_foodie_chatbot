@@ -2,6 +2,7 @@ import { Suspense, useState } from "react";
 import ScreenshotImage from "@/assets/Homepage/Screenshot.webp"
 import { Canvas } from "@react-three/fiber";
 import PhoneModel from "./PhoneModel";
+import sectionDivider from "../../../../assets/svg/section-2-intro-divder.svg"
 
 const highLightData = [
   {
@@ -47,17 +48,19 @@ const highLightData = [
 ];
 
 
-
+ 
 export default function Highlights() {
   const [index,setIndex] = useState(0)
 
 
   return (
-    <div className="w-full flex justify-between items-start bg-background to-secondary-200 gap-16 sm:py-32 px-6 sm:px-[15%] p-14">
+    <section className="w-full section min-h-screen z-10 relative  bg-secondary-200 flex justify-between items-start to-secondary-200 gap-16 sm:pt-20 sm:pb-20 px-6 sm:px-[15%] p-14">
       
+        <img src={sectionDivider} alt="" className="object-cover left-0 z-20 absolute bottom-full h-auto w-screen" />
+
         <div className="flex flex-1 flex-col gap-8 items-start ">
-          <p className="text-4xl sm:text-5xl font-reader uppercase text-white"> {highLightData[index].name.split(" ")[0]} <span className="text-primary"> {highLightData[index].name.split(" ").slice(1).join(" ")} </span></p>
-          <div className="text-secondary-100 font-light max-w-xl gap-2 flex flex-col">
+          <p className="text-4xl sm:text-5xl font-reader uppercase text-white"> {highLightData[index].name.split(" ")[0]} <span className="text-secondary-100"> {highLightData[index].name.split(" ").slice(1).join(" ")} </span></p>
+          <div className="text-secondary-100 font-normal max-w-xl gap-2 flex flex-col">
               <p>{highLightData[index].desc}</p>
           </div>
           
@@ -80,7 +83,8 @@ export default function Highlights() {
         </Suspense>
         
       </div>
-    </div>
+      <div className="overlay absolute inset-0 bg-muted/0 pointer-events-none"></div>
+    </section>
   )
 }
  

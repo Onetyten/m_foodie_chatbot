@@ -111,14 +111,11 @@ export default function PhoneModel({index,highlightData,setIndex}:propTypes) {
 
   const { nodes, materials } = useGLTF('/3D model/s25/s25.gltf')
 
-  useFrame((state) => {
+  useFrame(() => {
     if (!group.current) return
 
     if (isAnimating) {
       rotationAnimation()
-    } else {
-      const { x } = state.pointer
-      group.current.rotation.y = x * 0.1
     }
   })
 

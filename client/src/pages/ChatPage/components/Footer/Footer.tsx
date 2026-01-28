@@ -3,6 +3,8 @@ import { IoMail,IoCallSharp } from "react-icons/io5"
 import { FaXTwitter } from "react-icons/fa6";
 import patternImg from '@/assets/patterns/doodles.png'
 import { useState, type FormEvent } from "react";
+import sectionDivider from "../../../../assets/svg/section-6-intro-divder.svg"
+
 
 const aboutUsData = {
     title:"About Us",
@@ -59,7 +61,9 @@ export default function Footer() {
     
 
   return (
-    <div className="w-full bg-primary px-6 sm:px-[15%] flex flex-col items-start gap-16 py-32 relative">
+    <div className="w-full section z-50 min-h-[100dvh] bg-primary px-6 sm:px-[15%] flex flex-col justify-between items-start gap-16 py-32 relative">
+        <img src={sectionDivider} alt="" className="object-cover left-0 z-20 absolute bottom-full h-auto w-screen" />
+
         <div className="absolute inset-0 z-0 opacity-20 bg-repeat" style={{ backgroundImage: `url(${patternImg})` }}/>
 
         <div className="w-full grid z-10 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8 2xl:grid-cols-4 auto-cols-fr">

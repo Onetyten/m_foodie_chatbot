@@ -1,20 +1,68 @@
 import deliveryImg from "@/assets/Homepage/delivery.apng"
-import {motion} from "framer-motion"
+import {useGSAP} from '@gsap/react'
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
+import sectionDivider from "../../../../assets/svg/section-5-intro-divder.svg"
+
 
 
 export default function OurCafe() {
-    const isXL = window.matchMedia('(min-width:1280px)').matches
+    useGSAP(()=>{
+        gsap.set("#delivery-img", {
+                x: "100%",
+                willChange: "transform",
+                force3D: true
+            })
+        gsap.set("#fade-text", {
+            opacity: 0,
+            willChange: "opacity"
+        })
+
+        const mm = gsap.matchMedia()
+        mm.add("(max-width:1279px)",()=>{
+            gsap.timeline({
+                scrollTrigger:{
+                    trigger:"#fade-text",
+                    once:true,
+                    start:"top 100%"
+                }
+            }).fromTo('#delivery-img',
+                { x:"100%"},
+                { x:"0%", ease:"back.inOut",duration:2}
+            )
+        })
+
+        mm.add("(min-width:1280px)",()=>{
+            gsap.timeline({
+                scrollTrigger:{
+                    trigger:"#our-cafe-section",
+                    once:true,
+                    start:"top 85%"
+                }})
+            .fromTo('#delivery-img',
+                { x:"100%"},
+                { x:"0%", ease:"back.inOut",duration:2}
+            )
+            .fromTo('#fade-text',
+                {opacity:0},
+                {opacity:1, duration:1}
+            )
+        })
+    },[])
+
+
+
   return (
-    <div className="w-full flex xl:flex-row flex-col-reverse bg-gradient-to-b from-background to-90% to-secondary-200 pb-36 px-6 sm:px-[15%] justify-between items-start gap-12 xl:gap-2 p-14">
+    <div id="our-cafe-section" className="w-full z-40 min-h-[100dvh] section relative flex xl:flex-row flex-col-reverse bg-secondary-200 pb-36 px-6 sm:px-[15%] justify-between items-start gap-12 xl:gap-2 p-14">
+
+        <img src={sectionDivider} alt="" className="object-cover left-0 z-20 absolute bottom-full h-auto w-screen" />
 
         <div className= "w-full xl:w-8/12 2xl:w-1/2 flex justify-end h-full">
-            <motion.div initial={{x:"100%"}} whileInView={{x:0}} viewport={{ once: true }}  transition={{duration:2,ease:"easeInOut"}} className="w-full sm:w-1/2 xl:w-full h-full">
-                    <img src={deliveryImg} alt="" className="w-full "/>
-            </motion.div>
+            <img id="delivery-img" src={deliveryImg} alt="" className="w-full object-contain sm:w-1/2 xl:w-full h-full"/>
         </div>
-        
 
-        <motion.div initial={{opacity:0}} transition={{delay:isXL?1.5:0,duration:1}} whileInView={{opacity:1}} viewport={{ once: true }}  className="flex flex-col gap-8 items-start ">
+        <div id="fade-text" className="flex flex-col gap-8 items-start ">
             <p className="text-4xl sm:text-5xl font-reader text-white">OUR <span className="text-primary">CAFÉ</span></p>
             <div className="text-secondary-100 font-light gap-2 flex flex-col">
                 <p>Not just your average coffee. Not just your average café.</p>
@@ -23,8 +71,8 @@ export default function OurCafe() {
             <a href="/chat" className="bg-primary p-2 px-5 rounded-md cursor-pointer hover:bg-secondary-100 text-base sm:text-lg text-white">
                 View Menu
             </a>
-        </motion.div>
-        
+        </div>
+        {/* <div className="overlay absolute inset-0 bg-muted/0 pointer-events-none" ></div> */}
     </div>
   )
 }
