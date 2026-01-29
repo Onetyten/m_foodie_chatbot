@@ -9,48 +9,106 @@ interface propTypes{
     highlightData: { videoUrl: string }[]
     index:number
     setIndex:React.Dispatch<React.SetStateAction<number>>
+    onModelReady?: () => void
+    setLoadedVideos:React.Dispatch<React.SetStateAction<number>>
 }
 
-
-export default function PhoneModel({index,highlightData,setIndex}:propTypes) {
-  
+export default function PhoneModel({index,highlightData,setIndex,onModelReady,setLoadedVideos}:propTypes) {
   const group = useRef<THREE.Group>(null!)
   const [hovered, setHovered] = useState(false)
-  const [isAnimating, setIsAnimating] = useState(true)
   const animationRef = useRef<number | null>(null)
-  const [rotationProgress, setRotationProgress] = useState(0)
   useCursor(hovered)
   const videoTextures = useRef<Map<string,THREE.VideoTexture>>(new Map())
-
-  useEffect(()=>{
-    highlightData.forEach(({videoUrl})=>{
-      if (videoTextures.current.has(videoUrl)) return
-      
-      const video = document.createElement("video")
-      video.src = videoUrl
-      video.crossOrigin = "anonymous"
-      video.loop = false
-      video.muted = true
-      video.playsInline = true
-      video.preload = "auto"
-      
-      const texture = new THREE.VideoTexture(video)
-      texture.flipY = false
-      texture.colorSpace = THREE.SRGBColorSpace
-      texture.generateMipmaps = false
-      videoTextures.current.set(videoUrl,texture)
-    })
-
-    return ()=>{
-      videoTextures.current.forEach((texture) => {
-        const video = texture.image as HTMLVideoElement
-        video.pause()
-        video.src = ""
-        texture.dispose()
-      })
-      videoTextures.current.clear()
+  const [assetsLoaded, setAssetsLoaded] = useState(false)
+  const animTimeRef = useRef<number>(0);
+  const [isAnimating, setIsAnimating] = useState(true);
+  
+useEffect(()=>{
+  let loadedCount = 0
+  const totalVideos = highlightData.length
+    const checkAllLoaded = () => {
+      loadedCount++
+      if (loadedCount === totalVideos) {
+        setAssetsLoaded(true)
+      }
     }
-  },[])
+    checkAllLoaded()
+    setLoadedVideos(prev => prev + 1);
+},[])
+
+useEffect(() => {
+  let loadedCount = 0
+  const totalVideos = highlightData.length
+  
+  const checkAllLoaded = () => {
+    loadedCount++
+    if (loadedCount === totalVideos) {
+      setAssetsLoaded(true)
+    }
+  }
+
+  highlightData.forEach(({ videoUrl }) => {
+    if (videoTextures.current.has(videoUrl)) {
+      checkAllLoaded()
+      return
+    }
+    const video = document.createElement("video")
+    video.src = videoUrl
+    video.crossOrigin = "anonymous"
+    video.loop = false
+    video.muted = true
+    video.playsInline = true
+    video.preload = "auto"
+    const handleLoad = () => {
+      checkAllLoaded()
+      video.removeEventListener('loadeddata', handleLoad)
+      video.removeEventListener('error', handleError)
+    }
+
+    const handleError = () => {
+      console.warn(`Failed to load video: ${videoUrl}`)
+      checkAllLoaded()
+      video.removeEventListener('loadeddata', handleLoad)
+      video.removeEventListener('error', handleError)
+    }
+
+    video.addEventListener('loadeddata', handleLoad)
+    video.addEventListener('error', handleError)
+
+    if (video.readyState >= 2) {
+      handleLoad()
+    }
+    const texture = new THREE.VideoTexture(video)
+    texture.flipY = false
+    texture.colorSpace = THREE.SRGBColorSpace
+    texture.generateMipmaps = false
+    videoTextures.current.set(videoUrl, texture)
+  })
+
+  return () => {
+    videoTextures.current.forEach((texture) => {
+      const video = texture.image as HTMLVideoElement
+      video.pause()
+      video.src = ""
+      texture.dispose()
+    })
+    videoTextures.current.clear()
+  }
+}, [highlightData])
+
+  useEffect(() => {
+      const currentTexture = videoTextures.current.get(highlightData[index].videoUrl);
+      const currentVideo = currentTexture?.image as HTMLVideoElement | undefined;
+      if (currentVideo) currentVideo.pause();
+      animTimeRef.current = 0;
+      setIsAnimating(true);
+  }, [index]);
+
+  useEffect(() => {
+    if (assetsLoaded && onModelReady) {
+      onModelReady()
+    }
+  }, [assetsLoaded, onModelReady])
 
   useEffect(() => {
     const currentTexture = videoTextures.current.get(highlightData[index].videoUrl)
@@ -58,16 +116,12 @@ export default function PhoneModel({index,highlightData,setIndex}:propTypes) {
     if (currentVideo) {
       currentVideo.pause()
     }
-
     setIsAnimating(true)
-    setRotationProgress(0)
-
     const start = performance.now()
     const animate = (now: number) => {
       const elapsed = now - start
       const duration = 1500
       const t = Math.min(elapsed / duration, 1)
-      setRotationProgress(t)
 
       if (t < 1) {
         animationRef.current = requestAnimationFrame(animate)
@@ -102,21 +156,25 @@ export default function PhoneModel({index,highlightData,setIndex}:propTypes) {
 
     return () => clearTimeout(timer)
   }, [index])
-
-  const rotationAnimation = () => {
-    const eased = Math.sin((rotationProgress * Math.PI) / 2)
-    group.current.rotation.y = eased * Math.PI * 2
-    group.current.rotation.x = 0
-  }
-
   const { nodes, materials } = useGLTF('/3D model/s25/s25.gltf')
 
-  useFrame(() => {
-    if (!group.current) return
-
-    if (isAnimating) {
-      rotationAnimation()
-    }
+  useFrame((_state, delta) => {
+      if (!group.current || !isAnimating) return;
+      const duration = 1.5;
+      animTimeRef.current += delta;
+      const t = Math.min(animTimeRef.current / duration, 1);
+      const eased = Math.sin((t * Math.PI) / 2);
+      group.current.rotation.y = eased * Math.PI * 2;
+      group.current.rotation.x = 0;
+      if (t >= 1) {
+        setIsAnimating(false);
+        const currentTexture = videoTextures.current.get(highlightData[index].videoUrl);
+        const video = currentTexture?.image as HTMLVideoElement;
+        if (video) {
+          video.currentTime = 0;
+          video.play().catch(() => {});
+        }
+      }
   })
 
   return (

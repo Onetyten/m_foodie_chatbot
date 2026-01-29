@@ -61,55 +61,55 @@ export default function Footer() {
     
 
   return (
-    <div className="w-full section z-50 min-h-[100dvh] bg-primary px-6 sm:px-[15%] flex flex-col justify-between items-start gap-16 py-32 relative">
+    <div className="w-full section z-50 bg-primary px-6 sm:px-[15%] flex flex-col justify-between items-start gap-16 py-32 relative">
         <img src={sectionDivider} alt="" className="object-cover left-0 z-20 absolute bottom-full h-auto w-screen" />
 
-        <div className="absolute inset-0 z-0 opacity-20 bg-repeat" style={{ backgroundImage: `url(${patternImg})` }}/>
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-20 bg-repeat" style={{ backgroundImage: `url(${patternImg})` }}/>
 
         <div className="w-full grid z-10 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8 2xl:grid-cols-4 auto-cols-fr">
-            <div className="flex  text-background font-light capitalize flex-col gap-4">
-                <p className="text-white mb-2 sm:mb-4 font-medium text-xl "> {aboutUsData.title}  </p>
-                {aboutUsData.links.map((item,index)=> <a key={index} className="hover:text-white" href={item.url}>{item.name}</a> )}  
+            <div className="flex  text-white font-light capitalize flex-col gap-4">
+                <p className="text-secondary-100 mb-2 sm:mb-4 font-bold text-xl "> {aboutUsData.title}  </p>
+                {aboutUsData.links.map((item,index)=> <a key={index} className="hover:underline" href={item.url}>{item.name}</a> )}  
             </div>
             
-            <div className="flex text-wrap text-background font-light capitalize flex-col gap-4">
-                <p className="text-white mb-2 sm:mb-4 font-medium text-xl "> Contact Us</p>
+            <div className="flex text-wrap text-white font-light capitalize flex-col gap-4">
+                <p className="text-secondary-100 mb-2 sm:mb-4 font-bold text-xl "> Contact Us</p>
 
                 <div className="flex flex-col">
-                    <p className="text-white font-medium">Mori Café Office </p>
-                    <a href="tel:+2349155073769" className="cursor-pointer hover:text-white" target="_blank" rel="noopener noreferrer">+234 9155073769 </a>
+                    <p className="text-background font-medium">Mori Café Office </p>
+                    <a href="tel:+2349155073769" className="cursor-pointer hover:underline" target="_blank" rel="noopener noreferrer">+234 9155073769 </a>
                 </div>
                 <div className="flex flex-col">
-                    <p className="text-white font-medium text-wrap">Labaeka Adetayo </p>
-                    <a href="https://onetyten.vercel.app/" className="cursor-pointer text-wrap hover:text-white" target="_blank">Owner & CEO</a>
-                    <a href="mailto:labaekaabdulrazaq@gmail.com" className="cursor-pointer text-wrap hover:text-white lowercase" target="_blank" >labaekaabdulrazaq@gmail.com</a>
+                    <p className="text-background font-medium text-wrap">Labaeka Adetayo </p>
+                    <a href="https://onetyten.vercel.app/" className="cursor-pointer text-wrap hover:underline" target="_blank">Owner & CEO</a>
+                    <a href="mailto:labaekaabdulrazaq@gmail.com" className="cursor-pointer text-wrap hover:underline lowercase" target="_blank" >labaekaabdulrazaq@gmail.com</a>
                 </div>
                 <div className="flex flex-col">
-                    <p className="text-white font-medium">Commercial Orders</p>
-                    <a href="mailto:info@moricafe.com" target="_blank" className="cursor-pointer hover:text-white lowercase">info@moricafe.com </a>
+                    <p className="text-background font-medium">Commercial Orders</p>
+                    <a href="mailto:info@moricafe.com" target="_blank" className="cursor-pointer hover:underline lowercase">info@moricafe.com </a>
                 </div>
             </div>
 
-            <div className="flex  text-background font-light capitalize flex-col gap-4">
-                <p className="text-white mb-2 text-wrap sm:mb-4 font-medium text-xl "> {termData.title}  </p>
-                {termData.links.map((item,index)=> <a key={index} className="hover:text-white" href={item.url}>{item.name}</a> )}  
+            <div className="flex  text-white font-light capitalize flex-col gap-4">
+                <p className="text-secondary-100 mb-2 text-wrap sm:mb-4 font-bold text-xl "> {termData.title}  </p>
+                {termData.links.map((item,index)=> <a key={index} className="hover:underline" href={item.url}>{item.name}</a> )}  
             </div>
 
             <form onSubmit={AddToNewsLetter} className="flex flex-col justify-start items-start gap-3">
-                <p className="text-3xl font-medium text-white mb-2 sm:mb-4">GET UPDATED</p>
+                <p className="text-3xl font-bold text-secondary-100 mb-2 sm:mb-4">GET UPDATED</p>
 
                 <input type="email" required value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email" className="w-full placeholder:text-secondary-200 text-secondary-100 focus:outline-0 p-4 h-12 bg-white rounded-md" />
                 { success.length>0 && <p className="text-success text-sm">{success}</p> }
                 { error.length>0 && <p className="text-warning text-sm">{error}</p> }
                 
-                <button className="rounded-md w-full h-12 bg-secondary-200 hover:shadow-lg cursor-pointer text-white" type="submit">Submit</button>
+                <button className="rounded-md w-full h-12 bg-secondary-100 hover:shadow-lg cursor-pointer text-white" type="submit">Submit</button>
             </form>
         </div>
 
         <div className="flex flex-col items-start gap-3">
             <div className="flex flex-row gap-6">
                 {Links.map((item,index)=> <a key={index} href={item.url} target="_blank" rel="noopener noreferrer">
-                    < item.icon className="text-white hover:text-lightergrey text-lg xl:text-2xl link-shadow " />
+                    < item.icon className="text-white hover:text-background cursor-pointer text-lg xl:text-2xl link-shadow " />
                 </a> )}
             </div>
 

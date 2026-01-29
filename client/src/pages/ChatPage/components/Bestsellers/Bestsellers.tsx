@@ -15,7 +15,7 @@ export default function Bestsellers() {
     
     
   return (
-    <div className='w-full z-30 min-h-[100vh] section flex relative bg-background flex-col gap-16 py-20 px-6 sm:px-[15%] justify-start items-start p-14'>
+    <div className='w-full z-30 section flex relative bg-background flex-col gap-16 py-20 md:py-40 md:pb-36 px-6 sm:px-[15%] justify-start items-start p-14'>
         
         <img src={sectionDivider} alt="" className="object-cover left-0 z-20 absolute bottom-full h-auto w-screen" />
         <p className="text-4xl sm:text-5xl font-reader text-white">OUR <span className="text-primary">BEST SELLERS</span></p>
