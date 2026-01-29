@@ -37,7 +37,7 @@ export default function SearchBar(props:propType) {
 
   return (
     <div className="w-full flex justify-center items-center h-11 mb-2 xl:mb-6">
-      <div className="mx-6 h-full flex gap-2 justify-between px-1 items-center w-full rounded-full bg-secondary-300/15">
+      <div className="mx-4 h-full flex gap-2 justify-between px-1 items-center w-full rounded-full bg-secondary-300/15">
         <div className="relative">
             <OutsideClickHandler onOutsideClick={() => setShowButtons(false)}>
               <div className="bg-primary hover:text-white p-2 rounded-full z-50 text-background relative">

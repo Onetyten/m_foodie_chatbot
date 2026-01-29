@@ -50,7 +50,7 @@ export default function NavBar() {
 
                         <div className="flex flex-row text-background gap-1 justify-between">
                             {IconLinks.map((item,index)=>
-                                <a key={index} href="" className="hover:text-white ">
+                                <a key={index} href={item.url} className="hover:text-white ">
                                     <item.icon size={20}/>
                                 </a>)
                             }   

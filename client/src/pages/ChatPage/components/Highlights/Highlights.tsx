@@ -39,7 +39,7 @@ export default function Highlights({ onSectionReady,setLoadedVideos }: { onSecti
           </a>
         </div>
 
-      <div className="md:min-w-lg max-w-full md:flex-shrink-0">
+      <div className="md:w-lg w-full max-w-full md:flex-shrink-0">
         <Suspense fallback={null}>
           <div className="h-[90dvh] justify-start flex w-full relative">
             <Canvas className="w-full h-full">

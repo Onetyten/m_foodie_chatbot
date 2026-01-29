@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
-import logoImg from "../../assets/logo.png" 
+import logoImg from "../../assets/logo.gif" 
 
 interface LoadingScreenProps {
   progress: number;
@@ -27,7 +27,7 @@ export function LoadingScreen({ progress, ready, onComplete }: LoadingScreenProp
 
   return (
     <div ref={ref} className="fixed inset-0 z-[9999] bg-primary flex-col gap-4 flex items-center justify-center text-white" >
-        <img src={logoImg} alt="" className="size-36 animate-pulse" />
+        <img src={logoImg} alt="" className="size-20 animate-pulse" />
         <p className="mb-2 text-lg sm:text-2xl font-reader text-white">Welcome to Mori Cafe</p>
         <div className="w-64 sm:w-80 h-8 bg-white rounded-sm overflow-hidden mt-2">
           <div ref={barRef} className="h-full bg-secondary-100 w-0"></div>
